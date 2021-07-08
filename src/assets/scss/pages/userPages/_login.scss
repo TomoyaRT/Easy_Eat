@@ -1,0 +1,204 @@
+.user-page-login {
+    // 登入畫面
+    .login-container {
+        display: flex;
+        flex-direction: column;
+
+        // 讓平板版型做到 垂直水平置中
+        @include tablet_768 {
+            position: relative;
+        }
+
+        // 返回首頁
+        .home-page-rink-container {
+            margin: 2rem 0 8rem 1.5rem;
+            display: flex;
+            align-items: center;
+
+            // icon
+            .bi-arrow-left {
+                font-size: 1.3rem;
+                margin-right: 1.3rem;
+                cursor: pointer;
+            }
+
+            // 網站Logo
+            img {
+                width: 100px;
+                cursor: pointer;
+            }
+        }
+
+        // 登入表單
+        .login-verification-container {
+            padding: 0 0.8rem;
+
+            @include mobile_414 {
+                padding: 0 2rem;
+            }
+
+            @include tablet_768 {
+                width: 70%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                padding: 0;
+                transform: translate(-50%,-50%);
+            }
+
+            @include tablet_1024 {
+                width: 45%;
+                left: 5%;
+                transform: translateY(-50%);
+            }
+
+            @include desktop_1280 {
+                width: 35%;
+                left: 2.5%;
+            }
+
+            @include desktop_1536 {
+                width: 32%;
+                left: 4%;
+            }
+
+            @include desktop_1920 {
+                width: 25%;
+                left: 7.5%;
+            }
+
+            // 標題
+            .login-title {
+                font-size: 1.8rem;
+                font-weight: bold;
+                color: #424242;
+                margin-bottom: 1.5rem;
+
+                @include mobile_414 {
+                    margin-bottom: 2rem;
+                }
+
+                @include tablet_768 {
+                    margin-bottom: 2.5rem;
+                }
+            }
+
+            // 會員帳號/密碼 容器
+            .user-account-container,
+            .user-password-container {
+                display: flex;
+                flex-direction: column;
+            }
+
+            // 會員帳號/密碼 標題
+            .user-account-title,
+            .user-password-title {
+                display: block;
+                font-size: 1rem;
+                font-weight: bold;
+                color: #474747;
+                margin-bottom: 1.5rem;
+            }
+
+            // 會員帳號/密碼 輸入框容器
+            .user-account-input-container,
+            .user-password-input-container {
+                position: relative;
+
+                // 會員帳號/密碼 輸入框內容
+                .user-account-input,
+                .user-password-input {
+                    box-sizing: border-box;
+                    width: 100%;
+                    font-size: 1.5rem;
+                    line-height: 2.6rem;
+                    margin-bottom: 1.8rem;
+                    padding: 0 0.5rem;
+                    border: none;
+                    outline: 1px solid #a7a7a7;
+                }
+
+                // 會員帳號/密碼 輸入中樣式
+                .user-account-input:focus,
+                .user-password-input:focus {
+                    outline: 2px solid #be8864;
+                    box-shadow: none;
+                }
+
+                // 驗證錯誤
+                .is-invalid {
+                    outline: 2px solid #ff3f3f;
+                    box-shadow: 0 0 0.8rem #ff3f3f;
+                }
+
+                // 驗證通過
+                .is-valid {
+                    outline: 2px solid #2eaa18;
+                    box-shadow: 0 0 0.8rem #59c047;
+                }
+
+                // 驗證回饋的icon
+                .bi-check-circle-fill,
+                .bi-x-circle-fill {
+                    position: absolute;
+                    right: 0.5rem;
+                    top: 0.8rem;
+                    font-size: 1.1rem;
+                }
+
+                // 驗證通過 icon
+                .bi-check-circle-fill {
+                    color: #59c047;
+                }
+                
+                // 驗證失敗 icon
+                .bi-x-circle-fill {
+                    color: #ff3f3f;
+                }
+            }
+
+            // 錯誤回饋訊息
+            .invalid-feedback {
+                display: block;
+                position: relative;
+                top: -1.1rem;
+                font-size: 0.875em;
+                font-weight: 800;
+                color: #dc3545;
+                margin-bottom: 1rem;
+            }
+
+            // 會員登入 按鈕
+            .user-login-btn {
+                border: none;
+                width: 100%;
+                font-size: 1.1rem;
+                text-align: center;
+                font-weight: bolder;
+                color: #fff;
+                margin-top: 1rem;
+                padding: 0.8rem 0rem;
+                background-color: #6b6b6b;
+                cursor: pointer;
+
+                @include tablet_1024 {
+                    background-color: #b19a79;
+                }
+            }
+        }
+
+        // 切換為 電腦版的版型
+        .desktop-login-container {
+            @include tablet_1024 {
+                display: block;
+                background-color: #ffffff;
+                width: 55%;
+                height: 100vh;
+            }
+
+            @include desktop_1280 {
+                width: 40%;
+            }
+        }
+    }
+}

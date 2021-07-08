@@ -1,0 +1,59 @@
+.user-page-order-form {
+    width: 100%;
+
+    // 表單頁面容器
+    .order-form-container {
+        width: 90%;
+        margin: 0 auto;
+
+        @include tablet_768 {
+            width: 65%;
+        }
+
+        @include tablet_1024 {
+            width: 55%;
+        }
+
+        @include desktop_1280 {
+            width: 50%;
+        }
+
+        @include desktop_1536 {
+            width: 45%;
+        }
+        @include desktop_1920 {
+            width: 40%;
+        }
+    }
+
+    // 表單容器
+    .order-form {
+        background-color: #dee2e6;
+        padding: 0.8rem;
+        margin-bottom: 3rem;
+
+        // 表單標題
+        .order-form-title {
+            font-size: 1.5rem;
+            color: #616161;
+            font-weight: bold;
+            text-align: center;
+            padding: 0.8rem 0;
+        }
+
+        // 購物車訂單
+        .shopping-cart-order-btn {
+            border: none;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            font-weight: bold;
+            color: #616161;
+            outline: 1px solid #616161;
+            background-color: #dee2e6;
+            padding: 0.6rem 1.7rem;
+            margin: 1rem 0;
+        }
+    }
+}

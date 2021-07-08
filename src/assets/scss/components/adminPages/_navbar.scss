@@ -1,0 +1,209 @@
+.admin-page-navbar {
+    width: 100%;
+    height: 130px;
+
+    @include mobile_414 {
+        height: 140px;
+    }
+
+    @include tablet_768 {
+        height: 150px;
+    }
+
+    @include tablet_1024 {
+        height: 100px;
+    }
+    // 手機版 navbar頁面容器
+    .navbar-mobile-container {
+        width: 90%;
+        margin: 1rem auto 0 auto;
+        display: flex;
+        flex-direction: column;
+
+        @include tablet_768 {
+            margin: 1.5rem auto 0 auto;
+        }
+
+        // 關閉手機版，切換成電腦版
+        @include tablet_1024 {
+            display: none;
+        }
+
+        // navbar上半容器
+        .navbar-header-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            margin-bottom: 1rem;
+            align-items: center;
+
+            @include mobile_414 {
+                margin-bottom: 1.2rem;
+            }
+
+            @include tablet_768 {
+                margin-bottom: 1.5rem;
+            }
+
+            // 頁面標題
+            .navbar-title {
+                flex: 8;
+                text-align: center;
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: #616161;
+
+                @include tablet_768 {
+                    flex: 14;
+                }
+            }
+
+            // icon 通用樣式
+            i {
+                flex: 1;
+                text-align: center;
+            }
+            // 漢堡樣式
+            .bi-list {
+                padding: 0.5rem 0.3rem;
+                font-size: 1.5rem;
+                border: 1px solid black;
+
+                @include mobile_414 {
+                    padding: 0.5rem 0.2rem;
+                }
+
+                @include tablet_768 {
+                    padding: 0.6rem 0.1rem;
+                }
+            }
+            // 加號樣式
+            .bi-plus-lg {
+                padding: 0.7rem 0.4rem;
+                font-size: 1.2rem;
+                color: #fff;
+                background-color: #a67164;
+
+                @include mobile_414 {
+                    padding: 0.8rem 0.2rem;
+                }
+            }
+
+            .orders-page-hidden {
+                position: relative;
+                opacity: 0;
+            }
+        }
+
+        // 搜尋容器
+        .navbar-search-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            border: 1px solid #707070;
+
+            // 搜尋icon
+            .bi-search {
+                flex: 1;
+                font-size: 1.3rem;
+                line-height: 2.5rem;
+                padding: 0 0.6rem;
+                vertical-align: middle;
+                color: #2e2e2e;
+            }
+
+            // 搜尋input
+            .navbar-search {
+                flex: 14;
+                border: none;
+                outline: none;
+                font-size: 1.2em;
+                line-height: 2.5rem;
+                margin-left: 0.3rem;
+                color: #616161;
+            }
+        }
+    }
+
+    // 電腦版 navbar頁面容器
+    .navbar-desktop-container {
+        display: none;
+
+        @include tablet_1024 {
+            display: block;
+            width: 95%;
+            margin: 1.5rem auto 0 auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            // 頁面標題
+            .navbar-title {
+                flex: 7;
+                font-size: 1.5rem;
+                color: #515151;
+                font-weight: bolder;
+
+                @include desktop_1280 {
+                    flex: 10;
+                }
+
+                @include desktop_1536 {
+                    flex: 14;
+                }
+
+                @include desktop_1920 {
+                    flex: 18;
+                }
+            }
+
+            // 搜尋容器
+            .navbar-search-container {
+                flex: 3;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                border: 1px solid #707070;
+
+                // 搜尋icon
+                .bi-search {
+                    font-size: 1.3rem;
+                    line-height: 2.5rem;
+                    padding: 0 0.6rem;
+                    vertical-align: middle;
+                    color: #2e2e2e;
+                }
+
+                // 搜尋input
+                .navbar-search {
+                    width: 100%;
+                    font-size: 1.2em;
+                    line-height: 2.5rem;
+                    margin-left: 0.3rem;
+                    color: #616161;
+                    border: none;
+                    outline: none;
+                }
+            }
+
+            // 建立商品 按鈕
+            .navbar-button {
+                font-size: 1rem;
+                font-weight: 750;
+                line-height: 2.8rem;
+                padding: 0 1rem;
+                margin-left: 2rem;
+                color: #ffffff;
+                background-color: #a67e64;
+                border: none;
+                cursor: pointer;
+            }
+
+            // orders元件的按鈕樣式
+            .orders-page-hidden {
+                position: absolute;
+                opacity: 0;
+            }
+        }
+    }
+}

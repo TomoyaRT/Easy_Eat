@@ -1,0 +1,105 @@
+.admin-page-sidebar {
+    position: fixed;
+    z-index: 50;
+    background-color: #616161;
+    width: 60%;
+    min-height: 100vh;
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+
+    @include mobile_414 {
+        width: 55%;
+    }
+
+    @include tablet_768 {
+        width: 28%;
+    }
+
+    @include tablet_1024 {
+        position: relative;
+        width: 24%;
+        transform: translateX(0%);
+    }
+
+    @include desktop_1280 {
+        width: 16%;
+    }
+
+    @include desktop_1536 {
+        width: 14%;
+    }
+
+    @include desktop_1920 {
+        width: 11%;
+    }
+
+    // Logo容器
+    .sidebar-logo-container {
+        padding-left: 1.5rem;
+        display: flex;
+        align-items: center;
+        padding: 2rem 0 2rem 1.5rem;
+
+        // 關閉 icon
+        .bi-x-lg {
+            font-size: 1rem;
+            margin-right: 1.5rem;
+            color: #ffffff;
+
+            @include tablet_1024 {
+                display: none;
+            }
+        }
+
+        // 網站Logo
+        img {
+            width: 100px;
+            cursor: pointer;
+        }
+    }
+
+    // 分頁容器
+    .admin-page-group {
+        display: flex;
+        flex-direction: column;
+
+        .admin-page-title {
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding-left: 1.5rem;
+            line-height: 3rem;
+            letter-spacing: 1px;
+            color: #fff;
+            font-weight: bold;
+
+            i {
+                font-size: 1.5rem;
+                margin-right: .5rem;
+            }
+        }
+    }
+
+    // 登出容器
+    .sidebar-logout-container {
+        position: absolute;
+        left: 10%;
+        bottom: 5%;
+        color: #fff;
+
+        @include tablet_768 {
+            bottom: 3%;
+        }
+
+        i {
+            font-size: 1.3rem;
+            margin-right: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .logout {
+            font-size: 1.1rem;
+            font-weight: 750;
+            cursor: pointer;
+        }
+    }
+}

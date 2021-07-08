@@ -1,0 +1,50 @@
+// font
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+// base
+@import './base/reset';
+
+// helpers
+@import './helpers/media';
+
+// icons
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+// components
+@import './components/userPages/navbar';
+@import './components/userPages/footer';
+@import './components/userPages/favoriteListModal';
+@import './components/userPages/shoppingCartList';
+@import './components/userPages/checkoutFlowchart';
+@import './components/userPages/paymentMethod';
+@import './components/userPages/ordererForm';
+@import './components/userPages/recipientForm';
+@import './components/adminPages/sidebar';
+@import './components/adminPages/navbar';
+@import './components/adminPages/productModal';
+@import './components/adminPages/orderModal';
+@import './components/adminPages/couponModal';
+@import './components/adminPages/deletModal';
+@import './components/adminPages/pagination';
+
+// pages
+@import './pages/userPages/login';
+@import './pages/userPages/home';
+@import './pages/userPages/products';
+@import './pages/userPages/product';
+@import './pages/userPages/shoppingCart';
+@import './pages/userPages/orderform';
+@import './pages/userPages/checkout';
+@import './pages/userPages/payment';
+@import './pages/adminPages/products';
+@import './pages/adminPages/orders';
+@import './pages/adminPages/coupons';
+
+
+
+
+
+
+
+
+

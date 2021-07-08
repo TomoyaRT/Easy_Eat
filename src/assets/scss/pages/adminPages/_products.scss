@@ -1,0 +1,316 @@
+.admin-page-products {
+    width: 100%;
+    height: 80%;
+    margin-top: 1rem;
+
+    @include mobile_414 {
+        height: 82%;
+    }
+    @include tablet_768 {
+        height: 85%;
+    }
+    @include tablet_1024 {
+        height: 93%;
+    }
+    @include desktop_1280 {
+        height: 90%;
+    }
+
+    // 產品管理頁面容器
+    .products-container {
+        width: 90%;
+        margin: 0 auto;
+
+        @include tablet_1024 {
+            width: 95%;
+        }
+
+        // 標題容器
+        .products-title-group {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px;
+            border-color: #c0c0c0;
+            border-style: solid;
+
+            // 標題 通用樣式
+            .products-img,
+            .products-category,
+            .products-name,
+            .products-origin-price,
+            .products-price,
+            .products-status,
+            .products-edit-delet {
+                font-size: 0.9rem;
+                font-weight: bolder;
+                letter-spacing: 0.5px;
+                color: #313131;
+                font-weight: bolder;
+            }
+
+            // 圖片
+            .products-img {
+                display: none;
+
+                @include tablet_768 {
+                    display: inline-block;
+                    width: 15%;
+                }
+                @include desktop_1536 {
+                    width: 12.5%;
+                }
+                @include desktop_1920 {
+                    width: 10%;
+                }
+            }
+
+            // 類別
+            .products-category {
+                display: none;
+
+                @include tablet_768 {
+                    display: block;
+                    width: 10%;
+                }
+                @include desktop_1536 {
+                    width: 12.5%;
+                }
+                @include desktop_1920 {
+                    width: 15%;
+                }
+            }
+
+            // 名稱
+            .products-name {
+                width: 40%;
+
+                @include tablet_768 {
+                    width: 25%;
+                }
+            }
+
+            // 原價
+            .products-origin-price {
+                display: none;
+
+                @include tablet_768 {
+                    display: block;
+                    width: 15%;
+                }
+                @include desktop_1280 {
+                    width: 17.5%;
+                }
+            }
+
+            // 售價
+            .products-price {
+                width: 25%;
+
+                @include tablet_768 {
+                    display: block;
+                    width: 15%;
+                }
+                @include desktop_1280 {
+                    width: 17.5%;
+                }
+            }
+
+            // 啟用狀態
+            .products-status {
+                width: 20%;
+                text-align: start;
+
+                @include tablet_768 {
+                    display: block;
+                    width: 10%;
+                }
+                @include desktop_1280 {
+                    text-align: center;
+                }
+            }
+
+            // 切換按鈕
+            .product-edit-btn-group {
+                font-size: 1.5rem;
+                color: #ad7205;
+                width: 15%;
+                text-align: end;
+    
+                @include desktop_1280 {
+                    width: 5%;
+                }
+            }
+        }
+
+        // 內容容器
+        .products-content-group {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 1rem;
+
+            // 圖片容器
+            .products-img-container {
+                display: none;
+
+                @include tablet_768 {
+                    display: block;
+                    width: 7.5%;
+                    margin-right: 7.5%;
+                    height: 45px;
+                    object-fit: cover;
+                }
+                @include tablet_1024 {
+                    width: 8%;
+                    margin-right: 7%;
+                    height: 55px;
+                }
+                @include desktop_1280 {
+                    width: 9%;
+                    margin-right: 6%;
+                    height: 75px;
+                }
+                @include desktop_1536 {
+                    width: 7.5%;
+                    margin-right: 5%;
+                }
+                @include desktop_1920 {
+                    width: 6%;
+                    margin-right: 4%;
+                }
+
+                // 圖片
+                .products-img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            // 類別
+            .products-category {
+                display: none;
+
+                @include tablet_768 {
+                    display: block;
+                    width: 10%;
+                }
+                @include desktop_1280 {
+                    width: 9%;
+                }
+                @include desktop_1536 {
+                    width: 11.5%;
+                }
+                @include desktop_1920 {
+                    width: 14%;
+                }
+            }
+
+            // 標題
+            .products-title {
+                width: 40%;
+
+                @include tablet_768 {
+                    width: 25%;
+                }
+                @include desktop_1280 {
+                    width: 23.5%;
+                }
+
+                p {
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            // 原價
+            .products-origin-price {
+                display: none;
+
+                @include tablet_768 {
+                    display: block;
+                    width: 15%;
+                }
+                @include desktop_1280 {
+                    width: 17%;
+                }
+            }
+
+            // 售價
+            .products-price {
+                width: 25%;
+                color: #db4949;
+                font-weight: bold;
+
+                @include tablet_768 {
+                    width: 15%;
+                }
+                @include desktop_1280 {
+                    width: 18.5%;
+                }
+            }
+
+            // 狀態
+            .products-status-enabled,
+            .products-status-unenabled {
+                width: 20%;
+                text-align: center;
+                margin-right: 4%;
+
+                @include mobile_414 {
+                    width: 16%;
+                    margin-right: 9%;
+                }
+                @include tablet_768 {
+                    width: 10%;
+                    margin-right: 5%;
+                }
+                @include tablet_1024 {
+                    width: 8%;
+                    margin-right: 7%;
+                }
+                @include desktop_1280 {
+                    width: 5%;
+                    margin-right: 8%;
+                }
+                @include desktop_1536 {
+                    width: 5%;
+                    margin-right: 9%;
+                }
+                @include desktop_1920 {
+                    width: 5%;
+                    margin-right: 10%;
+                }
+            }
+
+            .products-status-enabled {
+                color: #2aa813;
+            }
+
+            .products-status-unenabled {
+                color: #b30f0f;
+            }
+
+            // 編輯
+            // 刪除
+            .bi-pencil-fill,
+            .bi-trash{
+                font-size: 1.1rem;
+                color: #515151;
+                outline: 1px solid #313131;
+                padding: 0.7rem;
+                cursor: pointer;
+            }
+
+            // 刪除
+            .bi-trash {
+                color: #a71313;
+                outline: 1px solid #a71313;
+            }
+        }
+    }
+}

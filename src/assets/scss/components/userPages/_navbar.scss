@@ -1,0 +1,287 @@
+.user-page-navbar {
+    width: 100%;
+
+    // Navbar容器
+    .navbar-container {
+        width: 90%;
+        margin: 0 auto;
+
+        @include desktop_1280 {
+            width: 85%;
+        }
+
+        @include desktop_1536 {
+            width: 70%;
+        }
+
+        @include desktop_1920 {
+            width: 60%;
+        }
+    }
+
+    // 手機版
+    .mobile-navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0.8rem 0;
+
+        @include tablet_768 {
+            margin: 1.2rem 0;
+        }
+
+        @include tablet_1024 {
+            display: none;
+        }
+
+        .navbar-left-side {
+            // 漢堡選單
+            i {
+                font-size: 1.5rem;
+                color: #616161;
+                line-height: 2rem;
+                cursor: pointer;
+            }
+            // Logo
+            img {
+                margin-left: 1rem;
+                height: 2rem;
+                vertical-align: bottom;
+            }
+        }
+
+        .navbar-right-side {
+            display: flex;
+
+            // icon容器
+            .favorite-list-icon-container,
+            .shopping-cart-icon-conatiner {
+                position: relative;
+                cursor: pointer;
+            }
+
+            // 數量提示小圓點
+            .favorite-list-number-point {
+                position: absolute;
+                top: 0;
+                right: 0;
+                transform: translate(60%, -60%);
+                width: 18px;
+                height: 18px;
+                line-height: 18px;
+                text-align: center;
+                background-color: #db4949;
+                border-radius: 50%;
+                color: #fff;
+                font-size: 0.8rem;
+                font-weight: 900;
+            }
+
+            // 管理員 願望清單 購物車 (icon)
+            i {
+                font-size: 1.3rem;
+                color: #616161;
+                margin-left: 1.2rem;
+
+                @include mobile_414 {
+                    font-size: 1.4rem;
+                    margin-left: 1.5rem;
+                }
+            }
+        }
+    }
+
+    // 手機版 漢堡選單樣式 (隱藏時)
+    // 遮罩
+    .circle-overlay-background {
+        width: 0px;
+        height: 0px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        z-index: 100;
+        border-radius: 50%;
+        background-color: #6b6b6bc9;
+        transition: all 0.6s;
+    }
+
+    // 選單容器
+    .navbar-menu-container {
+        width: 50%;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        z-index: 150;
+        padding: 3rem 0;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 1.5s;
+
+        @include tablet_1024 {
+            display: none;
+        }
+
+        // 漢堡選單內容
+        .navbar-menu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            a {
+                text-decoration: none;
+                color: #ffffff;
+                font-size: 1.6rem;
+                font-weight: bold;
+                letter-spacing: 2px;
+                margin-bottom: 2rem;
+                opacity: 0;
+                transform: translateY(2rem);
+                transition: all 0.3s 0.1s;
+
+                @include tablet_768 {
+                    font-size: 2rem;
+                    margin-bottom: 3rem;
+                }
+            }
+        }
+
+        // 關閉 icon
+        .bi-x-lg {
+            position: absolute;
+            right: 0;
+            margin-top: -3rem;
+            font-size: 1.5rem;
+            color: #ffffff;
+            opacity: 0;
+            transform: translateX(2rem);
+            transition: all 0.4s;
+            cursor: pointer;
+
+            @include tablet_768 {
+                font-size: 2rem;
+                margin-top: -6rem;
+            }
+        }
+    }
+
+    // 手機版 漢堡選單樣式 (開啟時)
+    // 遮罩
+    .overlay-background-active {
+        height: 120vh;
+        width: 120vh;
+
+        @include tablet_768 {
+            height: 150vh;
+            width: 150vh;
+        }
+    }
+
+    // 選單容器
+    .menu-container-active {
+        visibility: visible;
+        opacity: 1;
+
+        .navbar-menu {
+            a {
+                opacity: 1;
+                transform: translateY(0rem);
+            }
+            a:nth-child(1) {
+                transition: all 0.6s 0.2s;
+            }
+            a:nth-child(2) {
+                transition: all 0.6s 0.4s;
+            }
+            a:nth-child(3) {
+                transition: all 0.6s 0.6s;
+            }
+        }
+        .bi-x-lg {
+            opacity: 1;
+            transform: translateX(0rem);
+            transition: all 0.6s 0.8s;
+        }
+    }
+
+    // 平板、電腦版
+    .tablet-desktop-navbar {
+        display: none;
+
+        @include tablet_1024 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0 2rem 0;
+        }
+
+        .navbar-left-side {
+            // Logo
+            img {
+                height: 2.5rem;
+                vertical-align: bottom;
+                margin-right: 2rem;
+
+                @include desktop_1280 {
+                    margin-right: 2.5rem;
+                }
+            }
+
+            // 首頁 本店商品 超值優惠 (a標籤)
+            a {
+                text-decoration: none;
+                color: #555353;
+                font-size: 1rem;
+                font-size: 700;
+                margin-right: 2rem;
+                line-height: 2.5rem;
+                font-weight: 650;
+
+                @include desktop_1280 {
+                    font-size: 1.1rem;
+                }
+            }
+        }
+
+        .navbar-right-side {
+            display: flex;
+
+            // icon容器
+            .favorite-list-icon-container,
+            .shopping-cart-icon-conatiner {
+                position: relative;
+                cursor: pointer;
+            }
+
+            // 數量提示小圓點
+            .favorite-list-number-point {
+                position: absolute;
+                top: 0;
+                right: 0;
+                transform: translate(50%, -50%);
+                width: 20px;
+                height: 20px;
+                line-height: 20px;
+                text-align: center;
+                background-color: #db4949;
+                border-radius: 50%;
+                color: #fff;
+                font-size: 0.8rem;
+                font-weight: 900;
+            }
+
+            i {
+                font-size: 1.5rem;
+                color: #616161;
+                margin-left: 2rem;
+
+                @include desktop_1280 {
+                    font-size: 1.6rem;
+                }
+            }
+        }
+    }
+}
+
+

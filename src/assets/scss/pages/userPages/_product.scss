@@ -1,0 +1,357 @@
+.user-page-product {
+    width: 100%;
+
+    // 單一商品容器
+    .product-container {
+        width: 90%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 100%;
+        grid-template-areas:
+            "Breadcrumb"
+            "Img"
+            "Product";
+
+        @include tablet_768 {
+            grid-template-rows: 1fr;
+            grid-template-columns: 50%;
+            grid-template-areas:
+                "Breadcrumb Breadcrumb"
+                "Img Product";
+        }
+        @include desktop_1280 {
+            width: 85%;
+        }
+        @include desktop_1536 {
+            width: 69%;
+        }
+        @include desktop_1920 {
+            width: 60%;
+        }
+    }
+
+    // 麵包屑
+    .breadcrumb {
+        grid-area: Breadcrumb;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0.7rem 0 0.7rem 0;
+        display: flex;
+        align-items: center;
+        color: rgb(83, 83, 83);
+        font-weight: bold;
+
+        // 麵包屑icon
+        .fa-map-marker-alt {
+            font-size: 1rem;
+            margin-right: 0.3em;
+        }
+        // 麵包屑項目
+        .breadcrumb-item {
+            font-size: 0.9rem;
+
+            @include tablet_768 {
+                font-size: 1rem;
+            }
+        }
+        // 麵包屑斜線 最後一個不使用/
+        .breadcrumb-item:not(:last-child)::after {
+            content: "/";
+            position: relative;
+            margin: 0.5rem;
+        }
+    }
+
+    // 商品圖片
+    img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        grid-area: Img;
+        margin-bottom: 2rem;
+
+        @include tablet_768 {
+            width: 95%;
+            height: 600px;
+        }
+
+        @include tablet_1024 {
+            width: 95%;
+            height: 720px;
+        }
+    }
+
+    // 產品細節容器
+    .product-detail-container {
+        width: 100%;
+        height: 100%;
+        grid-area: Product;
+    }
+
+    // 商品標籤
+    .product-tag {
+        display: inline-block;
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+        text-align: center;
+        background-color: #888888;
+        color: #fff;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+        margin-bottom: 1rem;
+
+        @include tablet_1024 {
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    // 產品標題
+    .product-title {
+        font-size: 1.5rem;
+        color: #616161;
+        font-weight: 800;
+        letter-spacing: 1px;
+        margin-bottom: 1.5rem;
+
+        @include tablet_1024 {
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+    }
+
+    // 產品價格
+    .product-price-container {
+        border: 1px solid #c5c5c5;
+        padding: 0.7rem 0.9rem;
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+
+        @include tablet_1024 {
+            margin-bottom: 2.5rem;
+        }
+
+        // 售價
+        .product-promotional-price {
+            font-size: 1.5rem;
+            color: #da3a3a;
+            font-weight: bold;
+            margin-right: 0.5rem;
+
+            @include tablet_1024 {
+                font-size: 2rem;
+            }
+        }
+
+        // 原價
+        .product-origin-price {
+            font-size: 1.2rem;
+            color: #949494;
+            text-decoration: line-through;
+            font-weight: normal;
+
+            @include tablet_1024 {
+                font-size: 1.5rem;
+            }
+        }
+    }
+    // 營養成分
+    .product-nutrient-content {
+        // 標題
+        .product-nutrition-title {
+            font-size: 1.2rem;
+            color: #3b3b3b;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.8px;
+
+            @include tablet_1024 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        // 內容
+        .nutrient-content {
+            margin-bottom: 1.5rem;
+
+            .content-group {
+                display: inline-block;
+                width: 50%;
+            }
+            .number-group {
+                text-align: end;
+                line-height: 2rem;
+                vertical-align: bottom;
+                display: inline-block;
+                width: 50%;
+                height: 100%;
+            }
+            // icon
+            i {
+                display: inline-block;
+                width: 1.5rem;
+                height: 2rem;
+                line-height: 2rem;
+                font-size: 1.2rem;
+                color: #df8515;
+
+                @include tablet_1024 {
+                    width: 2rem;
+                    height: 2.5rem;
+                    line-height: 2.5rem;
+                    font-size: 1.5rem;
+                }
+            }
+
+            // 營養成分名稱
+            .content {
+                color: #df8515;
+                font-weight: bolder;
+
+                @include tablet_1024 {
+                    font-size: 1.3rem;
+                }
+            }
+
+            // 營養含量
+            .number {
+                color: #1d9942;
+                font-weight: bolder;
+
+                @include tablet_1024 {
+                    font-size: 1.5rem;
+                }
+            }
+
+            // 營養成分單位
+            .unit {
+                color: #9b9b9b;
+                @include tablet_1024 {
+                    font-size: 1.3rem;
+                }
+            }
+        }
+    }
+
+    // 商品資訊
+    .product-information {
+        margin-bottom: 1.5rem;
+
+        // 標題
+        .product-information-title {
+            font-size: 1.2rem;
+            color: #3b3b3b;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: 0.8px;
+
+            
+            @include tablet_1024 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        // 內容
+        .product-information-content {
+            color: #878787;
+            letter-spacing: 1px;
+            font-weight: 900;
+            text-align: justify;
+            font-size: 15px;
+
+            @include tablet_1024 {
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+    .product-purchase-quantity {
+        margin-bottom: 1.5rem;
+
+        @include tablet_1024 {
+            margin-bottom: 2rem;
+        }
+
+        .product-purchase-quantity-title {
+            font-size: 1.1rem;
+            color: #4d4c4c;
+            font-weight: 900;
+            margin-right: 1rem;
+
+            @include tablet_1024 {
+                font-size: 1.3rem;
+            }
+        }
+
+        // 商品遞減 遞增
+        .bi-dash-lg,
+        .bi-plus-lg {
+            display: inline-block;
+            font-size: 1.3rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            line-height: 2.5rem;
+            text-align: center;
+            color: #ffffff;
+            background-color:#a0a0a0;
+        }
+        .bi-plus-lg {
+            margin-left: 0.3rem;
+        }
+        // 禁止讓選購產品數量低於1 高於99
+        .dash-disabled,
+        .plus-disabled {
+            pointer-events: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            opacity: 0.4;
+        }
+        // 商品數輸入框
+        input {
+            width: 2rem;
+            font-size: 1.3rem;
+            text-align: center;
+            border: none;
+            margin-left: .5rem;
+        }
+    }
+
+    // 按鈕群組
+    .product-btn-group {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2.5rem;
+        
+        .product-add-like,
+        .product-add-cart {
+            border: none;
+            width: 45%;
+            background-color: #909090;
+            color: #fff;
+            height: 3.8rem;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            font-weight: bolder;
+
+            @include tablet_1024 {
+                font-size: 1.3rem;
+            }
+        }
+
+        .add-like-btn-disable {
+            background-color: #7e0303;
+        }
+        .product-add-cart {
+            background-color: #a67e64;
+        }
+        .add-cart-btn-disable {
+            background-color: #047721b9;
+        }
+    }
+}

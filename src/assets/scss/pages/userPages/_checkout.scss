@@ -1,0 +1,94 @@
+.user-page-checkout {
+    width: 100%;
+    .checkout-container {
+        width: 90%;
+        margin: 0 auto;
+
+        @include tablet_768 {
+            width: 65%;
+        }
+
+        @include tablet_1024 {
+            width: 55%;
+        }
+
+        @include desktop_1280 {
+            width: 50%;
+        }
+
+        @include desktop_1536 {
+            width: 45%;
+        }
+        @include desktop_1920 {
+            width: 40%;
+        }
+    }
+
+    .checkout {
+        background-color: #dee2e6;
+        padding: 0.8rem;
+        margin-bottom: 3rem;
+
+        // 頁面標題
+        .checkout-title {
+            font-size: 1.5rem;
+            color: #616161;
+            font-weight: bold;
+            text-align: center;
+            padding: 0.8rem 0;
+        }
+
+        // 購物車訂單 按鈕
+        .shopping-cart-order-btn {
+            border: none;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            font-weight: bold;
+            color: #616161;
+            outline: 1px solid #616161;
+            background-color: #dee2e6;
+            padding: 0.6rem 1.7rem;
+            margin: 1rem 0;
+        }
+
+        // 顧客資料容器
+        .customer-checkout-container {
+            margin: 1rem 0 2rem 0;
+            background-color: #fff;
+
+            .customer-container {
+                display: flex;
+                justify-content: space-between;
+                padding: 1rem 0.75rem;
+                color: #515151;
+                font-size: 0.9rem;
+                font-weight: bold;
+                border-bottom: 1px;
+                border-color: #dee2e6;
+                border-style: solid;
+            }
+
+            .customer-unpaid {
+                color: red;
+            }
+        }
+
+        // 確認付款 按鈕
+        .payment-btn {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.7rem 2.2rem;
+            border: none;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bolder;
+            font-size: 1.1rem;
+            background-color: #a67e64;
+            line-height: 1.5rem;
+            letter-spacing: 1px;
+        }
+    }
+}

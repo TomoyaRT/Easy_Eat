@@ -1,0 +1,511 @@
+// 付款方式 表單容器
+.payment-method-container {
+    margin-top: 2rem;
+    background-color: #dee2e6;
+    height: 0px;
+    overflow: hidden;
+    transition: height 0.3s;
+
+    // 兩種付款方式的容器
+    .two-payment-method-container {
+        display: flex;
+        justify-content: space-between;
+        margin: 0.5rem 0 1.5rem 0;
+
+        @include tablet_768 {
+            justify-content: flex-start;
+        }
+
+        // 信用卡付款
+        .credit-card-payment-container,
+        .cash-on-delivery-container {
+            display: flex;
+            padding: 0.5rem 0.5rem;
+            background-color: #ffffff;
+            border: 2px solid #000000b4;
+            border-radius: 15px;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.5s;
+
+            @include tablet_768 {
+                padding: 0.75rem 0.75rem;
+            }
+
+            @include desktop_1280 {
+                padding: 0.75rem 1.2rem;
+                font-size: 1.1rem;
+            }
+
+            // icon
+            .bi {
+                display: none;
+            }
+
+            // icon 開啟狀態
+            .payment-btn-active {
+                display: block;
+                font-size: 1rem;
+                margin-right: 0.5rem;
+
+                @include desktop_1280 {
+                    font-size: 1.1rem;
+                }
+            }
+        }
+
+        // 付款方式容器 間距
+        .credit-card-payment-container {
+            @include tablet_768 {
+                margin-right: 1.5rem;
+            }
+
+            @include desktop_1280 {
+                margin-right: 2.5rem;
+            }
+        }
+
+        // 信用卡付款容器 開啟狀態
+        .credit-card-container-active,
+        .cash-on-delivery-container-active {
+            background-color: #000000b4;
+            color: #fff;
+        }
+    }
+
+    // 貨到付款
+    .cash-on-delivery-message {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        h1 {
+            width: 100%;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #515151;
+            margin: 2rem 0 3.5rem 0;
+        }
+        img {
+            width: 80%;
+            margin-bottom: 5rem;
+
+            @include mobile_414 {
+                margin-bottom: 4rem;
+            }
+            @include tablet_768 {
+                width: 70%;
+                margin-bottom: 3.5rem;
+            }
+            @include tablet_1024 {
+                width: 60%;
+                margin-bottom: 4rem;
+            }
+            @include desktop_1280 {
+                width: 55%;
+                margin-bottom: 5rem;
+            }
+            @include desktop_1536 {
+                width: 55%;
+                margin-bottom: 4rem;
+            }
+            @include desktop_1920 {
+                width: 50%;
+                margin-bottom: 4rem;
+            }
+        }
+        // 表單按鈕
+        .form-btn-container {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        // 按鈕 通用樣式
+        .btn-go-back,
+        .btn-go-checkout {
+            padding: 0.7rem 2.2rem;
+            border: none;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bolder;
+            font-size: 1rem;
+            background-color: #909090;
+            line-height: 1.5rem;
+            letter-spacing: 1px;
+
+            @include mobile_414 {
+                padding: 0.9rem 2.8rem;
+                letter-spacing: 1.5px;
+            }
+
+            @include tablet_768 {
+                font-size: 1.2rem;
+            }
+        }
+
+        // 前往結帳 按鈕
+        .btn-go-checkout {
+            background-color: #a67e64;
+        }
+    }
+
+    // 信用卡卡號 容器
+    .credit-card-number-container {
+        margin-top: 1rem;
+        position: relative;
+
+        .credit-card-number-title {
+            font-size: 1rem;
+            font-weight: bold;
+            line-height: 1.5;
+            color: #535252;
+
+            @include tablet_768 {
+                font-size: 1.1rem;
+            }
+        }
+
+        .credit-card-number-input {
+            box-sizing: border-box;
+            width: 100%;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            line-height: 1.5rem;
+            color: #616161;
+            padding: 0.5rem 1rem;
+            margin: 0.3rem 0;
+
+            @include tablet_768 {
+                padding: 0.75rem 1rem;
+                margin: 0.5rem 0;
+                font-size: 1.1rem;
+            }
+        }
+
+        // 驗證錯誤
+        .is-invalid {
+            border: 1px solid #ff3f3f;
+        }
+
+        // 驗證通過
+        .is-valid {
+            border: 1px solid #2eaa18;
+        }
+
+        // 驗證回饋的icon
+        .bi-check-circle-fill,
+        .bi-x-circle-fill {
+            position: absolute;
+            right: 0.5rem;
+            top: 2.7rem;
+            font-size: 1.1rem;
+        }
+
+        // 驗證通過 icon
+        .bi-check-circle-fill {
+            color: #59c047;
+        }
+
+        // 驗證失敗 icon
+        .bi-x-circle-fill {
+            color: #ff3f3f;
+        }
+    }
+
+    // 信用卡有效日期 容器
+    .credit-card-date-container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+
+        @include desktop_1280 {
+            margin-bottom: 3rem;
+        }
+
+        // 驗證錯誤
+        .is-invalid {
+            border: 1px solid #ff3f3f;
+        }
+
+        // 驗證通過
+        .is-valid {
+            border: 1px solid #2eaa18;
+        }
+    }
+
+    // 信用卡 有效年
+    .credit-card-year,
+    .credit-card-month,
+    .credit-card-three-codes {
+        width: 35%;
+        padding: 0.5rem;
+        font-size: 1rem;
+        font-weight: bold;
+        border: none;
+        outline: none;
+        margin: 0.2rem 0;
+        background-color: #ffffff;
+
+        @include tablet_768 {
+            margin: 0.5rem 0;
+            padding: 0.75rem;
+            font-size: 1.1rem;
+        }
+    }
+
+    // 信用卡 末三碼
+    .credit-card-three-codes {
+        width: 20%;
+        padding: 0rem;
+        text-align: center;
+    }
+
+    // 信用卡 手刻區
+    .credit-card {
+        position: relative;
+        width: 95%;
+        height: 200px;
+        margin: 0 auto;
+        transform-style: preserve-3d;
+        perspective: 100%;
+        margin-bottom: 2rem;
+
+        @include tablet_768 {
+            width: 75%;
+        }
+        @include tablet_1024 {
+            width: 70%;
+        }
+        @include desktop_1280 {
+            margin-bottom: 3rem;
+            width: 60%;
+        }
+        @include desktop_1536 {
+            width: 55%;
+        }
+        @include desktop_1920 {
+            width: 50%;
+        }
+    }
+
+    // 卡片樣貌 通用樣式
+    .card-face {
+        box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 10px #000000b4;
+        background-color: #000000b4;
+        border-radius: 0.75rem;
+        backdrop-filter: blur(10px);
+        transform-style: preserve-3d;
+        transition: 1s;
+        backface-visibility: hidden;
+    }
+
+    .card-front {
+        padding: 1rem;
+    }
+    // 正面
+    .card-front::before,
+    .card-front::after {
+        content: "";
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: 30px;
+        height: 30px;
+        background-color: #fff;
+        border-radius: 50%;
+        opacity: 0.5;
+    }
+    .card-front::after {
+        right: 40px;
+        opacity: 0.7;
+    }
+    .card-back {
+        transform: rotateY(180deg);
+    }
+
+    // 通用文字樣式
+    .card-debit,
+    .card-bank,
+    .card-number,
+    .card-valid,
+    .card-holder {
+        color: #fff;
+        font-weight: bold;
+        font-size: 0.8rem;
+    }
+
+    // debit
+    .card-debit {
+        display: inline-block;
+        width: 50%;
+        font-size: 0.9rem;
+    }
+    // bank name
+    .card-bank {
+        text-align: end;
+        display: inline-block;
+        width: 50%;
+        font-size: 1rem;
+        font-style: italic;
+    }
+    // chip
+    .card-chip {
+        margin: 0.7rem 0 1rem 0.5rem;
+        width: 50px;
+    }
+    // number
+    .card-number {
+        font-family: "Orbitron", sans-serif;
+        font-size: 0.9rem;
+        letter-spacing: 3px;
+        font-weight: 500;
+        text-shadow: 0 2px 1px #0005;
+
+        @include tablet_768 {
+            font-size: 1rem;
+            letter-spacing: 5px;
+        }
+    }
+    // card-valid
+    .card-valid {
+        display: flex;
+        align-items: center;
+        margin: 0.5rem 0 1.2rem 0;
+        text-align: right;
+
+        @include tablet_768 {
+            margin: 0.8rem 0 1.2rem 0;
+        }
+    }
+    .card-valid span:last-child {
+        margin-left: 0.75rem;
+        letter-spacing: 1.5px;
+    }
+    // card-holder
+    .card-holder {
+        letter-spacing: 1.5px;
+    }
+    // 背面 blackbar
+    .card-blackbar {
+        width: 100%;
+        height: 40px;
+        margin: 1rem 0 0.5rem 0;
+        background-color: #000;
+    }
+    // ccvtext
+    .card-ccvtext {
+        margin: 0 0 0.45rem 1rem;
+    }
+    .card-ccvtext p {
+        color: #fff;
+        font-size: 12px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+    // whitebar
+    .card-whitebar {
+        width: calc(87% - 1rem);
+        height: 30px;
+        margin: 0 0 0.5rem 1rem;
+        background-color: #fff;
+    }
+    // card-ccv
+    .card-ccv {
+        position: absolute;
+        bottom: 4.9rem;
+        right: 0.7rem;
+        display: inline-block;
+        padding: 0.2rem;
+        background-color: #ccc;
+        color: #111;
+        font-weight: bold;
+        letter-spacing: 1px;
+
+        @include tablet_768 {
+            right: 1rem;
+            bottom: 4.75rem;
+            padding: 0.3rem;
+        }
+
+        @include tablet_1024 {
+            bottom: 5.5rem;
+            right: 1.2rem;
+        }
+    }
+    // card-text
+    .card-text {
+        color: #ffffffbd;
+        line-height: 0.85rem;
+        margin: 0 1.2rem 0 1rem;
+        text-align: justify;
+        font-size: 10px;
+    }
+
+    // hover 動畫
+    .card-front-active {
+        transform: rotateY(180deg);
+    }
+    .card-back-active {
+        transform: rotateY(360deg);
+    }
+
+    // 表單按鈕
+    .form-btn-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    // 按鈕 通用樣式
+    .btn-go-back,
+    .btn-go-checkout {
+        padding: 0.7rem 2.2rem;
+        border: none;
+        text-decoration: none;
+        color: #fff;
+        font-weight: bolder;
+        font-size: 1rem;
+        background-color: #909090;
+        line-height: 1.5rem;
+        letter-spacing: 1px;
+
+        @include mobile_414 {
+            padding: 0.9rem 2.8rem;
+            letter-spacing: 1.5px;
+        }
+
+        @include tablet_768 {
+            font-size: 1.2rem;
+        }
+    }
+
+    // 前往結帳 按鈕
+    .btn-go-checkout {
+        background-color: #a67e64;
+    }
+}
+
+// 付款方施 表單容器 (開啟狀態)
+.payment-method-active {
+    height: 500px;
+
+    @include mobile_414 {
+        height: 510px;
+    }
+    @include tablet_768 {
+        height: 550px;
+    }
+    @include desktop_1280 {
+        height: 585px;
+    }
+}

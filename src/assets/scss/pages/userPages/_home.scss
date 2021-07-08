@@ -1,0 +1,578 @@
+.user-page-home {
+    // 輪播圖
+    .carousel {
+        position: relative;
+
+        // 輪播圖 圖片列表
+        .carousel-list {
+            position: relative;
+            overflow: hidden;
+            width: 90%;
+            margin: 0 auto;
+            height: 160px;
+
+            @include mobile_414 {
+                height: 170px;
+            }
+
+            @include tablet_768 {
+                height: 270px;
+            }
+
+            @include tablet_1024 {
+                height: 380px;
+            }
+
+            @include desktop_1280 {
+                width: 85%;
+                height: 400px;
+            }
+
+            @include desktop_1536 {
+                width: 70%;
+                height: 410px;
+            }
+
+            @include desktop_1920 {
+                width: 60%;
+                height: 420px;
+            }
+
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                object-fit: cover;
+                width: 100%;
+                height: inherit;
+            }
+        }
+
+        // 輪播圖 按鈕
+        .carousel-btn {
+            position: absolute;
+            font-size: 27px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: #ffffffc2;
+            color: #a0bdfce8;
+            cursor: pointer;
+
+            @include tablet_768 {
+                font-size: 30px;
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                border-radius: 50%;
+            }
+        }
+
+        // 輪播圖 上一頁按鈕
+        .carousel-btn-prev {
+            bottom: 35%;
+            left: 8%;
+
+            @include tablet_768 {
+                bottom: 40%;
+                left: 10%;
+            }
+
+            @include desktop_1280 {
+                bottom: 45%;
+                left: 13%;
+            }
+
+            @include desktop_1536 {
+                left: 19%;
+            }
+
+            @include desktop_1920 {
+                left: 23%;
+            }
+        }
+
+        // 輪播圖 下一頁按鈕
+        .carousel-btn-next {
+            bottom: 35%;
+            right: 8%;
+
+            @include tablet_768 {
+                bottom: 40%;
+                right: 10%;
+            }
+
+            @include desktop_1280 {
+                bottom: 45%;
+                right: 13%;
+            }
+
+            @include desktop_1536 {
+                right: 19%;
+            }
+
+            @include desktop_1920 {
+                right: 23%;
+            }
+        }
+        
+        // 輪播圖頁數群組
+        .carousel-page-list {
+            width: 30%;
+            position: absolute;
+            bottom: 3%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-around;
+
+            @include tablet_768 {
+                width: 20%;
+            }
+
+            @include desktop_1280 {
+                width: 15%;
+            }
+            
+            // 輪播圖頁數 圓點
+            .carousel-page-item {
+                background-color: #ffffff;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+            }
+
+            // 當前頁數的樣式
+            .carousel-page-item-active {
+                width: 14px;
+                height: 14px;
+                background-color: #28dbf3;
+                border: 1px solid #ffffff;
+            }
+        }
+
+        // 輪播圖動畫
+        .prev-enter-active,
+        .prev-leave-active,
+        .next-enter-active,
+        .next-leave-active {
+            transition: all 1s;
+        }
+
+        .prev-enter-from,
+        .next-leave-to {
+            left: -100% !important;
+        }
+        .prev-leave-to,
+        .next-enter-from {
+            left: 100% !important;
+        }
+    }
+
+    // 推薦商品欄位
+    .recommend-product-container {
+        width: 90%;
+        margin: 2rem auto 1rem auto;
+        display: flex;
+        justify-content: space-between;
+
+        @include desktop_1280 {
+            width: 85%;
+        }
+        @include desktop_1536 {
+            width: 70%;
+        }
+        @include desktop_1920 {
+            width: 60%;
+        }
+    }
+
+    // 推薦產品類別名稱
+    .recommend-product-name,
+    .recommend-product-link {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #747474;
+        letter-spacing: 1px;
+
+        @include tablet_768 {
+            font-size: 1.3rem;
+        }
+
+        // 名稱與連結的 icon
+        i {
+            font-size: 1.4rem;
+
+            @include tablet_768 {
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    // 推薦產品的網頁連結
+    .recommend-product-link {
+        color: rgb(158, 194, 228);
+        text-decoration: none;
+    }
+
+    // 推薦商品列表
+    .recommend-product-list {
+        width: 90%;
+        margin: 0 auto 2rem auto;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr 1fr);
+        grid-column-gap: 1.5rem;
+        grid-row-gap: 1.5rem;
+
+        @include tablet_768 {
+            grid-template-columns: repeat(1, 1fr 1fr 1fr);
+        }
+
+        @include tablet_1024 {
+            grid-template-columns: repeat(1, 1fr 1fr 1fr 1fr);
+        }
+
+        @include desktop_1280 {
+            width: 85%;
+            grid-row-gap: 2rem;
+        }
+
+        @include desktop_1536 {
+            width: 70%;
+            grid-row-gap: 2.5rem;
+        }
+
+        @include desktop_1920 {
+            width: 60%;
+            grid-row-gap: 3rem;
+        }
+    }
+
+    // 單一商品卡片容器
+    .product-item-card {
+        box-sizing: border-box;
+        padding: 0.7rem;
+        outline: 1.5px solid #b8b8b8ce;
+
+        // 在平板768版，第四張圖片隱藏。
+        &:last-child {
+            @include tablet_768 {
+                display: none;
+            }
+            @include tablet_1024 {
+                display: inline-block;
+            }
+        }
+
+        // 商品圖片
+        img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+
+            @include mobile_414 {
+                height: 150px;
+            }
+
+            @include tablet_768 {
+                height: 180px;
+            }
+
+            @include desktop_1280 {
+                height: 230px;
+            }
+        }
+
+        // 商品名稱
+        .product-item-title {
+            width: 100%;
+            padding: 0.5rem 0;
+
+            .ellipsis {
+                width: 130px;
+                font-size: 20px;
+                font-weight: 750;
+                color: #616161cc;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+
+                @include mobile_414 {
+                    width: 150px;
+                }
+                @include tablet_768 {
+                    width: 180px;
+                }
+                @include desktop_1280 {
+                    width: 200px;
+                }
+            }
+        }
+
+        // 商品價格群組
+        .product-price {
+            margin-bottom: 0.8rem;
+
+            @include tablet_768 {
+                margin-bottom: 0;
+                width: 40%;
+                display: inline-block;
+            }
+        }
+
+        // 商品原價
+        .origin-price {
+            color: #858585fd;
+            font-size: 1.1rem;
+            text-decoration: line-through;
+
+            @include tablet_768 {
+                float: none;
+                display: inline-block;
+                font-size: 1.2rem;
+                line-height: 25px;
+                margin-right: 2rem;
+            }
+
+            @include desktop_1280 {
+                font-size: 1.3rem;
+                line-height: 1.3rem;
+            }
+        }
+
+        // 商品售價
+        .on-sale-price {
+            float: right;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: rgba(240, 73, 73, 0.794);
+
+            @include tablet_768 {
+                float: none;
+                display: inline-block;
+                font-size: 1.5rem;
+                line-height: 1,5rem;
+                margin-right: 2rem;
+            }
+
+            @include desktop_1280 {
+                font-size: 1.6rem;
+                line-height: 1.6rem;
+            }
+        }
+
+        // 卡片按鈕群組
+        .card-btn-group {
+            display: flex;
+            justify-content: space-between;
+
+            @include tablet_768 {
+                width: 55%;
+                float: right;
+            }
+        }
+
+        // 願望清單按鈕(容器)
+        // 購物車按鈕(容器)
+        .favorite-list-btn,
+        .shopping-cart-list-btn {
+            width: 35%;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #808080b9;
+            cursor: pointer;
+
+            @include tablet_768 {
+                width: 45%;
+            }
+        }
+        .shopping-cart-list-btn {
+            background-color: #835117c7;
+        }
+        .shopping-cart-btn-disable {
+            background-color: #109e1c;
+        }
+        .favorite-list-btn-disable {
+            background-color: #da2222;
+        }
+        // 願望清單按鈕
+        // 購物車按鈕
+        .bi-heart-fill,
+        .bi-heart,
+        .bi-cart-plus-fill,
+        .bi-cart-check-fill {
+            color: #fff;
+            font-size: 22px;
+        }
+    }
+}
+
+// 產品特色 橫幅卡片
+.featured-banner-top,
+.featured-banner-bottom {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+
+    @include desktop_1280 {
+        width: 85%; 
+    }
+
+    @include desktop_1536 {
+        width: 70%; 
+    }
+
+    @include desktop_1920 {
+        width: 60%; 
+    }
+
+    img {
+        width: 100%;
+        object-fit: cover;
+        vertical-align: middle;
+
+        @include tablet_768 {
+            width: 100%;
+            height: 250px;
+        }
+
+        @include tablet_1024 {
+            height: 350px;
+        }
+
+    }
+
+    // 圖片遮罩
+    .featured-banner-overlay-top,
+    .featured-banner-overlay-bottom {
+        position: absolute;
+        box-sizing: border-box;
+        bottom: 0;
+        width: 100%;
+        height: 38%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #48687e8e;
+
+        @include tablet_768 {
+            padding: 1.8rem 0 1.8rem 1rem;
+            height: 100%;
+            width: 32%;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-content: space-around;
+        }
+
+        @include tablet_1024 {
+            padding: 2.5rem 0 2.5rem 1.5rem;
+        }
+
+        @include desktop_1280 {
+            padding: 2.5rem 0 2.5rem 2.5rem;
+        }
+    }
+
+    // 第二個遮罩
+    .featured-banner-overlay-bottom {
+        background-color: #7e42429f;
+
+        @include tablet_768 {
+            padding: 1.8rem 1rem 1.8rem 0;
+            right: 0;
+            justify-content: flex-end;
+        }
+
+        @include tablet_1024 {
+            padding: 2.5rem 1.5rem 2.5rem 0;
+        }
+
+        @include desktop_1280 {
+            padding: 2.5rem 2.5rem 2.5rem 0;
+        }
+    }
+
+    // 圖片標題
+    .featured-banner-title {
+        font-size: 1.4rem;
+        letter-spacing: 1px;
+        color: #fff;
+        font-weight: 750;
+        line-height: 2rem;
+
+        @include mobile_414 {
+            font-size: 1.5rem;
+        }
+
+        @include tablet_768 {
+            font-size: 1.6rem;
+        }
+
+        @include tablet_1024 {
+            font-size: 30px;
+        }
+
+        @include desktop_1280 {
+            font-size: 33px;
+            letter-spacing: 2px;
+            line-height: 2.5rem;
+        }
+    }
+
+    // 圖片內容
+    .featured-banner-content {
+        display: none;
+
+        @include tablet_768 {
+            display: block;
+            font-weight: 750;
+            color: rgb(255, 253, 121);
+            line-height: 20px;
+        }
+
+        @include tablet_1024 {
+            font-size: 22px;
+            line-height: 30px;
+        }
+    }
+    .featured-banner-overlay-bottom {
+        .featured-banner-content {
+            @include tablet_768 {
+                text-align: end;
+            }
+        }
+    }
+
+    // 圖片連結
+    .featured-banner-link {
+        width: 80px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        font-size: 18px;
+        color: #fff;
+        cursor: pointer;
+        outline: 1.5px solid #fff;
+
+        @include tablet_768 {
+            width: 90px;
+            height: 45px;
+            line-height: 45px;
+        }
+        
+        @include tablet_1024 {
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        @include desktop_1280 {
+            width: 120px;
+        }
+    }
+}

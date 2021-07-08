@@ -1,0 +1,238 @@
+.user-page-favorite-list-modal {
+    position: fixed;
+    z-index: 1500;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    padding: 1rem 0;
+    background-color: #0000007e;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .favorite-list-container {
+        box-sizing: border-box;
+        width: 90%;
+        min-height: 20vh;
+        max-height: 90vh;
+        overflow-y: scroll;
+        padding: 1rem 1rem 0.25em 1rem;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 20px #0000007e;
+        color: #5c5c5c;
+        font-weight: bold;
+
+        &::-webkit-scrollbar {
+            display:none
+        }
+
+        @include mobile_414 {
+            width: 80%;
+        }
+        @include tablet_768 {
+            width: 60%;
+        }
+        @include tablet_1024 {
+            width: 50%;
+        }
+        @include desktop_1280 {
+            width: 40%;
+        }
+        @include desktop_1536 {
+            width: 35%;
+        }
+        @include desktop_1920 {
+            width: 30%;
+        }
+
+        .favorite-list-header-container {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 0.75rem;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid #cccbcb;
+
+            .favorite-list-title,
+            .bi {
+                font-size: 1.1rem;
+
+                @include tablet_768 {
+                    font-size: 1.2rem;
+                    font-weight: bold;
+                    padding: 0.25rem 0;
+                }
+            }
+
+            .bi {
+                cursor: pointer;
+            }
+        }
+
+        .favorite-list-main-container {
+            display: flex;
+            margin-bottom: 0.75rem;
+
+            .product-img-container {
+                width: 75px;
+                height: 75px;
+
+                @include tablet_768 {
+                    width: 85px;
+                    height: 85px;
+                }
+                @include tablet_1024 {
+                    width: 95px;
+                    height: 95px;
+                }
+                @include desktop_1280 {
+                    width: 110px;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .product-name-and-price-container {
+                width: 45%;
+                padding: 1rem 0 1rem 0.75rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                @include tablet_768 {
+                    width: 55%;
+                }
+
+                @include tablet_1024 {
+                    padding: 1rem 0 1rem 1.25rem;
+                }
+
+                @include desktop_1280 {
+                    width: 55%;
+                }
+
+                @include desktop_1536 {
+                    width: 60%;
+                }
+
+                @include desktop_1920 {
+                    width: 65%;
+                }
+
+                p {
+                    width: 85%;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis; 
+                }
+            }
+
+            .product-btn-group {
+                width: 25%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                @include tablet_768 {
+                    width: 20%;
+                }
+            }
+
+            .product-img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .product-name {
+                color: #4b4b4b;
+                font-size: 1.1rem;
+            }
+
+            .product-price {
+                color: #1e8305;
+            }
+
+            .bi-cart-plus-fill,
+            .bi-trash-fill,
+            .btn-disable {
+                width: 35px;
+                height: 35px;
+                line-height: 35px;
+                font-size: 1.1rem;
+                text-align: center;
+                color: #1e8305;
+                border: 1px solid #1e8305;
+                cursor: pointer;
+            }
+
+            .btn-disable {
+                color: #ffffff;
+                background-color: #1e8305;
+            }
+
+            .bi-trash-fill {
+                color: #7a0404;
+                border: 1px solid #7a0404;
+            }
+        }
+
+        // 無任何追蹤中的商品時
+        .no-favorite-products-container {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+
+            @include tablet_768 {
+                justify-content: center;
+            }
+
+            // 左半容器 圖片
+            .no-favorite-products-right-side {
+                width: 60%;
+            }
+
+            // 右半容器
+            .no-favorite-products-left-side {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            // 標題
+            .no-favorite-products-title {
+                color: #616161;
+                font-size: 1.1rem;
+                font-weight: bold;
+                margin-bottom: 1rem;
+            }
+
+            // 連結按鈕
+            a {
+                text-decoration: none;
+                padding: .75rem .75rem;
+                color: #fff;
+                font-size: 1.1rem;
+                font-weight: bold;
+                text-align: center;
+                cursor: pointer;
+                background-color: #52be20ca;
+            }
+        }
+    }
+}
+
+// 開啟狀態
+.modal-active {
+    opacity: 1;
+    visibility: visible;
+}
