@@ -16,6 +16,7 @@
       @update-favorite-products="getFavoriteProducts"
       :shopping-cart-products="shoppingCartProducts"
       @update-shopping-cart-products="getShoppingCartProducts"
+      @change-current-page-style="changeCurrentPageStyle"
     />
     <router-view
       :favorite-products="favoriteProducts"

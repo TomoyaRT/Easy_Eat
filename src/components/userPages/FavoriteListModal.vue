@@ -62,7 +62,7 @@
             <div class="no-favorite-products-title">目前沒有商品</div>
             <router-link
               :to="{ name: 'UserProducts' }"
-              @click.prevent="favoriteProductList"
+              @click="closeFavoriteProductsModal"
               >去逛逛</router-link
             >
           </div>
@@ -148,6 +148,7 @@ export default {
     },
     // 關閉 我的最愛模板
     closeFavoriteProductsModal() {
+      this.$emit('change-current-page-style', 'UserProducts');
       // 關閉模板樣式
       this.$emit("close-favorite-list-modal");
     },
