@@ -10,6 +10,7 @@
         margin-bottom: 1rem;
 
         .same-orderer-information {
+            cursor: pointer;
             font-size: 1rem;
             font-weight: bold;
             color: #3f3f3f;
@@ -17,6 +18,7 @@
 
         .bi-check-circle-fill,
         .bi-circle {
+            cursor: pointer;
             position: relative;
             margin-right: .5rem;
             right: 0rem;
@@ -174,6 +176,7 @@
     // 按鈕 通用樣式
     .btn-go-back,
     .btn-go-checkout {
+        cursor: pointer;
         padding: 0.7rem 2.2rem;
         border: none;
         text-decoration: none;

@@ -5,7 +5,7 @@
       <i class="bi bi-x-lg" @click="$emit('close-sidebar')"></i>
       <router-link :to="{ name: 'Home' }">
         <img
-          src="../../assets/Logo2.png"
+          src="@/../public/images/Logo2.png"
           alt="網站的Logo"
           class="sidebar-logo"
         />
@@ -16,7 +16,8 @@
       <router-link
         to="/adminproducts"
         class="admin-page-title"
-        @click="$emit('close-sidebar')"
+        :class="{ 'page-active': currentPage === 'AdminProducts' }"
+        @click="changeCurrentPage('AdminProducts')"
       >
         <i class="bi bi-bag-check-fill"></i>
         商品管理
@@ -24,7 +25,8 @@
       <router-link
         to="/adminorders"
         class="admin-page-title"
-        @click="$emit('close-sidebar')"
+        :class="{ 'page-active': currentPage === 'AdminOrders' }"
+        @click="changeCurrentPage('AdminOrders')"
       >
         <i class="bi bi-file-text"></i>
         訂單管理
@@ -32,7 +34,8 @@
       <router-link
         to="/admincoupons"
         class="admin-page-title"
-        @click="$emit('close-sidebar')"
+        :class="{ 'page-active': currentPage === 'AdminCoupons' }"
+        @click="changeCurrentPage('AdminCoupons')"
       >
         <i class="bi bi-receipt"></i>
         優惠券管理
@@ -48,14 +51,26 @@
 
 <script>
 export default {
+  props: {
+    currentPage: {
+      type: String,
+      default() {
+        return "";
+      },
+    },
+  },
   methods: {
+    // 更換分頁功能
+    changeCurrentPage(status) {
+      this.$emit('close-sidebar');
+      this.$emit('change-current-page', status);
+    },
     // 登出功能
     logout() {
       const api = `${process.env.VUE_APP_API}/logout`;
 
       this.$http.post(api, this.user).then((res) => {
         if (res.data.success) {
-          console.log(res);
           this.$router.push({ name: "Login" });
         }
       });

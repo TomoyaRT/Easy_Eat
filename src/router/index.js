@@ -17,6 +17,11 @@ const routes = [
         component: () => import('../views/userPages/Products.vue'),
       },
       {
+        path: '/usercoupon',
+        name: 'UserCoupon',
+        component: () => import('../views/userPages/Coupon.vue'),
+      },
+      {
         path: '/userproduct/:id',
         name: 'UserProduct',
         component: () => import('../views/userPages/Product.vue'),
@@ -49,7 +54,7 @@ const routes = [
     component: () => import('../views/LoginPage.vue'),
   },
   {
-    path: '/adminproducts',
+    path: '/adminHome',
     name: '',
     component: () => import('../views/AdminPage.vue'),
     children: [

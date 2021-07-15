@@ -1,0 +1,129 @@
+.user-page-coupon-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    opacity: 0;
+    visibility: hidden;
+    background-color: #00000060;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity .5s;
+
+    .coupon-modal {
+        position: relative;
+        width: 80%;
+        height: 300px;
+        padding: 1.5rem 1rem;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20%);
+        transition: all .5s;
+        background-color: #fff;
+
+        @include tablet_768 {
+            width: 50%;
+        }
+
+        @include tablet_1024 {
+            width: 45%;
+        }
+
+        @include desktop_1280 {
+            width: 35%;
+        }
+
+        @include desktop_1536 {
+            width: 30%;
+        }
+
+        @include desktop_1920 {
+            width: 25%;
+        }
+
+        .coupon-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1rem;
+            color: #515151;
+            font-weight: bold;
+            margin-bottom: 3.5rem;
+
+            @include tablet_768 {
+                font-size: 1.3rem;
+            }
+
+            .bi-x-lg {
+                cursor: pointer;
+            }
+        }
+
+        .coupon-main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            h3,
+            h2 {
+                color: #616161;
+                font-weight: bolder;
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                margin: 1rem 0 .5rem 0;
+                color: #b67401;
+
+                @include tablet_768 {
+                    margin: 1rem 0 .75rem 0;
+                }
+            }
+
+            p {
+                font-weight: bold;
+                color: #515151;
+                margin-bottom: 1.5rem;
+            }
+
+            .coupon-code {
+                width: 90%;
+                font-size: 1.8rem;
+                font-weight: bolder;
+                letter-spacing: 1px;
+                line-height: 2rem;
+                text-align: center;
+                color: #cc711dc9;
+            }
+        }
+
+        .coupon-footer {
+            margin-top: 1.75rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .coupon-btn {
+                border: none;
+                padding: .6rem 1.8rem;
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: #fff;
+                background-color: #865506e5;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .modal-active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0%);
+    }
+}
+
+.coupon-modal-active {
+    opacity: 1;
+    visibility: visible;
+}

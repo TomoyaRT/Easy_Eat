@@ -80,37 +80,16 @@
 </template>
 
 <script>
+import FavoriteDataAndShoppingCartData from '../../mixins/userPages/FavoriteDataAndShoppingCartData';
+
 export default {
   name: "FavoriteModal",
   inject: ["emitter"],
-  props: {
-    favoriteProducts: {
-      type: Array,
-      default() {
-        return [];
-      },
-    },
-    shoppingCartProducts: {
-      type: Object,
-      default() {
-        return {};
-      },
-    },
-  },
+  mixins: [FavoriteDataAndShoppingCartData],
   data() {
     return {
-      favoriteProductList: this.favoriteProducts, // 我的最愛資料
-      shoppingCartProductList: { carts: [] }, // 購物車資料
       isLoading: false, // 全域Loading 開關
     };
-  },
-  watch: {
-    favoriteProducts() {
-      this.favoriteProductList = this.favoriteProducts;
-    },
-    shoppingCartProducts() {
-      this.shoppingCartProductList = this.shoppingCartProducts;
-    },
   },
   methods: {
     // 加入購物車

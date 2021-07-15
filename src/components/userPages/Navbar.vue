@@ -6,7 +6,7 @@
         <div class="navbar-left-side">
           <i class="bi bi-list" @click="menuStatus = true"></i>
           <router-link to="/">
-            <img src="../../assets/Logo.png" alt="網站的Logo"
+            <img src="@/../public/images/Logo.png" alt="網站的Logo"
           /></router-link>
         </div>
         <div class="navbar-right-side">
@@ -30,9 +30,9 @@
           <div class="shopping-cart-icon-conatiner">
             <div
               class="favorite-list-number-point"
-              v-if="shoppingCartProductList.length !== 0"
+              v-if="shoppingCartProductList?.carts.length !== 0"
             >
-              {{ shoppingCartProductList.length }}
+              {{ shoppingCartProductList?.carts.length }}
             </div>
             <router-link to="/usershoppingcart"
               ><i class="bi bi-cart4"></i
@@ -65,7 +65,7 @@
           >
           <router-link
             :class="{ 'title-active': menuStatus }"
-            to="/"
+            to="/usercoupon"
             @click="menuStatus = false"
             >超值優惠</router-link
           >
@@ -74,16 +74,36 @@
       <!-- 平板1024、電腦版 -->
       <div class="tablet-desktop-navbar">
         <div class="navbar-left-side">
-          <router-link to="/">
-            <img src="../../assets/Logo.png" alt="網站的Logo"
+          <router-link
+            to="/"
+            @click="$emit('change-current-page-style', 'Home')"
+          >
+            <img src="@/../public/images/Logo.png" alt="網站的Logo"
           /></router-link>
-          <router-link to="/">首頁</router-link>
-          <router-link to="/userproducts">本店商品</router-link>
-          <router-link to="/">超值優惠</router-link>
+          <router-link
+            :class="{ 'page-active': currentPageName === 'Home' }"
+            @click="$emit('change-current-page-style', 'Home')"
+            to="/"
+            >首頁</router-link
+          >
+          <router-link
+            :class="{ 'page-active': currentPageName === 'UserProducts' }"
+            @click="$emit('change-current-page-style', 'UserProducts')"
+            to="/userproducts"
+            >本店商品</router-link
+          >
+          <router-link
+            :class="{ 'page-active': currentPageName === 'UserCoupon' }"
+            @click="$emit('change-current-page-style', 'UserCoupon')"
+            to="/usercoupon"
+            >超值優惠</router-link
+          >
         </div>
         <div class="navbar-right-side">
           <div class="admin-login-icon-container">
-            <router-link to="/login"
+            <router-link
+              to="/login"
+              @click="$emit('change-current-page-style', '')"
               ><i class="bi bi-person-circle"></i
             ></router-link>
           </div>
@@ -99,12 +119,15 @@
             </div>
             <i class="bi bi-suit-heart-fill"></i>
           </div>
-          <div class="shopping-cart-icon-conatiner">
+          <div
+            class="shopping-cart-icon-conatiner"
+            @click="$emit('change-current-page-style', '')"
+          >
             <div
               class="favorite-list-number-point"
-              v-if="shoppingCartProductList.length !== 0"
+              v-if="shoppingCartProductList?.carts.length !== 0"
             >
-              {{ shoppingCartProductList.length }}
+              {{ shoppingCartProductList?.carts.length }}
             </div>
             <router-link to="/usershoppingcart"
               ><i class="bi bi-cart4"></i
@@ -117,44 +140,29 @@
 </template>
 
 <script>
+import FavoriteDataAndShoppingCartData from "../../mixins/userPages/FavoriteDataAndShoppingCartData";
+
 export default {
-  name: 'Navbar',
-  inject: ["emitter"],
+  mixins: [FavoriteDataAndShoppingCartData],
   props: {
-    favoriteProducts: {
-      type: Array,
+    currentPageName: {
+      type: String,
       default() {
-        return [];
-      },
-    },
-    shoppingCartProducts: {
-      type: Object,
-      default() {
-        return {};
+        return "";
       },
     },
   },
   data() {
     return {
-      shoppingCartDataLength: 0, // 購物車資料長度
       menuStatus: false,
-      favoriteProductList: this.favoriteProducts, // 我的最愛資料
-      shoppingCartProductList: [], // 購物車資料
     };
-  },
-  watch: {
-    favoriteProducts() {
-      this.favoriteProductList = this.favoriteProducts;
-    },
-    shoppingCartProducts() {
-      this.shoppingCartProductList = this.shoppingCartProducts.carts;
-    }
   },
   methods: {
     // 取得localStorage的資料
     updateLocalStorageData() {
       this.localstorageFavoriteProductList = this.localstorageFavoriteProducts;
-      this.localstorageShoppingCartProductList = this.localstorageShoppingCartProducts;
+      this.localstorageShoppingCartProductList =
+        this.localstorageShoppingCartProducts;
     },
     // 取得購物車資料
     getShoppindCartData() {
@@ -162,12 +170,10 @@ export default {
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
 
       vm.$http.get(api).then((response) => {
-        vm.shoppingCartDataLength = response.data.data.carts.length;
-        vm.$emit('shopping-cart-data', response.data.data);
+        vm.$emit("shopping-cart-data", response.data.data);
       });
     },
   },
-  
   created() {
     // 取得localStorage的資料
     this.updateLocalStorageData();

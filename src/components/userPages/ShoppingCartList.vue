@@ -1,7 +1,14 @@
 <template>
-  <div class="user-page-shopping-cart-list" :class="{'order-active': orderStatus}">
+  <div
+    class="user-page-shopping-cart-list"
+    :class="{ 'order-active': orderStatus }"
+  >
     <!-- 商品群組 -->
-    <div class="shopping-cart-group" v-for="item in shoppingCartProductList.carts" :key="item.id">
+    <div
+      class="shopping-cart-group"
+      v-for="item in shoppingCartProductList.carts"
+      :key="item.id"
+    >
       <!-- 單一商品 -->
       <div class="shopping-cart-item">
         <div class="product-name">{{ item.product.title }}</div>
@@ -16,11 +23,30 @@
     <div class="products-total-price-container">
       <div class="coupon-discount-container">
         <div class="coupon-title">優惠券折抵</div>
-        <div class="coupon-discount-price">${{ shoppingCartProductList.total - shoppingCartProductList.final_total }}</div>
+        <div class="coupon-discount-price">
+          ${{
+            shoppingCartProductList.carts.length > 0
+              ? $filters.currency(
+                  Math.round(
+                    shoppingCartProductList.total -
+                      shoppingCartProductList.final_total
+                  )
+                )
+              : 0
+          }}
+        </div>
       </div>
       <div class="product-total-container">
         <div class="product-title">合計</div>
-        <div class="product-total-price">${{ shoppingCartProductList.total }}</div>
+        <div class="product-total-price">
+          ${{
+            shoppingCartProductList.carts.length > 0
+              ? $filters.currency(
+                  Math.round(shoppingCartProductList.final_total)
+                )
+              : 0
+          }}
+        </div>
       </div>
     </div>
   </div>
@@ -28,7 +54,7 @@
 
 <script>
 export default {
-  name: 'ShoppingCartList',
+  name: "ShoppingCartList",
   inject: ["emitter"],
   props: {
     shoppingCartProducts: {
@@ -41,17 +67,21 @@ export default {
   data() {
     return {
       orderStatus: false,
-      shoppingCartProductList: {carts:[]}, // 購物車資料
+      shoppingCartProductList: { carts: [] }, // 購物車資料
     };
   },
   watch: {
     shoppingCartProducts() {
       this.shoppingCartProductList = this.shoppingCartProducts;
-    }
+    },
   },
   created() {
     // 模板開關
-    this.emitter.on("switch-order", () => {this.orderStatus = !this.orderStatus});
+    this.emitter.on("switch-order", (status) => {
+      status === undefined
+        ? (this.orderStatus = !this.orderStatus)
+        : (this.orderStatus = status);
+    });
     // 重新取得資料
     this.shoppingCartProductList = this.shoppingCartProducts;
   },

@@ -9,7 +9,7 @@
       v-model="ordererForm.user.name"
       name="姓名"
       type="text"
-      rules="required"
+      :rules="{ regex: /[a-zA-Z\u4e00-\u9fa5]/ }"
       v-slot="{ field, meta }"
     >
       <div class="user-name-container">
@@ -181,6 +181,8 @@
 import areaList from "@/assets/json/areaList";
 
 export default {
+  // 使用父元件的 emitter元件
+  inject: ["emitter"],
   data() {
     return {
       areaList, // 縣市鄉鎮區資料
@@ -213,6 +215,8 @@ export default {
     },
     // 上一步
     goPrevStep() {
+      // 關閉購物車訂單模板
+      this.emitter.emit('switch-order', false);
       // 更新表單標題
       this.$emit('update-form-title', '付款方式');
       // 跳轉到上一個元件
@@ -220,6 +224,8 @@ export default {
     },
     // 下一步
     goNextStep() {
+      // 關閉購物車訂單模板
+      this.emitter.emit('switch-order', false);
       // 更新表單標題
       this.$emit('update-form-title', '收件人資料');
       // 跳轉到下一個元件
@@ -227,6 +233,9 @@ export default {
       // 發送該參數給HomePage保存
       this.$emit("send-order-form-data", this.ordererForm);
     },
+  },
+  created() {
+    this.emitter.emit('switch-order', false);
   },
 };
 </script>

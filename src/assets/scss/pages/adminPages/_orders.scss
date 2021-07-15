@@ -103,6 +103,10 @@
             @include desktop_1280 {
                 width: 5%;
             }
+
+            .bi {
+                cursor: pointer;
+            }
         }
     }
 

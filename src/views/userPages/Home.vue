@@ -57,14 +57,21 @@
         <i class="bi bi-hand-thumbs-up-fill"></i>
         優惠特價中
       </span>
-      <router-link class="recommend-product-link" :to="{ name: 'UserProducts' }"
+      <router-link
+        class="recommend-product-link"
+        :to="{ name: 'UserProducts' }"
+        @click="$emit('change-current-page-style', 'UserProducts')"
         >查看更多 <i class="bi bi-caret-right-fill"></i
       ></router-link>
     </div>
     <!-- 推薦商品列表 -->
     <div class="recommend-product-list">
       <!-- 商品卡片 -->
-      <div class="product-item-card" v-for="cart in displayProducts" :key="cart.id">
+      <div
+        class="product-item-card"
+        v-for="cart in displayProducts"
+        :key="cart.id"
+      >
         <router-link :to="`/userproduct/${cart.id}`">
           <img :src="cart.imageUrl" alt="商品圖片" />
         </router-link>
@@ -86,11 +93,9 @@
           <div
             class="favorite-list-btn"
             :class="{
-              'favorite-list-btn-disable': favoriteProductList.some(
-                (item) => {
-                  return item.id === cart.id;
-                }
-              ),
+              'favorite-list-btn-disable': favoriteProductList.some((item) => {
+                return item.id === cart.id;
+              }),
             }"
             @click="localStorageFavoriteProductListManager('更新', cart)"
           >
@@ -112,13 +117,23 @@
           <div
             class="shopping-cart-list-btn"
             :class="{
-              'shopping-cart-btn-disable': shoppingCartProductList.carts.map((item) => { return item.product_id}).includes(cart.id)
+              'shopping-cart-btn-disable': shoppingCartProductList.carts
+                .map((item) => {
+                  return item.product_id;
+                })
+                .includes(cart.id),
             }"
             @click="addToCart(cart.id)"
           >
             <i
               class="bi bi-cart-check-fill"
-              v-if="shoppingCartProductList.carts.map((item) => { return item.product_id}).includes(cart.id)"
+              v-if="
+                shoppingCartProductList.carts
+                  .map((item) => {
+                    return item.product_id;
+                  })
+                  .includes(cart.id)
+              "
             ></i>
             <i class="bi bi-cart-plus-fill" v-else></i>
           </div>
@@ -136,7 +151,12 @@
         <div class="featured-banner-content">
           疫情期間也享高品質服務<br />下單購買立刻出貨!
         </div>
-        <div class="featured-banner-link">去逛逛</div>
+        <router-link
+          :to="{ name: 'UserProducts' }"
+          @click="$emit('change-current-page-style', 'UserProducts')"
+          class="featured-banner-link"
+          >去逛逛</router-link
+        >
       </div>
     </div>
     <div class="featured-banner-bottom">
@@ -148,7 +168,12 @@
         <div class="featured-banner-content">
           疫情期間也享高品質服務<br />下單購買立刻出貨!
         </div>
-        <div class="featured-banner-link">去逛逛</div>
+        <router-link
+          :to="{ name: 'UserProducts' }"
+          @click="$emit('change-current-page-style', 'UserProducts')"
+          class="featured-banner-link"
+          >去逛逛</router-link
+        >
       </div>
     </div>
     <!-- Loading -->
@@ -157,23 +182,13 @@
 </template>
 
 <script>
+import AddToCartAndUpdateFavoriteList from "../../mixins/userPages/AddToCartAndUpdateFavoriteList.js";
+import FavoriteDataAndShoppingCartData from "../../mixins/userPages/FavoriteDataAndShoppingCartData";
+
 export default {
-  name: 'Home',
+  name: "Home",
   inject: ["emitter"],
-  props: {
-    favoriteProducts: {
-      type: Array,
-      default() {
-        return [];
-      },
-    },
-    shoppingCartProducts: {
-      type: Object,
-      default() {
-        return {};
-      },
-    },
-  },
+  mixins: [AddToCartAndUpdateFavoriteList, FavoriteDataAndShoppingCartData],
   data() {
     return {
       current: 0, //當前圖片
@@ -188,17 +203,7 @@ export default {
       ],
       displayProducts: [], // 展示用的四個特價商品
       isLoading: false, // Loading元件(全域)
-      favoriteProductList: this.favoriteProducts, // 我的最愛資料
-      shoppingCartProductList: {carts:[]}, // 購物車資料
     };
-  },
-  watch: {
-    favoriteProducts() {
-      this.favoriteProductList = this.favoriteProducts;
-    },
-    shoppingCartProducts() {
-      this.shoppingCartProductList = this.shoppingCartProducts;
-    }
   },
   methods: {
     // 輪播圖換頁
@@ -220,10 +225,12 @@ export default {
     },
     // 取得商品資料
     getProducts() {
+      this.isLoading = true;
       const vm = this;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`;
 
       vm.$http.get(api).then((response) => {
+        this.isLoading = false;
         // 篩選出有特價的商品，並擷取前四個做為展示用商品。
         vm.displayProducts = response.data.products
           .filter((item) => {
@@ -232,69 +239,12 @@ export default {
           .slice(0, 4);
       });
     },
-    // 加入購物車
-    addToCart(id, qty = 1) {
-      if (!this.shoppingCartProductList.carts.map((item) => { return item.product_id}).includes(id)) {
-        this.isLoading = true; // 開啟Loading元件
-        const vm = this;
-        const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
-        const cart = {
-          product_id: id,
-          qty,
-        };
-
-        vm.$http.post(api, { data: cart }).then((response) => {
-          vm.isLoading = false; // 關閉Loading元件
-          // 使用者回饋訊息
-          vm.$httpMessageState(response, "加入購物車");
-          // 更新資料、渲染畫面
-          vm.$emit('update-shopping-cart-products');
-        });
-      } else {
-        this.$swal.fire("此商品以加入購物車");
-      }
-    },
-    // localStorage我的最愛資料
-    localStorageFavoriteProductListManager(status, product) {
-      if (status === "更新") {
-        // 如果localStorage儲存庫 有重複 的商品資料
-        if (this.favoriteProductList.some((item) => { return item.id === product.id; })) {
-          // 取得重複物件的索引
-          let targetIndex = this.favoriteProductList.map((item) => { return item.id; }).indexOf(product.id);
-          // 依據索引位置刪除該物件
-          this.favoriteProductList.splice(targetIndex, 1);
-          // 儲存商品資料在localStorage儲存庫
-          localStorage.setItem("addedFavoriteProducts", JSON.stringify(this.favoriteProductList));
-          // 通知父層 重新取得商品
-          this.$emit('update-favorite-products');
-          // 結束函式
-          return;
-        }
-        // 如果localStorage儲存庫 無重複 的商品資料
-        // 先建立商品資料
-        let item = {
-          id: product.id,
-          imgUrl: product.imageUrl,
-          title: product.title,
-          price: product.price,
-        };
-        // 儲存商品資料在data變數
-        this.favoriteProductList.push(item);
-        // 儲存商品資料在localStorage儲存庫
-        localStorage.setItem("addedFavoriteProducts", JSON.stringify(this.favoriteProductList));
-        // 通知父層 重新取得商品
-        this.$emit('update-favorite-products');
-      } else {
-        // 通知父層 重新取得商品
-        this.$emit('update-favorite-products');
-      }
-    },
   },
   created() {
     // 取得API商品資料
     this.getProducts();
     // 重新取得資料
-    this.$emit('update-shopping-cart-products');
+    this.$emit("update-shopping-cart-products");
   },
 };
 </script>

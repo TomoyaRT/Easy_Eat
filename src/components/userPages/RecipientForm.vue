@@ -191,6 +191,8 @@
 import areaList from "@/assets/json/areaList";
 
 export default {
+  // 使用父元件的 emitter元件
+  inject: ["emitter"],
   props: {
     // 訂購人資料
     ordererFormData: {
@@ -255,6 +257,8 @@ export default {
   methods: {
     // 上一步
     goPrevStep() {
+      // 關閉購物車訂單模板
+      this.emitter.emit('switch-order', false);
       // 更新表單標題
       this.$emit('update-form-title', '訂購人資料');
       // 跳轉到上一個元件
@@ -266,13 +270,15 @@ export default {
       this.$emit('update-shopping-cart-products');
       // 建立訂單(會銷毀購物車資料)
       this.$emit("create-order", this.recipientForm);
-      
     },
     // 取得鄉鎮區的列表
     getRegion(countyIndex) {
       if (countyIndex !== null)
         this.regionList = this.areaList[countyIndex].region;
     },
+  },
+  created() {
+    this.emitter.emit('switch-order', false);
   },
 };
 </script>

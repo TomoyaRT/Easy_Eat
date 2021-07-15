@@ -25,10 +25,16 @@
       <!-- 內容 -->
       <div
         class="orders-content-container"
-        v-for="order in orderList.orders"
+        v-for="order in orderList"
         :key="order.id"
       >
-        <div class="purchase-time">{{ order.is_paid ? new Date(order.paid_date * 1000).toISOString().split('T')[0] : '未付款狀態'  }}</div>
+        <div class="purchase-time">
+          {{
+            order.is_paid
+              ? new Date(order.paid_date * 1000).toISOString().split("T")[0]
+              : "未付款狀態"
+          }}
+        </div>
         <div class="customer-email">{{ order.user.email }}</div>
         <div class="bought-products-container">
           <div
@@ -45,8 +51,16 @@
         <div class="payment-paid-status" v-if="order.is_paid">已付款</div>
         <div class="payment-unpaid-status" v-else>尚未付款</div>
         <div class="order-edit-btn-group">
-          <i class="bi bi-eye-fill" v-if="!orderEditStatus"></i>
-          <i class="bi bi-trash" v-else></i>
+          <i
+            class="bi bi-eye-fill"
+            @click="openModal('檢視訂單', order)"
+            v-if="orderEditStatus"
+          ></i>
+          <i
+            class="bi bi-trash"
+            @click="openModal('刪除訂單', order)"
+            v-else
+          ></i>
         </div>
       </div>
     </div>
@@ -55,28 +69,39 @@
     <!-- 分頁模板 -->
     <Pagination :pagination="pagination" @change-page="getOrders" />
     <!-- 訂單模板 -->
-    <OrderModal />
+    <OrderModal
+      :class="{ 'modal-active': orderModalStatus }"
+      @close-order-modal="orderModalStatus = false"
+      :order-data="tempOrder"
+    />
+    <!-- 刪除模板 -->
+    <DeletModal
+      :class="{ 'modal-active': deletModalStatus }"
+      @close-modal="deletModalStatus = false"
+      :delet-modal="tempOrder"
+      @delete-product="deleteOrder"
+    />
   </div>
 </template>
 
 <script>
-import Pagination from "../../components/adminPages/Pagination.vue";
 import OrderModal from "../../components/adminPages/OrderModal.vue";
+import AdminPagesUniversal from "../../mixins/adminPages/AdminPagesUniversal";
 
 export default {
+  mixins: [AdminPagesUniversal],
   // 區域註冊子元件
   components: {
-    Pagination,
     OrderModal,
   },
-  // 使用父元件的 emitter元件
-  inject: ["emitter"],
   data() {
     return {
       orderList: {}, // 訂單列表資料
-      pagination: {}, // 分頁資料
-      orderEditStatus: false, // 訂單編輯按鈕判斷
-      isLoading: false, // Loading元件(全域)
+      tempOrder: {}, // 單筆訂單資料(刪除模板用)
+      orderEditStatus: true, // 訂單編輯按鈕判斷
+      orderModalStatus: false, // 訂單模板 開關
+      deletModalStatus: false, // 刪除模板 開關
+      orderStatus: "", // 保存目前訂單狀態
     };
   },
   methods: {
@@ -87,17 +112,72 @@ export default {
       this.$http.get(api).then((res) => {
         this.isLoading = false; // 關閉Loading元件
         if (res.data.success) {
-          this.orderList = res.data;
+          this.orderList = res.data.orders;
           this.pagination = res.data.pagination;
         }
       });
     },
+    // 打開模板功能
+    openModal(status, order) {
+      this.orderStatus = status; // 保存目前訂單狀態
+      this.tempOrder = { ...order }; // 淺拷貝此筆訂單資料
+      status === "檢視訂單"
+        ? (this.orderModalStatus = true)
+        : (this.deletModalStatus = true);
+    },
+    // 刪除單筆訂單
+    deleteOrder(order) {
+      this.isLoading = true; // 開啟Loading元件
+      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/order/${order.id}`;
+
+      this.$http.delete(api).then((res) => {
+        this.isLoading = false; // 關閉Loading元件
+        if (res.data.success) {
+          this.getOrders();
+          this.deletModalStatus = false;
+          this.$httpMessageState(res, "該訂單已被刪除");
+        }
+      });
+    },
+    // 刪除所有訂單
+    deleteAllOrder() {
+      const vm = this;
+      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/orders/all`;
+
+      vm.$swal
+        .fire({
+          title: "再次確認",
+          text: "是否要刪除所有的訂單資料",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          cancelButtonText: "取消",
+          confirmButtonText: "確定刪除",
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            vm.$http.delete(api).then((res) => {
+              if (res.data.success) {
+                vm.getOrders();
+                vm.$swal.fire("刪除成功!", "你已刪除所有訂單資料", "success");
+              }
+            });
+          }
+        });
+    },
   },
   created() {
     // 更改Navbar頁面標題
-    this.emitter.emit("change-page-title", "訂單管理");
-    // 隱藏表單的按鈕
-    this.emitter.emit("change-order-btn-title", "隱藏按鈕");
+    this.$emit("change-navbar-page-title", "訂單管理");
+    // 更改Navbar表單按鈕標題
+    this.$emit("change-navbar-btn-title", "清除所有訂單");
+    // 監聽Navbar的 新增按鈕
+    this.emitter.on("open-modal", (status) => {
+      if (status === "訂單管理") {
+        this.deleteAllOrder();
+      }
+    });
     // 取得訂單列表資料
     this.getOrders();
   },

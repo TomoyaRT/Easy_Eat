@@ -102,6 +102,8 @@
 
         // 按鈕
         .product-no-data-btn {
+            display: block;
+            text-decoration: none;
             position: absolute;
             top: 33%;
             left: 20%;
@@ -188,6 +190,7 @@
 
         // 刪除商品
         .product-delete {
+            cursor: pointer;
             width: 19%;
             display: inline-block;
             text-align: center;
@@ -224,6 +227,7 @@
             // 商品遞減 遞增
             .bi-dash-lg,
             .bi-plus-lg {
+                cursor: pointer;
                 display: inline-block;
                 font-size: 1.2rem;
                 width: 2rem;
@@ -391,6 +395,7 @@
 
         // 使用優惠券按鈕
         .coupon-use {
+            cursor: pointer;
             grid-row: 8/10;
             grid-column: 9/12;
             background-color: #616161;
@@ -431,6 +436,7 @@
 
         // 清空購物車
         .product-all-delect-btn {
+            cursor: pointer;
             grid-row: 14/16;
             grid-column: 1/6;
             border: none;
@@ -445,6 +451,7 @@
         .payment-btn {
             grid-row: 14/16;
             grid-column: 6/12;
+            border: none;
             background-color: #a67e64;
             color: #fff;
             text-decoration: none;

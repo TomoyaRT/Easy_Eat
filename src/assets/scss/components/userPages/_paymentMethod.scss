@@ -19,6 +19,7 @@
         // 信用卡付款
         .credit-card-payment-container,
         .cash-on-delivery-container {
+            cursor: pointer;
             display: flex;
             padding: 0.5rem 0.5rem;
             background-color: #ffffff;
@@ -469,6 +470,7 @@
     // 按鈕 通用樣式
     .btn-go-back,
     .btn-go-checkout {
+        cursor: pointer;
         padding: 0.7rem 2.2rem;
         border: none;
         text-decoration: none;

@@ -1,0 +1,45 @@
+.user-page-gotop-button {
+    cursor: pointer;
+    position: fixed;
+    bottom: 1.75rem;
+    right: 1.5rem;
+    font-size: 2.25rem;
+    color: #2bcc73;
+    transform: translateY(-50%);
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s;
+
+    @include mobile_414 {
+        font-size: 2.5rem;
+        right: 2rem;
+    }
+
+    @include tablet_768 {
+        font-size: 2.75rem;
+        right: 3rem;
+    }
+
+    @include tablet_1024 {
+        font-size: 3rem;
+        right: 4rem;
+    }
+
+    @include desktop_1280 {
+        right: 3%;
+    }
+
+    @include desktop_1536 {
+        right: 10%;
+    }
+
+    @include desktop_1920 {
+        right: 16%;
+    }
+}
+
+.active {
+    transform: translateY(0%);
+    visibility: visible;
+    opacity: 1;
+}

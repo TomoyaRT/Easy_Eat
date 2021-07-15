@@ -4,10 +4,10 @@
       <div class="footer-left-side">
         <!-- 品牌精神 -->
         <div class="brand-container">
-          <img src="../../assets/Logo2.png" alt="網站的Logo" />
+          <img src="@/../public/images/Logo2.png" alt="網站的Logo" />
           <p class="brand-attitude">
             Easy
-            Eat成立於2021年，已經有超過10天的歷史，將產品做到最好，是我們一直以來的原則。
+            Eat成立於2021年，已經有約一個年頭的歷史，將產品做到最好，是我們一直以來的原則。
           </p>
         </div>
       </div>
@@ -29,10 +29,17 @@
         <div class="attention-container">
           <h4 class="attention-title">關注我們</h4>
           <div class="attention-icon-group">
-            <i class="bi bi-instagram"></i>
-            <i class="bi bi-twitter"></i>
-            <i class="bi bi-facebook"></i>
-            <i class="bi bi-youtube"></i>
+            <a href="https://www.instagram.com/"
+              ><i class="bi bi-instagram"> </i
+            ></a>
+            <a
+              href="https://twitter.com/Twitter?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+              ><i class="bi bi-twitter"></i
+            ></a>
+            <a href="https://www.facebook.com/"
+              ><i class="bi bi-facebook"></i
+            ></a>
+            <a href="https://www.youtube.com/"><i class="bi bi-youtube"></i></a>
           </div>
         </div>
       </div>

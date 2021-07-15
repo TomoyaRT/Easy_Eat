@@ -2,13 +2,6 @@
   <div class="user-page-product">
     <!-- 單一商品容器-->
     <div class="product-container">
-      <!-- 麵包屑 -->
-      <div class="breadcrumb">
-        <i class="fas fa-map-marker-alt"></i>
-        <a class="breadcrumb-item">首頁</a>
-        <a class="breadcrumb-item">本店商品</a>
-        <a class="breadcrumb-item">商品類別</a>
-      </div>
       <!-- 商品圖片 -->
       <img :src="product.imageUrl" alt="產品圖片" />
       <div class="product-detail-container">
@@ -147,27 +140,15 @@
 </template>
 
 <script>
+import AddToCartAndUpdateFavoriteList from '../../mixins/userPages/AddToCartAndUpdateFavoriteList.js';
+import FavoriteDataAndShoppingCartData from '../../mixins/userPages/FavoriteDataAndShoppingCartData';
+
 export default {
   name: "Product",
   inject: ["emitter"],
-  props: {
-    favoriteProducts: {
-      type: Array,
-      default() {
-        return [];
-      },
-    },
-    shoppingCartProducts: {
-      type: Object,
-      default() {
-        return {};
-      },
-    },
-  },
+  mixins: [AddToCartAndUpdateFavoriteList, FavoriteDataAndShoppingCartData],
   data() {
     return {
-      favoriteProductList: this.favoriteProducts, // 我的最愛資料
-      shoppingCartProductList: { carts: [] }, // 購物車資料
       productId: "", // 產品ID
       product: {
         // 單一產品資訊
@@ -183,12 +164,6 @@ export default {
       if (val < 1 || isNaN(val)) {
         return (this.qty = 1);
       }
-    },
-    favoriteProducts() {
-      this.favoriteProductList = this.favoriteProducts;
-    },
-    shoppingCartProducts() {
-      this.shoppingCartProductList = this.shoppingCartProducts;
     },
   },
   computed: {
@@ -230,7 +205,6 @@ export default {
     getProduct() {
       const vm = this;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/product/${vm.productId}`;
-      console.log(`單一產品API: ${api}`);
 
       vm.$http.get(api).then((response) => {
         if (response.data.success) {
@@ -239,84 +213,6 @@ export default {
           console.log("API串聯失敗");
         }
       });
-    },
-    // 加入購物車
-    addToCart(id, qty) {
-      if (
-        !this.shoppingCartProductList.carts
-          .map((item) => {
-            return item.product_id;
-          })
-          .includes(id)
-      ) {
-        this.isLoading = true; // 開啟Loading元件
-        const vm = this;
-        const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
-        qty = Number(qty); // 強制轉型
-        const cart = {
-          product_id: id,
-          qty,
-        };
-
-        vm.$http.post(api, { data: cart }).then((response) => {
-          this.isLoading = false; // 關閉Loading元件
-          // 使用者回饋訊息
-          this.$httpMessageState(response, "加入購物車");
-          // 更新資料、渲染畫面
-          vm.$emit("update-shopping-cart-products");
-        });
-      } else {
-        this.$swal.fire("此商品以加入購物車");
-      }
-    },
-    // localStorage我的最愛資料
-    localStorageFavoriteProductListManager(status, product) {
-      if (status === "更新") {
-        // 如果localStorage儲存庫 有重複 的商品資料
-        if (
-          this.favoriteProductList.some((item) => {
-            return item.id === product.id;
-          })
-        ) {
-          // 取得重複物件的索引
-          let targetIndex = this.favoriteProductList
-            .map((item) => {
-              return item.id;
-            })
-            .indexOf(product.id);
-          // 依據索引位置刪除該物件
-          this.favoriteProductList.splice(targetIndex, 1);
-          // 儲存商品資料在localStorage儲存庫
-          localStorage.setItem(
-            "addedFavoriteProducts",
-            JSON.stringify(this.favoriteProductList)
-          );
-          // 通知父層 重新取得商品
-          this.$emit("update-favorite-products");
-          // 結束函式
-          return;
-        }
-        // 如果localStorage儲存庫 無重複 的商品資料
-        // 先建立商品資料
-        let item = {
-          id: product.id,
-          imgUrl: product.imageUrl,
-          title: product.title,
-          price: product.price,
-        };
-        // 儲存商品資料在data變數
-        this.favoriteProductList.push(item);
-        // 儲存商品資料在localStorage儲存庫
-        localStorage.setItem(
-          "addedFavoriteProducts",
-          JSON.stringify(this.favoriteProductList)
-        );
-        // 通知父層 重新取得商品
-        this.$emit("update-favorite-products");
-      } else {
-        // 通知父層 重新取得商品
-        this.$emit("update-favorite-products");
-      }
     },
   },
   created() {

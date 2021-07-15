@@ -138,5 +138,15 @@ export default {
     // 重新取得資料
     this.$emit('update-shopping-cart-products');
   },
+  mounted() {
+    // 重新整理、關閉頁面時，瀏覽器預設的提醒訊息。
+    window.onbeforeunload = () => {
+        return '';
+    };
+  },
+  beforeUnmount() {
+    // 清除onbeforeunload監聽
+    window.onbeforeunload = null;
+  },
 };
 </script>

@@ -11,8 +11,10 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
 // components
+@import './components/userPages/goTopButton';
 @import './components/userPages/navbar';
 @import './components/userPages/footer';
+@import './components/userPages/couponModal';
 @import './components/userPages/favoriteListModal';
 @import './components/userPages/shoppingCartList';
 @import './components/userPages/checkoutFlowchart';
@@ -31,6 +33,7 @@
 @import './pages/userPages/login';
 @import './pages/userPages/home';
 @import './pages/userPages/products';
+@import './pages/userPages/coupon';
 @import './pages/userPages/product';
 @import './pages/userPages/shoppingCart';
 @import './pages/userPages/orderform';

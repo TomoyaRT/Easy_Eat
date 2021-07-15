@@ -220,6 +220,8 @@
 
 <script>
 export default {
+  // 使用父元件的 emitter元件
+  inject: ["emitter"],
   data() {
     return {
       // 信用卡資料
@@ -235,8 +237,6 @@ export default {
       creditCardStatus: true, // 翻轉信用卡基準 (true = 正面, false = 反面)
     };
   },
-  // 使用父元件的 emitter元件
-  inject: ["emitter"],
   methods: {
     // 跳過驗證 (貨到付款)
     skipVerification() {
@@ -260,6 +260,8 @@ export default {
     },
     // 前往下一個步驟
     goNextStep() {
+      // 關閉購物車訂單模板
+      this.emitter.emit('switch-order', false);
       // 更新表單標題
       this.$emit('update-form-title', '訂購人資料');
       // 發送該參數給HomePage保存

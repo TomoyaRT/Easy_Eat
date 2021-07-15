@@ -4,17 +4,21 @@
       <!-- 標題區塊 -->
       <h1 class="shopping-cart-page-title">購物車清單</h1>
       <!-- 商品列表 -->
-      <div class="product-container" v-if="shoppingCartProductList.carts.length > 0">
-        <div class="product" v-for="item in shoppingCartProductList.carts" :key="item.id">
+      <div
+        class="product-container"
+        v-if="shoppingCartProductList.carts.length > 0"
+      >
+        <div
+          class="product"
+          v-for="item in shoppingCartProductList.carts"
+          :key="item.id"
+        >
           <img :src="item.product.imageUrl" alt="" />
           <div class="product-content">
             <h1 class="product-title">
               <p>{{ item.product.title }}</p>
             </h1>
-            <div
-              class="product-delete"
-              @click="deletCart(item.id)"
-            >
+            <div class="product-delete" @click="deletCart(item.id)">
               <i class="bi bi-trash"></i>
             </div>
             <!-- 商品選購數量 -->
@@ -50,14 +54,17 @@
       <div class="product-no-data-wrap" v-else>
         <div class="product-no-data-container">
           <h1 class="product-no-data-title">目前沒有商品</h1>
-          <img class="product-no-data-img" src="../../../public/images/empty-shopping-cart.svg" alt="購物車無商品圖片">
-          <button
-            type="button"
+          <img
+            class="product-no-data-img"
+            src="../../../public/images/empty-shopping-cart.svg"
+            alt="購物車無商品圖片"
+          />
+          <router-link
+            :to="{ name: 'UserProducts' }"
             class="product-no-data-btn"
-            @click="$router.push({ name: 'UserProducts' })"
+            @click="$emit('change-current-page-style', 'UserProducts')"
+            >去逛逛</router-link
           >
-            去逛逛
-          </button>
         </div>
       </div>
 
@@ -93,7 +100,11 @@
         </div>
         <div class="product-price-title">商品金額總計</div>
         <div class="product-price-total">
-          ${{ shoppingCartProductList.carts.length > 0 ? $filters.currency(shoppingCartProductList.total) : 0 }}
+          ${{
+            shoppingCartProductList.carts.length > 0
+              ? $filters.currency(shoppingCartProductList.total)
+              : 0
+          }}
         </div>
         <input
           type="text"
@@ -106,11 +117,26 @@
         </button>
         <div class="coupon-rebate-title">優惠券折抵</div>
         <div class="coupon-rebate-price">
-          ${{ shoppingCartProductList.carts.length > 0 ? $filters.currency(Math.round(shoppingCartProductList.total - shoppingCartProductList.final_total)) : 0 }}
+          ${{
+            shoppingCartProductList.carts.length > 0
+              ? $filters.currency(
+                  Math.round(
+                    shoppingCartProductList.total -
+                      shoppingCartProductList.final_total
+                  )
+                )
+              : 0
+          }}
         </div>
         <div class="product-final-price-title">合計</div>
         <div class="product-final-price">
-          ${{ shoppingCartProductList.carts.length > 0 ? $filters.currency(Math.round(shoppingCartProductList.final_total)) : 0 }}
+          ${{
+            shoppingCartProductList.carts.length > 0
+              ? $filters.currency(
+                  Math.round(shoppingCartProductList.final_total)
+                )
+              : 0
+          }}
         </div>
         <button
           type="button"
@@ -119,9 +145,9 @@
         >
           清空購物車
         </button>
-        <router-link :to="{ name: 'UserOrderForm' }" class="payment-btn"
-          >結帳去</router-link
-        >
+        <button type="button" class="payment-btn" @click="goCheckOut">
+          結帳去
+        </button>
       </div>
     </div>
     <!-- Loading -->
@@ -130,47 +156,28 @@
 </template>
 
 <script>
+import FavoriteDataAndShoppingCartData from "../../mixins/userPages/FavoriteDataAndShoppingCartData";
+
 export default {
-  name: 'ShoppingCart',
+  name: "ShoppingCart",
   inject: ["emitter"],
-  props: {
-    favoriteProducts: {
-      type: Array,
-      default() {
-        return [];
-      },
-    },
-    shoppingCartProducts: {
-      type: Object,
-      default() {
-        return {};
-      },
-    },
-  },
+  mixins: [FavoriteDataAndShoppingCartData],
   data() {
     return {
       couponCode: "", // 使用者輸入的優惠券代碼
       btnIsActive: true, // 商品數量增減按鈕的開關
       isLoading: false, // 全域Loading 開關
-      favoriteProductList: this.favoriteProducts, // 我的最愛資料
-      shoppingCartProductList: {carts:[]}, // 購物車資料
     };
-  },
-  watch: {
-    favoriteProducts() {
-      this.favoriteProductList = this.favoriteProducts;
-    },
-    shoppingCartProducts() {
-      this.shoppingCartProductList = this.shoppingCartProducts;
-    }
   },
   computed: {
     // 熱量總量
     nutrientContentCaloriesTotal() {
       // 計算單項商品的總含量
-      const itemCaloriesContent = this.shoppingCartProductList.carts.map((item) => {
-        return item.qty * item.product.nutrientContent.calories;
-      });
+      const itemCaloriesContent = this.shoppingCartProductList.carts.map(
+        (item) => {
+          return item.qty * item.product.nutrientContent.calories;
+        }
+      );
       // 統合全部商品的含量
       const totalCaloriesContent = itemCaloriesContent.reduce((total, val) => {
         return total + val;
@@ -180,9 +187,11 @@ export default {
     },
     // 蛋白質總量
     nutrientContentProteinTotal() {
-      const itemProteinContent = this.shoppingCartProductList.carts.map((item) => {
-        return item.qty * item.product.nutrientContent.protein;
-      });
+      const itemProteinContent = this.shoppingCartProductList.carts.map(
+        (item) => {
+          return item.qty * item.product.nutrientContent.protein;
+        }
+      );
       const totalProteinContent = itemProteinContent.reduce((total, val) => {
         return total + val;
       }, 0);
@@ -200,9 +209,11 @@ export default {
     },
     // 碳水化合物總量
     nutrientContentCarbohydratesTotal() {
-      const itemCarbohydratesContent = this.shoppingCartProductList.carts.map((item) => {
-        return item.qty * item.product.nutrientContent.carbohydrates;
-      });
+      const itemCarbohydratesContent = this.shoppingCartProductList.carts.map(
+        (item) => {
+          return item.qty * item.product.nutrientContent.carbohydrates;
+        }
+      );
       const totalCarbohydratesContent = itemCarbohydratesContent.reduce(
         (total, val) => {
           return total + val;
@@ -213,6 +224,14 @@ export default {
     },
   },
   methods: {
+    // 結帳去
+    goCheckOut() {
+      if (this.shoppingCartProductList.carts.length === 0) {
+        this.$swal.fire("目前購物車無任何商品哦!");
+      } else {
+        this.$router.push("/userorderform");
+      }
+    },
     // 更改購物車數量
     changeCartQty(id, qty) {
       this.isLoading = true;
@@ -225,7 +244,7 @@ export default {
         vm.isLoading = false;
         vm.$httpMessageState(response, "更新商品數量");
         // 重新取得資料
-        vm.$emit('update-shopping-cart-products');
+        vm.$emit("update-shopping-cart-products");
       });
     },
     // 刪除購物車 單一商品
@@ -238,7 +257,7 @@ export default {
         this.isLoading = false;
         this.$httpMessageState(response, "刪除商品");
         // 重新取得資料
-        vm.$emit('update-shopping-cart-products');
+        vm.$emit("update-shopping-cart-products");
       });
     },
     // 刪除購物車 所有商品
@@ -251,7 +270,7 @@ export default {
         this.isLoading = false;
         this.$httpMessageState(response, "刪除所有商品");
         // 重新取得資料
-        vm.$emit('update-shopping-cart-products');
+        vm.$emit("update-shopping-cart-products");
       });
     },
     // 套用優惠券
@@ -267,13 +286,13 @@ export default {
         this.isLoading = false;
         this.$httpMessageState(response, "已套用優惠券");
         // 重新取得資料
-        vm.$emit('update-shopping-cart-products');
+        vm.$emit("update-shopping-cart-products");
       });
     },
   },
   created() {
-    // this.shoppingCartProductList = this.shoppingCartProducts;
-    console.log(this.shoppingCartProductList);
+    // 重新取得資料
+    this.$emit("update-shopping-cart-products");
   },
 };
 </script>

@@ -117,7 +117,7 @@
                 right: 23%;
             }
         }
-        
+
         // 輪播圖頁數群組
         .carousel-page-list {
             width: 30%;
@@ -135,7 +135,7 @@
             @include desktop_1280 {
                 width: 15%;
             }
-            
+
             // 輪播圖頁數 圓點
             .carousel-page-item {
                 background-color: #ffffff;
@@ -266,12 +266,12 @@
             }
         }
 
-        // 商品圖片
-        img {
+        a {
+            display: inline-block;
             width: 100%;
             height: 130px;
-            object-fit: cover;
-
+            overflow: hidden;
+            cursor: pointer;
             @include mobile_414 {
                 height: 150px;
             }
@@ -282,6 +282,19 @@
 
             @include desktop_1280 {
                 height: 230px;
+            }
+
+            // 商品圖片
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transform: scale(1);
+                transition: transform 0.4s;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
             }
         }
 
@@ -353,7 +366,7 @@
                 float: none;
                 display: inline-block;
                 font-size: 1.5rem;
-                line-height: 1,5rem;
+                line-height: 1, 5rem;
                 margin-right: 2rem;
             }
 
@@ -420,15 +433,15 @@
     margin-bottom: 2rem;
 
     @include desktop_1280 {
-        width: 85%; 
+        width: 85%;
     }
 
     @include desktop_1536 {
-        width: 70%; 
+        width: 70%;
     }
 
     @include desktop_1920 {
-        width: 60%; 
+        width: 60%;
     }
 
     img {
@@ -444,7 +457,6 @@
         @include tablet_1024 {
             height: 350px;
         }
-
     }
 
     // 圖片遮罩
@@ -550,21 +562,29 @@
 
     // 圖片連結
     .featured-banner-link {
+        text-decoration: none;
         width: 80px;
         height: 40px;
         line-height: 40px;
         text-align: center;
-        font-size: 18px;
+        font-size: 1.2rem;
         color: #fff;
+        font-weight: bolder;
         cursor: pointer;
         outline: 1.5px solid #fff;
+        transition: all .3s;
+
+        &:hover {
+            background-color: #fff;
+            color: #bd6c03c4;
+        }
 
         @include tablet_768 {
             width: 90px;
             height: 45px;
             line-height: 45px;
         }
-        
+
         @include tablet_1024 {
             width: 100px;
             height: 50px;

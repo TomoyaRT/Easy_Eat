@@ -56,12 +56,14 @@
 </template>
 
 <script>
+import OrderData from '../../mixins/userPages/OrderData';
 import CheckoutFlowchart from "../../components/userPages/CheckoutFlowchart.vue";
 import ShoppingCartList from "../../components/userPages/ShoppingCartList.vue";
 
 export default {
   name: 'Checkout',
   inject: ["emitter"],
+  mixins: [OrderData],
   props: {
     shoppingCartProducts: {
       type: Object,
@@ -83,26 +85,11 @@ export default {
   },
   data() {
     return {
-      orderId: "",
-      orderData: {
-        user: {},
-      },
       flowchartStatus: "Checkout",
       shoppingCartProductList: {carts:[]}, // 購物車資料
     };
   },
   methods: {
-    // 取得此筆訂單資料
-    getOrderData() {
-      const vm = this;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order/${vm.orderId}`;
-
-      vm.$http.get(api).then((response) => {
-        if (response.data.success) {
-          vm.orderData = response.data.order;
-        }
-      });
-    },
     // 付款功能
     payOrder() {
       const vm = this;
@@ -116,14 +103,20 @@ export default {
     },
   },
   created() {
-    // 從網址取出訂單id
-    this.orderId = this.$route.params.orderId;
-    // 取得訂單資料
-    this.getOrderData();
     // 更新資料
     this.$emit('update-shopping-cart-products');
     // 將資料拷貝做渲染使用
     this.shoppingCartProductList = this.shoppingCartProducts;
+  },
+  mounted() {
+    // 重新整理、關閉頁面時，瀏覽器預設的提醒訊息。
+    window.onbeforeunload = () => {
+        return '';
+    };
+  },
+  beforeUnmount() {
+    // 清除onbeforeunload監聽
+    window.onbeforeunload = null;
   },
 };
 </script>

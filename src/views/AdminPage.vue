@@ -11,62 +11,71 @@
       class="admin-page-sidebar"
       @close-sidebar="sidebarStatus = false"
       :class="{ 'sidebar-active': sidebarStatus }"
+      :current-page="currentPage"
+      @change-current-page="changeCurrentPage"
     />
     <!-- Main -->
     <div class="admin-page-main">
       <Navbar
         class="admin-page-navbar"
         @open-sidebar="sidebarStatus = true"
+        :navbar-title="navbarPageTitle"
+        :navbar-btn-title="navbarOrderBtnTitle"
       />
       <ToastMessages />
-      <router-view class="admin-page-products"></router-view>
+      <router-view
+        class="admin-page-products"
+        @change-navbar-page-title="changeNavbarPageTitle"
+        @change-navbar-btn-title="changeNavbarBtnTitle"
+        @change-current-page="changeCurrentPage"
+      ></router-view>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .admin-page-container {
-    @media screen and (min-width: 1024px) {
-        display: flex;
-        flex-direction: row;
-    }
+  @media screen and (min-width: 1024px) {
+    display: flex;
+    flex-direction: row;
+  }
 
-    // Sidebar 遮罩板
-    .admin-page-sidebar-overlay {
-        opacity: 0;
-        position: fixed;
-        z-index: -1;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: #00000099;
-        transition: all 0.5s;
-    }
+  // Sidebar 遮罩板
+  .admin-page-sidebar-overlay {
+    opacity: 0;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #00000099;
+    transition: all 0.5s;
+  }
 
-    // Main (管理頁面-通用樣式)
-    .admin-page-main {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-    }
+  // Main (管理頁面-通用樣式)
+  .admin-page-main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 
-    // 開始 Sidebar樣式
-    .sidebar-active {
-        transform: translateX(0%);
-    }
+  // 開始 Sidebar樣式
+  .sidebar-active {
+    transform: translateX(0%);
+  }
 
-    // 開啟 Sidebar 遮罩板
-    .sidebar-overlay-active {
-        opacity: 1;
-        z-index: 10;
-    }
+  // 開啟 Sidebar 遮罩板
+  .sidebar-overlay-active {
+    opacity: 1;
+    z-index: 10;
+  }
 }
 </style>
 
 <script>
 import emitter from "@/methods/emitter"; // 引入mitt套件(類似Vue2 Event Bus功能)
-import ToastMessages from '../components/ToastMessages.vue'; // 引入提示訊息元件
+import ToastMessages from "../components/ToastMessages.vue"; // 引入提示訊息元件
 import Sidebar from "../components/adminPages/Sidebar.vue";
 import Navbar from "../components/adminPages/Navbar.vue";
 
@@ -85,9 +94,24 @@ export default {
   data() {
     return {
       sidebarStatus: false, // Sidebar元件的樣式開關
+      navbarPageTitle: "首頁",
+      navbarOrderBtnTitle: "首頁",
+      currentPage: 'AdminHome',
     };
   },
   methods: {
+    // 更改當前頁面樣式
+    changeCurrentPage(name) {
+      this.currentPage = name;
+    },
+    // 更改Navbar標題
+    changeNavbarPageTitle(title) {
+      this.navbarPageTitle = title;
+    },
+    // 更改Navbar按鈕
+    changeNavbarBtnTitle(title) {
+      this.navbarOrderBtnTitle = title;
+    },
     // 驗證使用者，是否維持登入的狀態。
     loginVerification() {
       // 取出Token
@@ -109,6 +133,7 @@ export default {
   },
   created() {
     this.loginVerification();
+    this.currentPage = this.$route.name;
   },
 };
 </script>

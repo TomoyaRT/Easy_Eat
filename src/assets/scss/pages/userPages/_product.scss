@@ -31,38 +31,6 @@
         }
     }
 
-    // 麵包屑
-    .breadcrumb {
-        grid-area: Breadcrumb;
-        box-sizing: border-box;
-        width: 100%;
-        padding: 0.7rem 0 0.7rem 0;
-        display: flex;
-        align-items: center;
-        color: rgb(83, 83, 83);
-        font-weight: bold;
-
-        // 麵包屑icon
-        .fa-map-marker-alt {
-            font-size: 1rem;
-            margin-right: 0.3em;
-        }
-        // 麵包屑項目
-        .breadcrumb-item {
-            font-size: 0.9rem;
-
-            @include tablet_768 {
-                font-size: 1rem;
-            }
-        }
-        // 麵包屑斜線 最後一個不使用/
-        .breadcrumb-item:not(:last-child)::after {
-            content: "/";
-            position: relative;
-            margin: 0.5rem;
-        }
-    }
-
     // 商品圖片
     img {
         width: 100%;

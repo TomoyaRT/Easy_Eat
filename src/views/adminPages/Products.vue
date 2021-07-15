@@ -82,17 +82,20 @@
 
 <script>
 import ProductModal from "../../components/adminPages/ProductModal.vue";
-import DeletModal from "../../components/adminPages/DeletModal.vue";
-import Pagination from "../../components/adminPages/Pagination.vue";
+import AdminPagesUniversal from "../../mixins/adminPages/AdminPagesUniversal";
 
 export default {
+  mixins: [AdminPagesUniversal],
+  // 區域註冊子元件
+  components: {
+    ProductModal,
+  },
   data() {
     return {
       productModalStatus: false, // 商品模板 是否開啟
       deletModalStatus: false, // 刪除模板 是否開啟
       productEditStatus: true, // 切換編輯 / 刪除按鈕
       products: [], // API商品資料
-      pagination: {}, // API分頁資料
       nowPage: 1, // 當前分頁(預設為 1)
       tempProduct: {}, // 新增、編輯、刪除商品的模板資料
       productStatus: "", // 使用者當前選擇的商品狀態
@@ -101,22 +104,14 @@ export default {
         title: "新增商品",
         btn: "建立",
       },
-      isLoading: false, // Loading元件(全域)
     };
   },
-  // 區域註冊子元件
-  components: {
-    ProductModal,
-    DeletModal,
-    Pagination,
-  },
-  // 使用父元件的 emitter元件
-  inject: ["emitter"],
+
   methods: {
     // 取得商品資料(按照分頁)
-    getProducts(page = 1) {
+    getProducts(page) {
       this.nowPage = page; // 保存當前分頁頁數
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/products?page=${page}`;
+      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/products?page=${this.nowPage}`;
       this.isLoading = true; // 開啟Loading元件
       this.$http.get(api).then((res) => {
         this.isLoading = false; // 關閉Loading元件
@@ -164,8 +159,7 @@ export default {
         this.productModalStatus = false; // 關閉商品模板
         this.deletModalStatus = false; // 關閉刪除模板
         this.isLoading = false; // 關閉Loading元件
-        this.getProducts(); // 取得商品資料、帶入當前頁數、渲染畫面。
-        console.log(res.data.success);
+        this.getProducts(this.nowPage); // 取得商品資料、帶入當前頁數、渲染畫面。
         // 測試回饋訊息
         switch (this.productStatus) {
           case "新增商品":
@@ -189,9 +183,9 @@ export default {
   },
   created() {
     // 更改Navbar頁面標題
-    this.emitter.emit("change-page-title", "商品管理");
+    this.$emit("change-navbar-page-title", "商品管理");
     // 更改Navbar表單按鈕標題
-    this.emitter.emit("change-order-btn-title", "建立商品");
+    this.$emit("change-navbar-btn-title", "建立商品");
 
     // 監聽Navbar的 新增按鈕
     this.emitter.on("open-modal", (status) => {
@@ -201,7 +195,7 @@ export default {
     });
 
     // 取得商品資料
-    this.getProducts();
+    this.getProducts(this.nowPage);
   },
 };
 </script>

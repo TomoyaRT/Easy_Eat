@@ -1,18 +1,19 @@
 .admin-page-navbar {
     width: 100%;
-    height: 130px;
+    height: 70px;
 
     @include mobile_414 {
-        height: 140px;
+        height: 80px;
     }
 
     @include tablet_768 {
-        height: 150px;
+        height: 85px;
     }
 
     @include tablet_1024 {
-        height: 100px;
+        height: 90px;
     }
+    
     // 手機版 navbar頁面容器
     .navbar-mobile-container {
         width: 90%;
@@ -78,7 +79,9 @@
                 }
             }
             // 加號樣式
-            .bi-plus-lg {
+            .bi-house-door,
+            .bi-plus-lg,
+            .bi-trash2-fill {
                 padding: 0.7rem 0.4rem;
                 font-size: 1.2rem;
                 color: #fff;
@@ -89,38 +92,12 @@
                 }
             }
 
-            .orders-page-hidden {
-                position: relative;
-                opacity: 0;
+            .bi-house-door {
+                background-color: #0cb460;
             }
-        }
-
-        // 搜尋容器
-        .navbar-search-container {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            border: 1px solid #707070;
-
-            // 搜尋icon
-            .bi-search {
-                flex: 1;
-                font-size: 1.3rem;
-                line-height: 2.5rem;
-                padding: 0 0.6rem;
-                vertical-align: middle;
-                color: #2e2e2e;
-            }
-
-            // 搜尋input
-            .navbar-search {
-                flex: 14;
-                border: none;
-                outline: none;
-                font-size: 1.2em;
-                line-height: 2.5rem;
-                margin-left: 0.3rem;
-                color: #616161;
+            
+            .bi-trash2-fill {
+                background-color: #f35959;
             }
         }
     }
@@ -157,35 +134,6 @@
                 }
             }
 
-            // 搜尋容器
-            .navbar-search-container {
-                flex: 3;
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                border: 1px solid #707070;
-
-                // 搜尋icon
-                .bi-search {
-                    font-size: 1.3rem;
-                    line-height: 2.5rem;
-                    padding: 0 0.6rem;
-                    vertical-align: middle;
-                    color: #2e2e2e;
-                }
-
-                // 搜尋input
-                .navbar-search {
-                    width: 100%;
-                    font-size: 1.2em;
-                    line-height: 2.5rem;
-                    margin-left: 0.3rem;
-                    color: #616161;
-                    border: none;
-                    outline: none;
-                }
-            }
-
             // 建立商品 按鈕
             .navbar-button {
                 font-size: 1rem;
@@ -199,11 +147,21 @@
                 cursor: pointer;
             }
 
-            // orders元件的按鈕樣式
-            .orders-page-hidden {
-                position: absolute;
-                opacity: 0;
+            .order-page-btn {
+                background-color: #f35959;
             }
         }
+    }
+}
+
+.home-page-navbar {
+    height: 80px;
+
+    @include tablet_1024 {
+        height: 100px;
+    }
+
+    @include desktop_1280 {
+        height: 120px;
     }
 }

@@ -40,6 +40,7 @@
 
         // 購物車訂單 按鈕
         .shopping-cart-order-btn {
+            cursor: pointer;
             border: none;
             position: relative;
             left: 50%;
@@ -77,6 +78,7 @@
 
         // 確認付款 按鈕
         .payment-btn {
+            cursor: pointer;
             position: relative;
             left: 50%;
             transform: translateX(-50%);

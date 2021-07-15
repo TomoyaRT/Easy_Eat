@@ -59,6 +59,9 @@
         }
 
         .go-back-btn {
+            display: inline-block;
+            text-decoration: none;
+            cursor: pointer;
             position: relative;
             left: 50%;
             transform: translateX(-50%);

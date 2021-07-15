@@ -84,20 +84,17 @@
 </template>
 
 <script>
-import Pagination from "../../components/adminPages/Pagination.vue";
 import CouponModal from "../../components/adminPages/CouponModal.vue";
-import DeletModal from "../../components/adminPages/DeletModal.vue";
+import AdminPagesUniversal from "../../mixins/adminPages/AdminPagesUniversal";
 
 export default {
+  mixins: [AdminPagesUniversal],
   components: {
-    Pagination,
     CouponModal,
-    DeletModal,
   },
   data() {
     return {
       coupons: [],
-      pagination: {}, // API分頁資料
       couponModalStatus: false, // 優惠券模板 開關
       deletModalStatus: false, // 刪除模板 開關
       couponEditStatus: true, // 切換編輯/刪除
@@ -109,10 +106,8 @@ export default {
         btn: "",
       },
       couponDeadline: {}, // 優惠券模板的資料(日期與時間)
-      isLoading: false, // Loading元件(全域)
     };
   },
-  inject: ["emitter"],
   methods: {
     // 取得優惠券資料
     getCoupon(page = 1) {
@@ -185,7 +180,6 @@ export default {
       } else if (this.couponStatus === "刪除優惠券") {
         api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupon/${coupon.id}`;
         httpMethod = "delete";
-        console.log(coupon);
       }
       // 發送API
       this.$http[httpMethod](api, { data: coupon }).then((res) => {
@@ -208,9 +202,9 @@ export default {
   },
   created() {
     // 更改Navbar頁面標題
-    this.emitter.emit("change-page-title", "優惠券管理");
+    this.$emit("change-navbar-page-title", "優惠券管理");
     // 更改Navbar表單按鈕標題
-    this.emitter.emit("change-order-btn-title", "建立優惠券");
+    this.$emit("change-navbar-btn-title", "建立優惠券");
 
     // 監聽Navbar的 新增按鈕
     this.emitter.on("open-modal", (status) => {

@@ -230,6 +230,7 @@
 
             // 首頁 本店商品 超值優惠 (a標籤)
             a {
+                position: relative;
                 text-decoration: none;
                 color: #555353;
                 font-size: 1rem;
@@ -237,10 +238,20 @@
                 margin-right: 2rem;
                 line-height: 2.5rem;
                 font-weight: 650;
+                transition: color .4s;
+
+                &:hover {
+                    color: #adadad;
+                }
 
                 @include desktop_1280 {
                     font-size: 1.1rem;
                 }
+            }
+            
+            .page-active {
+                padding-bottom: .2rem;
+                border-bottom: 2px solid #eea240;
             }
         }
 

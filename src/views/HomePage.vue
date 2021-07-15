@@ -5,6 +5,8 @@
       :favorite-products="favoriteProducts"
       @update-favorite-products="getFavoriteProducts"
       :shopping-cart-products="shoppingCartProducts"
+      :current-page-name="currentPageName"
+      @change-current-page-style="changeCurrentPageStyle"
     />
     <ToastMessages />
     <FavoriteListModal
@@ -21,8 +23,10 @@
       :shopping-cart-products="shoppingCartProducts"
       @update-shopping-cart-products="getShoppingCartProducts"
       :payment-method="paymentMethod"
+      @change-current-page-style="changeCurrentPageStyle"
     ></router-view>
     <Footer />
+    <GoTopButton class="user-page-gotop-button" :class="{'active': goTopStatus}" />
   </div>
 </template>
 
@@ -32,6 +36,7 @@ import Navbar from "../components/userPages/Navbar.vue";
 import Footer from "../components/userPages/Footer.vue";
 import ToastMessages from "../components/ToastMessages.vue";
 import FavoriteListModal from "../components/userPages/FavoriteListModal.vue";
+import GoTopButton from '../components/userPages/GoTopButton.vue';
 
 export default {
   components: {
@@ -39,6 +44,7 @@ export default {
     Footer,
     ToastMessages,
     FavoriteListModal,
+    GoTopButton,
   },
   data() {
     return {
@@ -46,6 +52,8 @@ export default {
       favoriteListModal: false, // 我的最愛模板 狀態
       shoppingCartProducts: {}, // API購物車資料
       favoriteProducts: [], // localStorage我的最愛資料
+      goTopStatus: false,
+      currentPageName: 'Home',
     };
   },
   // 讓所有HomePage的子元件都能使用到 emitter
@@ -72,14 +80,32 @@ export default {
         vm.shoppingCartProducts = response.data.data;
       });
     },
+    // 顯示至頂按鈕
+    activeGoTop() {
+      window.addEventListener("scroll", () => {
+        let scroll = Math.floor(window.pageYOffset);
+        if (scroll > 300) {
+          this.goTopStatus = true;
+        } else {
+          this.goTopStatus = false;
+        }
+      });
+    },
+    // 改變當前頁面樣式
+    changeCurrentPageStyle(name) {
+      this.currentPageName = name;
+    }
   },
   created() {
+    // 監聽 至頂按鈕的顯示
+    this.activeGoTop();
     // 接收 付款方式的字串
     emitter.on("payment-method", (payment) => { this.paymentMethod = payment; });
     // 取得 localStorage我的最愛資料
     this.getFavoriteProducts();
     // 取得 API購物車資料
     this.getShoppingCartProducts();
+    this.currentPageName = this.$route.name;
   },
 };
 </script>

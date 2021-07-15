@@ -57,22 +57,23 @@
             <div class="payment-item-content">{{ orderData.message }}</div>
           </div>
         </div>
-        <button
-          type="button"
+        <router-link
+          :to="{ name: 'Home' }"
           class="go-back-btn"
-          @click="$router.push({ name: 'Home' })"
+          @click="$emit('change-current-page-style', 'Home')"
+          >回首頁</router-link
         >
-          回首頁
-        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import OrderData from "../../mixins/userPages/OrderData";
 import CheckoutFlowchart from "../../components/userPages/CheckoutFlowchart.vue";
 
 export default {
+  mixins: [OrderData],
   components: {
     CheckoutFlowchart,
   },
@@ -87,28 +88,18 @@ export default {
   },
   data() {
     return {
-      orderId: "",
-      orderData: {},
       flowchartStatus: "Payment",
     };
   },
-  methods: {
-    // 取得此筆訂單資料
-    getOrderData() {
-      const vm = this;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order/${vm.orderId}`;
-
-      vm.$http.get(api).then((response) => {
-        console.log("取得訂單資料", response);
-        vm.orderData = response.data.order;
-      });
-    },
-  },
   created() {
-    // 從網址取出訂單id
-    this.orderId = this.$route.params.orderId;
-    // 取得訂單資料
-    this.getOrderData();
+    // 使用者回饋訊息
+    this.$swal.fire({
+      position: "center",
+      icon: "success",
+      title: "恭喜您，付款成功!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   },
 };
 </script>

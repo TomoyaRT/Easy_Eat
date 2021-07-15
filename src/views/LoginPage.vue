@@ -8,7 +8,7 @@
         <div class="home-page-rink-container">
           <router-link to="/"><i class="bi bi-arrow-left"></i></router-link>
           <router-link to="/"
-            ><img src="../assets/Logo.png" alt="網站的Logo"
+            ><img src="@/../public/images/Logo.png" alt="網站的Logo"
           /></router-link>
         </div>
         <!-- 登入表單 -->
@@ -155,7 +155,7 @@ export default {
       this.$http.post(api, this.user).then((res) => {
         // 如屬未登入狀態，即轉址到Login頁面。
         if (res.data.success) {
-          this.$router.push({ name: "AdminProducts" });
+          this.$router.push('/adminHome');
         }
       });
     },
@@ -169,8 +169,8 @@ export default {
           const { token, expired } = res.data;
           // 將Token Expired寫入瀏覽器的Cookie
           document.cookie = `ecToken=${token}; expires=${new Date(expired)};`;
-          // 驗證通過，轉址到【後台】Products頁面
-          this.$router.push('/adminproducts');
+          // 驗證通過，轉址到【後台】Home頁面
+          this.$router.push('/adminHome');
         }
       });
     },
