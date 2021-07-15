@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: './'
+  publicPath: '/Easy_Eat/dist/'
 }
