@@ -31,22 +31,27 @@
         <li
           class="carousel-page-item"
           :class="{ 'carousel-page-item-active': current === 0 }"
+          @click="changePage(0, changePageBtnStatus)"
         ></li>
         <li
           class="carousel-page-item"
           :class="{ 'carousel-page-item-active': current === 1 }"
+          @click="changePage(1, changePageBtnStatus)"
         ></li>
         <li
           class="carousel-page-item"
           :class="{ 'carousel-page-item-active': current === 2 }"
+          @click="changePage(2, changePageBtnStatus)"
         ></li>
         <li
           class="carousel-page-item"
           :class="{ 'carousel-page-item-active': current === 3 }"
+          @click="changePage(3, changePageBtnStatus)"
         ></li>
         <li
           class="carousel-page-item"
           :class="{ 'carousel-page-item-active': current === 4 }"
+          @click="changePage(4, changePageBtnStatus)"
         ></li>
       </ul>
     </div>
@@ -212,23 +217,29 @@ export default {
       isLoading: false, // Loading元件(全域)
       // 自定義Loading樣式
       loadingObj: {
-        bgc: '#9E9E9E',
-        style: 'dots',
-        color: '#FF961F',
-        height : 128,
+        bgc: "#9E9E9E",
+        style: "dots",
+        color: "#FF961F",
+        height: 128,
         width: 128,
-      }
+      },
+      timers: [], //計時器容器
     };
   },
   methods: {
-    // 輪播圖換頁
+    // 輪播圖換頁 (手動)
     changePage(index, status) {
       if (status) {
         const vm = this;
         // 暫時關閉 輪播圖換頁事件 1s
         vm.changePageBtnStatus = false;
+        // 清除所有計時器
+        this.timers.forEach((id) => {clearInterval(id)});
+        // 開啟換頁事件
         setTimeout(function () {
           vm.changePageBtnStatus = true;
+          // 重啟計時器
+          vm.autoChangePage();
         }, 1000);
         // 判斷使用下一頁樣式，還是上一頁的轉場樣式
         vm.direction = index > this.current ? "next" : "prev";
@@ -237,6 +248,16 @@ export default {
       } else {
         return;
       }
+    },
+    // 輪播圖換頁 (自動)
+    autoChangePage() {
+      // 設定計時器
+      var timeId = setInterval(() => {
+        this.direction = "next";
+        this.current === 4 ? (this.current = 0) : (this.current += 1);
+      }, 2000);
+      // 保存計時器id
+      this.timers.push(timeId);
     },
     // 取得商品資料
     getProducts() {
@@ -256,6 +277,8 @@ export default {
     },
   },
   created() {
+    // 自動輪播圖功能 (開啟)
+    this.autoChangePage();
     // 取得API商品資料
     this.getProducts();
     // 重新取得資料
