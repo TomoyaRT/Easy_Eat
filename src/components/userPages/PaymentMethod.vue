@@ -93,7 +93,6 @@
             <option value="23">23</option>
             <option value="21">24</option>
             <option value="22">25</option>
-            <option value="23">26</option>
           </select>
         </Field>
         <Field
