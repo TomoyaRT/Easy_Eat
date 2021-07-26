@@ -91,19 +91,21 @@
         rules="required"
         v-slot="{ field, meta }"
       >
-        <input
-          type="text"
-          class="user-address-input"
-          placeholder="請輸入地址"
-          :class="{
-            'is-invalid': !meta.valid && meta.touched,
-            'is-valid': meta.valid,
-          }"
-          v-bind="field"
-        />
-        <i class="bi bi-check-circle-fill" v-if="meta.valid"></i>
-        <i class="bi bi-x-circle-fill" v-if="!meta.valid && meta.touched"></i>
-        <error-message name="地址" class="invalid-feedback"></error-message>
+        <div class="user-address-input-container">
+          <input
+            type="text"
+            class="user-address-input"
+            placeholder="請輸入地址"
+            :class="{
+              'is-invalid': !meta.valid && meta.touched,
+              'is-valid': meta.valid,
+            }"
+            v-bind="field"
+          />
+          <i class="bi bi-check-circle-fill" v-if="meta.valid"></i>
+          <i class="bi bi-x-circle-fill" v-if="!meta.valid && meta.touched"></i>
+          <error-message name="地址" class="invalid-feedback"></error-message>
+        </div>
       </Field>
     </div>
     <Field
@@ -163,11 +165,7 @@
       ></textarea>
     </div>
     <div class="form-btn-container">
-      <button
-        type="button"
-        class="btn-go-back"
-        @click="goPrevStep"
-      >
+      <button type="button" class="btn-go-back" @click="goPrevStep">
         上一步
       </button>
       <button type="submit" class="btn-go-checkout" :disabled="isSubmitting">
@@ -216,18 +214,18 @@ export default {
     // 上一步
     goPrevStep() {
       // 關閉購物車訂單模板
-      this.emitter.emit('switch-order', false);
+      this.emitter.emit("switch-order", false);
       // 更新表單標題
-      this.$emit('update-form-title', '付款方式');
+      this.$emit("update-form-title", "付款方式");
       // 跳轉到上一個元件
-      this.$emit('change-form-step', 'paymentForm');
+      this.$emit("change-form-step", "paymentForm");
     },
     // 下一步
     goNextStep() {
       // 關閉購物車訂單模板
-      this.emitter.emit('switch-order', false);
+      this.emitter.emit("switch-order", false);
       // 更新表單標題
-      this.$emit('update-form-title', '收件人資料');
+      this.$emit("update-form-title", "收件人資料");
       // 跳轉到下一個元件
       this.$emit("change-form-step", "recipientForm");
       // 發送該參數給HomePage保存
@@ -235,7 +233,7 @@ export default {
     },
   },
   created() {
-    this.emitter.emit('switch-order', false);
+    this.emitter.emit("switch-order", false);
   },
 };
 </script>

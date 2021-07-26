@@ -120,14 +120,12 @@
     }
 
     // 地址的icon調整
-    .user-address-container {
+    .user-address-input-container {
+        position: relative;
         // 驗證回饋的icon
         .bi-check-circle-fill,
         .bi-x-circle-fill {
-            position: absolute;
-            right: 0.5rem;
-            top: 5.7rem;
-            font-size: 1.1rem;
+            top: 1rem;
         }
     }
 
