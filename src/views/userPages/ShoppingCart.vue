@@ -13,7 +13,9 @@
           v-for="item in shoppingCartProductList.carts"
           :key="item.id"
         >
-          <img :src="item.product.imageUrl" alt="" />
+        <router-link :to="`/userproduct/${item.product.id}`" class="item-link">
+            <img :src="item.product.imageUrl" alt="" />
+          </router-link>
           <div class="product-content">
             <h1 class="product-title">
               <p>{{ item.product.title }}</p>
