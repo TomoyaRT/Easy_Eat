@@ -37,77 +37,87 @@
           />
         </div>
         <!-- 商品篩選 -->
-        <div class="products-filter-title">類別</div>
         <div class="products-filter-container">
-          <div
-            class="product-filter-item"
-            :class="{
-              'product-filter-item-active': currentFilterTag === '全部商品',
-            }"
-            @click="productsFilter('全部商品')"
-          >
-            全部商品
-          </div>
-          <div
-            class="product-filter-item"
-            :class="{
-              'product-filter-item-active': currentFilterTag === '特價商品',
-            }"
-            @click="productsFilter('特價商品')"
-          >
-            特價商品
-          </div>
-          <div
-            class="product-filter-item"
-            :class="{ 'product-filter-item-active': currentFilterTag === item }"
-            v-for="(item, index) in categoryTag"
-            :key="index"
-            @click="productsFilter('類別篩選', item)"
-          >
-            {{ item }}
+          <div class="products-filter-title">類別</div>
+          <div class="products-filter-content">
+            <div
+              class="product-filter-item"
+              :class="{
+                'product-filter-item-active': currentFilterTag === '全部商品',
+              }"
+              @click="productsFilter('全部商品')"
+            >
+              全部商品
+            </div>
+            <div
+              class="product-filter-item"
+              :class="{
+                'product-filter-item-active': currentFilterTag === '特價商品',
+              }"
+              @click="productsFilter('特價商品')"
+            >
+              特價商品
+            </div>
+            <div
+              class="product-filter-item"
+              :class="{
+                'product-filter-item-active': currentFilterTag === item,
+              }"
+              v-for="(item, index) in categoryTag"
+              :key="index"
+              @click="productsFilter('類別篩選', item)"
+            >
+              {{ item }}
+            </div>
           </div>
         </div>
+
         <!-- 商品排序 -->
-        <div class="products-sorting-title">排序</div>
         <div class="products-sorting-container">
-          <div
-            class="product-sort-item"
-            :class="{ 'product-sort-item-active': currentSortTag === '價錢' }"
-            @click="productsSorter('價錢')"
-          >
-            價錢
-          </div>
-          <div
-            class="product-sort-item"
-            :class="{ 'product-sort-item-active': currentSortTag === '熱量' }"
-            @click="productsSorter('熱量')"
-          >
-            熱量
-          </div>
-          <div
-            class="product-sort-item"
-            :class="{ 'product-sort-item-active': currentSortTag === '蛋白質' }"
-            @click="productsSorter('蛋白質')"
-          >
-            蛋白質
-          </div>
-          <div
-            class="product-sort-item"
-            :class="{ 'product-sort-item-active': currentSortTag === '脂肪' }"
-            @click="productsSorter('脂肪')"
-          >
-            脂肪
-          </div>
-          <div
-            class="product-sort-item"
-            :class="{
-              'product-sort-item-active': currentSortTag === '碳水化合物',
-            }"
-            @click="productsSorter('碳水化合物')"
-          >
-            碳水化合物
+          <div class="products-sorting-title">排序</div>
+          <div class="products-sorting-content">
+            <div
+              class="product-sort-item"
+              :class="{ 'product-sort-item-active': currentSortTag === '價錢' }"
+              @click="productsSorter('價錢')"
+            >
+              價錢
+            </div>
+            <div
+              class="product-sort-item"
+              :class="{ 'product-sort-item-active': currentSortTag === '熱量' }"
+              @click="productsSorter('熱量')"
+            >
+              熱量
+            </div>
+            <div
+              class="product-sort-item"
+              :class="{
+                'product-sort-item-active': currentSortTag === '蛋白質',
+              }"
+              @click="productsSorter('蛋白質')"
+            >
+              蛋白質
+            </div>
+            <div
+              class="product-sort-item"
+              :class="{ 'product-sort-item-active': currentSortTag === '脂肪' }"
+              @click="productsSorter('脂肪')"
+            >
+              脂肪
+            </div>
+            <div
+              class="product-sort-item"
+              :class="{
+                'product-sort-item-active': currentSortTag === '碳水化合物',
+              }"
+              @click="productsSorter('碳水化合物')"
+            >
+              碳水化合物
+            </div>
           </div>
         </div>
+
         <!-- 搜尋框 -->
         <div class="searchbar-container">
           <i class="bi bi-search"></i>
@@ -338,6 +348,7 @@
 </template>
 
 <script>
+import smoothscroll from "smoothscroll-polyfill";
 import AddToCartAndUpdateFavoriteList from "../../mixins/userPages/AddToCartAndUpdateFavoriteList.js";
 import FavoriteDataAndShoppingCartData from "../../mixins/userPages/FavoriteDataAndShoppingCartData";
 
@@ -567,8 +578,13 @@ export default {
     },
     // 商品價格區間 (預設為低到高)
     searchPriceRangeProducts(minNum, maxNum) {
-
-      if (minNum && maxNum !== "" && maxNum > minNum && !isNaN(maxNum) && !isNaN(minNum)) {
+      if (
+        minNum &&
+        maxNum !== "" &&
+        maxNum > minNum &&
+        !isNaN(maxNum) &&
+        !isNaN(minNum)
+      ) {
         this.searchWord = ""; // 清空搜尋欄
         this.productsSearchStatus = false; // 關閉搜尋狀態
         this.searchPriceStatus = true; // 開啟搜尋狀態
@@ -580,14 +596,18 @@ export default {
         let filteredProducts = this.products
           .filter((item) => item.price < max)
           .filter((item) => item.price > min);
-          
+
         if (filteredProducts.length === 0) {
           this.$swal.fire("此價格區間內查無商品");
         } else {
           this.categoryProducts = filteredProducts;
           this.getPageProducts();
         }
-      } else if (minNum && maxNum !== "" && maxNum < minNum || isNaN(maxNum) || isNaN(minNum)) {
+      } else if (
+        (minNum && maxNum !== "" && maxNum < minNum) ||
+        isNaN(maxNum) ||
+        isNaN(minNum)
+      ) {
         this.$swal.fire("商品的價格區間輸入格式或範圍有錯誤");
       } else {
         this.$swal.fire("請先輸入想查詢的商品價格範圍哦!");
@@ -595,10 +615,8 @@ export default {
     },
     // 滾動至頂
     goTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      smoothscroll.polyfill();
+      window.scroll({ top: 0, left: 0, behavior: "smooth" });
     },
   },
   created() {

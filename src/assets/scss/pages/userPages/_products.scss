@@ -37,9 +37,10 @@
         font-size: 35px;
     }
 }
+
 // 全部商品 共x件商品 (手機)
 .products-title-container {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 
     @include tablet_1024 {
         display: none;
@@ -108,183 +109,99 @@
     }
 }
 
+//////////////////////////////////////////////////////////
+
 // 篩選器區域
 .products-filter {
-    position: relative;
     width: 100%;
 
-    // 商品篩選 / 排序 (標題欄)
-    // 商品篩選/排序部分用flex重寫
-    .products-filter-title,
-    .products-sorting-title {
-        position: absolute;
-        top: -0.3rem;
-        width: 10%;
-        height: 3rem;
-        writing-mode: vertical-lr;
-        text-align: center;
-        line-height: 2rem;
-        background-color: #f1ad53;
-        color: #fff;
-        font-size: 18px;
-        font-weight: 750;
-        letter-spacing: 2px;
-        border-radius: 5px;
-
-        @include tablet_768 {
-            width: 5%;
-        }
-
-        @include tablet_1024 {
-            top: 3.4rem;
-            line-height: 2.8rem;
-        }
-
-        @include desktop_1280 {
-            top: 4rem;
-            width: 4.2%;
-            height: 3.5rem;
-            font-size: 20px;
-        }
-    }
-    // 商品排序 (標題欄)
-    .products-sorting-title {
-        top: 3rem;
-        background-color: #00b244;
-
-        @include tablet_1024 {
-            top: 7rem;
-        }
-        @include desktop_1280 {
-            top: 8rem;
-        }
-    }
-    // 商品篩選 滾動容器
+    // 篩選與排序容器
     .products-filter-container,
     .products-sorting-container {
-        width: 90%;
-        margin-left: auto;
-        white-space: nowrap;
-        overflow-x: scroll;
-        // 隱藏IE/Edge的滾動條
-        -ms-overflow-style: none;
-        // 隱藏Chorme的滾動條
+        display: flex;
+    }
+
+    .products-sorting-container {
+        margin: 1rem 0;
+    }
+
+    // 篩選與排序的標題
+    .products-filter-title,
+    .products-sorting-title {
+        writing-mode: vertical-lr;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bolder;
+        height: 3.5rem;
+        line-height: 2rem;
+        letter-spacing: 3px;
+        background-color: #f1ad53;
+        color: #fff;
+        box-shadow: 0 0 10px 2px #97692c93;
+        margin-right: .5rem;
+    }
+
+    .products-sorting-title {
+        top: 5rem;
+        background-color: #2eca48;
+        box-shadow: 0 0 10px 2px #23a3388a;
+    }
+
+    // 篩選與排序的內容
+    .products-filter-content,
+    .products-sorting-content {
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+
         &::-webkit-scrollbar {
             display: none;
-        }
-
-        @include tablet_768 {
-            margin-left: 2.5rem;
-            width: 95%;
-        }
-
-        @include tablet_1024 {
-            margin-left: 3rem;
-            margin-top: 1.4rem;
-        }
-
-        @include desktop_1280 {
-            margin-left: 3.3rem;
-            margin-top: 1.7rem;
-        }
-
-        // 單一內容項目
-        .product-filter-item,
-        .product-sort-item {
-            cursor: pointer;
-            display: inline-block;
-            letter-spacing: 1px;
-            font-size: 16px;
-            font-weight: 750;
-            padding: 0 0.5rem;
-            line-height: 30px;
-            text-align: center;
-            border-radius: 10px;
-            background-color: #ffffff;
-            color: #868686;
-            border: 1px solid #c4c4c491;
-            margin: 0.3rem 0.3rem 0.3rem 0.5rem;
-
-            @include tablet_768 {
-                font-size: 20px;
-                margin: 0.3rem 0rem 0.3rem 0.8rem;
-            }
-
-            @include desktop_1280 {
-                font-size: 22px;
-                padding: 0.3rem 0.7rem;
-            }
-        }
-
-        // 單一內容項目被hover時
-        .product-filter-item:hover {
-            color: #e28c45;
-            border: 1px solid #ffc889c0;
-
-            @include tablet_1024 {
-                border: 1.5px solid #ffc889c0;
-            }
-
-            @include desktop_1280 {
-                border: 2px solid #ffc889c0;
-            }
-        }
-        .product-sort-item:hover {
-            color: #26a155;
-            border: 1px solid #43d1796c;
-
-            @include tablet_1024 {
-                border: 1.5px solid #43d1796c;
-            }
-
-            @include desktop_1280 {
-                border: 2px solid #43d1796c;
-            }
-        }
-
-        // 單一內容項目被點選時
-        .product-filter-item-active {
-            background-color: #ffffff;
-            color: #e28c45;
-            border: 1px solid #ffc889c0;
-
-            @include tablet_1024 {
-                border: 1.5px solid #ffc889c0;
-            }
-
-            @include desktop_1280 {
-                border: 2px solid #ffc889c0;
-            }
-        }
-        .product-sort-item-active {
-            background-color: #ffffff;
-            color: #26a155;
-            border: 1px solid #43d1796c;
-
-            @include tablet_1024 {
-                border: 1.5px solid #43d1796c;
-            }
-
-            @include desktop_1280 {
-                border: 2px solid #43d1796c;
-            }
+            -ms-overflow-style: none;
         }
     }
-    // 排序容器的上下間距
-    .products-sorting-container {
-        margin-top: 0.5rem;
-        margin-bottom: 1.5rem;
 
-        @include tablet_1024 {
-            margin-top: 1rem;
-            margin-bottom: 1.5rem;
-        }
+    // 篩選與排序的內容(單項)
+    .product-filter-item,
+    .product-sort-item {
+        white-space: nowrap;
+        cursor: pointer;
+        font-size: 1.1rem;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+        color: #F5A962;
+        padding: 0.5rem .75rem;
+        margin-right: 0.75rem;
+        outline: 1px solid #f5a962bb;
+        outline-offset: 0px;
+        transform: scale(1);
+        -webkit-transition: all 350ms ease;
+        transition: all 350ms ease;
 
-        @include desktop_1280 {
-            margin-top: 0.6rem;
-            margin-bottom: 1.5rem;
+        &:hover {
+            outline-offset: 15px;
+            outline-color: #00000000;
         }
     }
+    
+    .product-sort-item {
+        color: #2ECA48;
+        outline: 1px solid #2ECA48bb;
+    }
+
+    // click事件
+    .product-filter-item-active,
+    .product-sort-item-active {
+        background-color: #F5A962;
+        color: #fff;
+    }
+
+    .product-sort-item-active {
+        background-color: #2ECA48;
+    }
+    
+
+    ////////////////////////////////////////////////////////////
 
     // 搜尋列容器 手機板
     .searchbar-container {
@@ -439,10 +356,9 @@
     }
     .bi-sort-down:active,
     .bi-sort-down-alt:active {
-        transform: scale(.9);
+        transform: scale(0.9);
         transition: transform 0.4s;
     }
-    
 }
 
 // 自訂價格區間功能
@@ -479,10 +395,10 @@
         vertical-align: middle;
         color: #515151;
         font-weight: bold;
-        padding-left: .5rem;
+        padding-left: 0.5rem;
 
         &:focus {
-            outline: 2px solid #B05B3B;
+            outline: 2px solid #b05b3b;
         }
     }
 
@@ -499,14 +415,14 @@
         font-size: 1.1rem;
         font-weight: 650;
         letter-spacing: 2px;
-        transition: all .4s;
-        
+        transition: all 0.4s;
+
         &:hover {
             background-color: #c77d29ce;
         }
 
         &:active {
-            transform: scale(.9);
+            transform: scale(0.9);
         }
     }
 }
@@ -561,7 +477,6 @@
             height: 130px;
             overflow: hidden;
             cursor: pointer;
-            
 
             @include tablet_768 {
                 height: 160px;
@@ -574,7 +489,7 @@
             height: 100%;
             object-fit: cover;
             transform: scale(1);
-            transition: transform .4s;
+            transition: transform 0.4s;
 
             &:hover {
                 transform: scale(1.1);
@@ -717,7 +632,7 @@
             align-items: center;
             background-color: #808080b9;
             cursor: pointer;
-            transition: background-color .35s;
+            transition: background-color 0.35s;
 
             @include tablet_768 {
                 width: 45%;
@@ -968,19 +883,19 @@
 
         &:hover {
             background-color: #f3c23b;
-            transition: background-color .4s;
+            transition: background-color 0.4s;
         }
     }
 
     // 分頁頁數樣式
     .page-link {
         text-decoration: none;
-        padding: .45rem .75rem;
+        padding: 0.45rem 0.75rem;
         color: #c59c2d;
 
         &:hover {
             color: #fff;
-            transition: color .4s;
+            transition: color 0.4s;
         }
     }
 
