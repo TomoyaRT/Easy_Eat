@@ -5,14 +5,14 @@
 </template>
 
 <script>
+import smoothscroll from 'smoothscroll-polyfill';
+
 export default {
   methods: {
     // 至頂功能
     scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      smoothscroll.polyfill();
+      window.scroll({ top: 0, left: 0, behavior: 'smooth' });
     },
   },
 };

@@ -28,7 +28,7 @@
         font-weight: bold;
 
         &::-webkit-scrollbar {
-            display:none
+            display: none;
         }
 
         @include mobile_414 {
@@ -130,7 +130,7 @@
                     width: 85%;
                     overflow: hidden;
                     white-space: nowrap;
-                    text-overflow: ellipsis; 
+                    text-overflow: ellipsis;
                 }
             }
 
@@ -219,13 +219,24 @@
             // 連結按鈕
             a {
                 text-decoration: none;
-                padding: .75rem .75rem;
-                color: #fff;
+                padding: 0.75rem 0.75rem;
                 font-size: 1.1rem;
                 font-weight: bold;
                 text-align: center;
                 cursor: pointer;
-                background-color: #52be20ca;
+                outline: 2px solid #52be20ca;
+                color: #52be20;
+                background: {
+                    image: linear-gradient(45deg, #52be20ca 50%, transparent 50%);
+                    position: 100%;
+                    size: 400%;
+                }
+                transition: all 0.5s ease-in-out;
+
+                &:hover {
+                    background-position: 0;
+                    color: #ffffff;
+                }
             }
         }
     }

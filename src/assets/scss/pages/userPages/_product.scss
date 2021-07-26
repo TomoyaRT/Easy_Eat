@@ -217,7 +217,6 @@
             margin-bottom: 1rem;
             letter-spacing: 0.8px;
 
-            
             @include tablet_1024 {
                 font-size: 1.5rem;
                 margin-bottom: 1rem;
@@ -266,7 +265,18 @@
             line-height: 2.5rem;
             text-align: center;
             color: #ffffff;
-            background-color:#a0a0a0;
+            background-color: #a0a0a0;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #B05B3B;
+                transition: all .3s;
+            }
+
+            &:active {
+                transform: scale(.9);
+                transition: all .2s;
+            }
         }
         .bi-plus-lg {
             margin-left: 0.3rem;
@@ -286,7 +296,7 @@
             font-size: 1.3rem;
             text-align: center;
             border: none;
-            margin-left: .5rem;
+            margin-left: 0.5rem;
         }
     }
 
@@ -295,31 +305,74 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 2.5rem;
-        
-        .product-add-like,
-        .product-add-cart {
-            border: none;
-            width: 45%;
-            background-color: #909090;
-            color: #fff;
-            height: 3.8rem;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            font-weight: bolder;
+    }
 
-            @include tablet_1024 {
-                font-size: 1.3rem;
+    // 按鈕樣式
+    .product-add-like,
+    .product-add-cart {
+        position: relative;
+        border: none;
+        width: 45%;
+        background-color: #909090;
+        color: #fff;
+        height: 3.8rem;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        font-weight: bolder;
+        overflow: hidden;
+
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            background: rgba(255, 255, 255, 0.5);
+            width: 60px;
+            height: 100%;
+            left: 0;
+            top: 0;
+            opacity: 0.5;
+            filter: blur(30px);
+            transform: translateX(-100px) skewX(-15deg);
+        }
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            width: 30px;
+            height: 100%;
+            left: 30px;
+            top: 0;
+            opacity: 0;
+            filter: blur(5px);
+            transform: translateX(-100px) skewX(-15deg);
+        }
+        &:hover {
+            cursor: pointer;
+            &:before {
+                transform: translateX(300px) skewX(-15deg) ;
+                opacity: 0.6;
+                transition: 0.7s;
+            }
+            &:after {
+                transform: translateX(300px) skewX(-15deg);
+                opacity: 1;
+                transition: 0.7s;
             }
         }
 
-        .add-like-btn-disable {
-            background-color: #7e0303;
+        @include tablet_1024 {
+            font-size: 1.3rem;
         }
-        .product-add-cart {
-            background-color: #a67e64;
-        }
-        .add-cart-btn-disable {
-            background-color: #047721b9;
-        }
+    }
+
+    .add-like-btn-disable {
+        background-color: #7e0303;
+    }
+    .product-add-cart {
+        background-color: #a67e64;
+    }
+    .add-cart-btn-disable {
+        background-color: #047721b9;
     }
 }

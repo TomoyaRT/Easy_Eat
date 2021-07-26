@@ -215,6 +215,11 @@
     .recommend-product-link {
         color: rgb(158, 194, 228);
         text-decoration: none;
+
+        &:hover {
+            color: #ffc074;
+            transition: color 0.3s;
+        }
     }
 
     // 推薦商品列表
@@ -398,6 +403,7 @@
             align-items: center;
             background-color: #808080b9;
             cursor: pointer;
+            transition: background-color .35s;
 
             @include tablet_768 {
                 width: 45%;
@@ -571,12 +577,19 @@
         color: #fff;
         font-weight: bolder;
         cursor: pointer;
-        outline: 1.5px solid #fff;
-        transition: all .3s;
+        outline: 2px solid #fff;
+
+        background: {
+            image: linear-gradient(45deg, #FFFFFF 50%, transparent 50%);
+            position: 100%;
+            size: 400%;
+          }
+        transition: all .6s ease-in-out;
 
         &:hover {
-            background-color: #fff;
-            color: #bd6c03c4;
+            letter-spacing: 1.5px;
+            background-position: 0;
+            color: #f39d35;
         }
 
         @include tablet_768 {

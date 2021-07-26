@@ -5,13 +5,25 @@
     <div class="products-header">
       <!-- 標題 -->
       <div class="products-title-container">
-        <h1 class="products-title">{{ searchPriceStatus || productsSearchStatus ? '搜尋商品' : currentFilterTag }}</h1>
+        <h1 class="products-title">
+          {{
+            searchPriceStatus || productsSearchStatus
+              ? "搜尋商品"
+              : currentFilterTag
+          }}
+        </h1>
         <h2 class="products-total">共{{ categoryProductsLength }}件商品</h2>
       </div>
       <!-- 篩選器 -->
       <div class="products-filter">
         <div class="products-title-container-tablet-1024">
-          <h1 class="products-title">{{ searchPriceStatus || productsSearchStatus ? '搜尋商品' : currentFilterTag }}</h1>
+          <h1 class="products-title">
+            {{
+              searchPriceStatus || productsSearchStatus
+                ? "搜尋商品"
+                : currentFilterTag
+            }}
+          </h1>
           <h2 class="products-total">共{{ categoryProductsLength }}件商品</h2>
         </div>
         <!-- 搜尋框 -->
@@ -208,41 +220,53 @@
           <!-- 願望清單 / 購物車 按鈕 -->
           <div class="card-btn-group">
             <div
-            class="favorite-list-btn"
-            :class="{
-              'favorite-list-btn-disable': favoriteProductList.some(
-                (product) => {
-                  return product.id === item.id;
-                }
-              ),
-            }"
-            @click="localStorageFavoriteProductListManager('更新', item)"
-          >
-            <i
-              class="bi bi-heart-fill"
+              class="favorite-list-btn"
               :class="{
-                'favorite-btn-disable': favoriteProductList.some((product) => {
-                  return product.id === item.id;
-                }),
+                'favorite-list-btn-disable': favoriteProductList.some(
+                  (product) => {
+                    return product.id === item.id;
+                  }
+                ),
               }"
-              v-if="
-                favoriteProductList.some((product) => {
-                  return product.id === item.id;
-                })
-              "
-            ></i>
-            <i class="bi bi-heart" v-else></i>
-          </div>
+              @click="localStorageFavoriteProductListManager('更新', item)"
+            >
+              <i
+                class="bi bi-heart-fill"
+                :class="{
+                  'favorite-btn-disable': favoriteProductList.some(
+                    (product) => {
+                      return product.id === item.id;
+                    }
+                  ),
+                }"
+                v-if="
+                  favoriteProductList.some((product) => {
+                    return product.id === item.id;
+                  })
+                "
+              ></i>
+              <i class="bi bi-heart" v-else></i>
+            </div>
             <div
               class="shopping-cart-list-btn"
               :class="{
-                'shopping-cart-btn-disable': shoppingCartProductList.carts.map((product) => { return product.product_id}).includes(item.id),
+                'shopping-cart-btn-disable': shoppingCartProductList.carts
+                  .map((product) => {
+                    return product.product_id;
+                  })
+                  .includes(item.id),
               }"
               @click="addToCart(item.id)"
             >
               <i
                 class="bi bi-cart-check-fill"
-                v-if="shoppingCartProductList.carts.map((product) => { return product.product_id}).includes(item.id)"
+                v-if="
+                  shoppingCartProductList.carts
+                    .map((product) => {
+                      return product.product_id;
+                    })
+                    .includes(item.id)
+                "
               ></i>
               <i class="bi bi-cart-plus-fill" v-else></i>
             </div>
@@ -314,11 +338,11 @@
 </template>
 
 <script>
-import AddToCartAndUpdateFavoriteList from '../../mixins/userPages/AddToCartAndUpdateFavoriteList.js';
-import FavoriteDataAndShoppingCartData from '../../mixins/userPages/FavoriteDataAndShoppingCartData';
+import AddToCartAndUpdateFavoriteList from "../../mixins/userPages/AddToCartAndUpdateFavoriteList.js";
+import FavoriteDataAndShoppingCartData from "../../mixins/userPages/FavoriteDataAndShoppingCartData";
 
 export default {
-  name: 'Products',
+  name: "Products",
   inject: ["emitter"],
   mixins: [AddToCartAndUpdateFavoriteList, FavoriteDataAndShoppingCartData],
   data() {
@@ -543,19 +567,31 @@ export default {
     },
     // 商品價格區間 (預設為低到高)
     searchPriceRangeProducts(minNum, maxNum) {
-      this.searchWord = ""; // 清空搜尋欄
-      this.productsSearchStatus = false; // 關閉搜尋狀態
-      this.searchPriceStatus = true; // 開啟搜尋狀態
-      const min = parseInt(minNum);
-      const max = parseInt(maxNum);
 
-      // 每次使用原資料做篩選
-      // 篩選出價格區間內的商品
-      this.categoryProducts = this.products
-        .filter((item) => item.price < max)
-        .filter((item) => item.price > min);
-      // 渲染畫面，判斷有無分頁。
-      this.getPageProducts();
+      if (minNum && maxNum !== "" && maxNum > minNum && !isNaN(maxNum) && !isNaN(minNum)) {
+        this.searchWord = ""; // 清空搜尋欄
+        this.productsSearchStatus = false; // 關閉搜尋狀態
+        this.searchPriceStatus = true; // 開啟搜尋狀態
+        const min = parseInt(minNum);
+        const max = parseInt(maxNum);
+
+        // 每次使用原資料做篩選
+        // 篩選出價格區間內的商品
+        let filteredProducts = this.products
+          .filter((item) => item.price < max)
+          .filter((item) => item.price > min);
+          
+        if (filteredProducts.length === 0) {
+          this.$swal.fire("此價格區間內查無商品");
+        } else {
+          this.categoryProducts = filteredProducts;
+          this.getPageProducts();
+        }
+      } else if (minNum && maxNum !== "" && maxNum < minNum || isNaN(maxNum) || isNaN(minNum)) {
+        this.$swal.fire("商品的價格區間輸入格式或範圍有錯誤");
+      } else {
+        this.$swal.fire("請先輸入想查詢的商品價格範圍哦!");
+      }
     },
     // 滾動至頂
     goTop() {

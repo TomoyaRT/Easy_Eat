@@ -426,12 +426,23 @@
             font-size: 36px;
         }
     }
+    .bi-sort-down,
+    .bi-sort-down-alt {
+        display: inline-block;
+    }
+
     .bi-sort-down:hover,
     .bi-sort-down-alt:hover {
-        display: inline-block;
         color: #13b91b;
-        transition: color 0.4s;
+        transform: scale(1.05);
+        transition: all 0.3s;
     }
+    .bi-sort-down:active,
+    .bi-sort-down-alt:active {
+        transform: scale(.9);
+        transition: transform 0.4s;
+    }
+    
 }
 
 // 自訂價格區間功能
@@ -466,6 +477,13 @@
         font-size: 20px;
         margin-right: 1rem;
         vertical-align: middle;
+        color: #515151;
+        font-weight: bold;
+        padding-left: .5rem;
+
+        &:focus {
+            outline: 2px solid #B05B3B;
+        }
     }
 
     // 篩選按鈕
@@ -481,6 +499,15 @@
         font-size: 1.1rem;
         font-weight: 650;
         letter-spacing: 2px;
+        transition: all .4s;
+        
+        &:hover {
+            background-color: #c77d29ce;
+        }
+
+        &:active {
+            transform: scale(.9);
+        }
     }
 }
 
@@ -690,6 +717,7 @@
             align-items: center;
             background-color: #808080b9;
             cursor: pointer;
+            transition: background-color .35s;
 
             @include tablet_768 {
                 width: 45%;
@@ -925,8 +953,9 @@
         justify-content: space-between;
     }
 
-    // 分頁標籤
+    // 分頁按鈕樣式
     .page-item {
+        cursor: pointer;
         width: 35px;
         height: 35px;
         font-size: 22px;
@@ -936,12 +965,23 @@
         line-height: 35px;
         color: #c59c2d;
         border: 1px solid #dfdfdf;
+
+        &:hover {
+            background-color: #f3c23b;
+            transition: background-color .4s;
+        }
     }
 
-    // 分頁樣式
+    // 分頁頁數樣式
     .page-link {
         text-decoration: none;
+        padding: .45rem .75rem;
         color: #c59c2d;
+
+        &:hover {
+            color: #fff;
+            transition: color .4s;
+        }
     }
 
     // 禁止點選換頁標籤

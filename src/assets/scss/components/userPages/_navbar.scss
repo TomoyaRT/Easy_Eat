@@ -215,84 +215,99 @@
             align-items: center;
             margin: 2rem 0 2rem 0;
         }
+    }
 
-        .navbar-left-side {
-            // Logo
-            img {
-                height: 2.5rem;
-                vertical-align: bottom;
-                margin-right: 2rem;
+    .navbar-left-side {
+        // Logo
+        img {
+            height: 2.5rem;
+            vertical-align: bottom;
+            margin-right: 2rem;
 
-                @include desktop_1280 {
-                    margin-right: 2.5rem;
-                }
-            }
-
-            // 首頁 本店商品 超值優惠 (a標籤)
-            a {
-                position: relative;
-                text-decoration: none;
-                color: #555353;
-                font-size: 1rem;
-                font-size: 700;
-                margin-right: 2rem;
-                line-height: 2.5rem;
-                font-weight: 650;
-                transition: color .4s;
-
-                &:hover {
-                    color: #adadad;
-                }
-
-                @include desktop_1280 {
-                    font-size: 1.1rem;
-                }
-            }
-            
-            .page-active {
-                padding-bottom: .2rem;
-                border-bottom: 2px solid #eea240;
+            @include desktop_1280 {
+                margin-right: 2.5rem;
             }
         }
 
-        .navbar-right-side {
-            display: flex;
+        // 首頁 本店商品 超值優惠
+        .page-link {
+            position: relative;
+            text-decoration: none;
+            color: #555353;
+            font-size: 1rem;
+            font-size: 700;
+            margin-right: 2rem;
+            line-height: 2.5rem;
+            font-weight: 650;
+            transition: color 0.4s;
+            letter-spacing: 1px;
 
-            // icon容器
-            .favorite-list-icon-container,
-            .shopping-cart-icon-conatiner {
-                position: relative;
-                cursor: pointer;
+            &:hover {
+                color: #ffffff;
             }
 
-            // 數量提示小圓點
-            .favorite-list-number-point {
+            &::before {
+                content: "";
                 position: absolute;
-                top: 0;
-                right: 0;
-                transform: translate(50%, -50%);
-                width: 20px;
-                height: 20px;
-                line-height: 20px;
-                text-align: center;
-                background-color: #db4949;
-                border-radius: 50%;
-                color: #fff;
-                font-size: 0.8rem;
-                font-weight: 900;
+                inset: 0;
+                background-color: #FEA82F;
+                z-index: -1;
+                transform: scaleX(0);
+                transform-origin: center;
+                transition: transform 0.3s;
+                border-radius: 5px;
             }
 
-            i {
-                font-size: 1.5rem;
-                color: #616161;
-                margin-left: 2rem;
+            &:hover::before {
+                transform: scaleX(1.3) scaleY(1.7);
+                transform-origin: center;
+            }
 
-                @include desktop_1280 {
-                    font-size: 1.6rem;
-                }
+            @include desktop_1280 {
+                font-size: 1.1rem;
+            }
+        }
+
+        .page-active {
+            color: #f7a440;
+        }  
+    }
+
+    .navbar-right-side {
+        display: flex;
+
+        // icon容器
+        .favorite-list-icon-container,
+        .shopping-cart-icon-conatiner {
+            position: relative;
+            cursor: pointer;
+        }
+
+        // 數量提示小圓點
+        .favorite-list-number-point {
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translate(50%, -50%);
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            background-color: #db4949;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 900;
+        }
+
+        i {
+            font-size: 1.5rem;
+            color: #616161;
+            margin-left: 2rem;
+
+            @include desktop_1280 {
+                font-size: 1.6rem;
             }
         }
     }
 }
-
-

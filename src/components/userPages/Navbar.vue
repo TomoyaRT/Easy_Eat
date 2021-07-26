@@ -81,18 +81,21 @@
             <img src="@/../public/images/Logo.png" alt="網站的Logo"
           /></router-link>
           <router-link
+            class="page-link"
             :class="{ 'page-active': currentPageName === 'Home' }"
             @click="$emit('change-current-page-style', 'Home')"
             to="/"
             >首頁</router-link
           >
           <router-link
+            class="page-link"
             :class="{ 'page-active': currentPageName === 'UserProducts' }"
             @click="$emit('change-current-page-style', 'UserProducts')"
             to="/userproducts"
             >本店商品</router-link
           >
           <router-link
+            class="page-link"
             :class="{ 'page-active': currentPageName === 'UserCoupon' }"
             @click="$emit('change-current-page-style', 'UserCoupon')"
             to="/usercoupon"

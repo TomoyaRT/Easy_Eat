@@ -262,16 +262,31 @@ export default {
     },
     // 刪除購物車 所有商品
     deletCartList() {
-      this.isLoading = true;
       const vm = this;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/carts`;
 
-      vm.$http.delete(api).then((response) => {
-        this.isLoading = false;
-        this.$httpMessageState(response, "刪除所有商品");
-        // 重新取得資料
-        vm.$emit("update-shopping-cart-products");
-      });
+      vm.$swal
+        .fire({
+          title: "再次確認",
+          text: "是否要刪除所有的商品資料",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          cancelButtonText: "取消",
+          confirmButtonText: "確定刪除",
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            vm.$http.delete(api).then((res) => {
+              if (res.data.success) {
+                // 重新取得資料
+                vm.$emit("update-shopping-cart-products");
+                vm.$swal.fire("刪除成功!", "你已刪除所有商品資料", "success");
+              }
+            });
+          }
+        });
     },
     // 套用優惠券
     useCoupon() {

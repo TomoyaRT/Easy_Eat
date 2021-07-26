@@ -86,7 +86,7 @@
             }"
             v-bind="field"
           >
-            <option selected disabled value="">有效年</option>
+            <option selected disabled :value="null">有效年</option>
             <option value="21">21</option>
             <option value="22">22</option>
             <option value="23">23</option>
@@ -112,7 +112,7 @@
             }"
             v-bind="field"
           >
-            <option selected disabled value="">有效月</option>
+            <option selected disabled :value="null">有效月</option>
             <option v-for="m in 12" :key="m">{{ m }}</option>
           </select>
         </Field>

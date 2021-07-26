@@ -177,7 +177,14 @@
       </div>
     </div>
     <!-- Loading -->
-    <Loading :active="isLoading"></Loading>
+    <Loading
+      :active="isLoading"
+      :background-color="loadingObj.bgc"
+      :loader="loadingObj.style"
+      :color="loadingObj.color"
+      :height="loadingObj.height"
+      :width="loadingObj.width"
+    ></Loading>
   </div>
 </template>
 
@@ -203,6 +210,14 @@ export default {
       ],
       displayProducts: [], // 展示用的四個特價商品
       isLoading: false, // Loading元件(全域)
+      // 自定義Loading樣式
+      loadingObj: {
+        bgc: '#9E9E9E',
+        style: 'dots',
+        color: '#FF961F',
+        height : 128,
+        width: 128,
+      }
     };
   },
   methods: {
