@@ -71,14 +71,15 @@
       </Field>
       <div class="credit-card-date-container">
         <Field
+          v-model.number="creditCard.year"
           name="credit-card-year"
+          type="text"
           rules="required"
           v-slot="{ field, meta }"
         >
           <!-- 信用卡 有效日期 -->
           <select
             class="credit-card-year"
-            v-model.number="creditCard.year"
             @click="creditCardStatus = true"
             :class="{
               'is-invalid': !meta.valid && meta.touched,
@@ -96,15 +97,14 @@
           </select>
         </Field>
         <Field
+          v-model.number="creditCard.month"
           name="credit-card-month"
+          type="text"
           rules="required"
           v-slot="{ field, meta }"
         >
           <select
-            name="credit-card-month"
-            id="credit-card-month"
             class="credit-card-month"
-            v-model.number="creditCard.month"
             @click="creditCardStatus = true"
             :class="{
               'is-invalid': !meta.valid && meta.touched,
@@ -113,10 +113,11 @@
             v-bind="field"
           >
             <option selected disabled :value="null">有效月</option>
-            <option v-for="m in 12" :key="m">{{ m }}</option>
+            <option v-for="m in 12" :value="m" :key="m">{{ m }}</option>
           </select>
         </Field>
         <Field
+          v-model.number="creditCard.threeCode"
           name="credit-card-three-codes"
           rules="digits:3|required"
           v-slot="{ field, meta }"
@@ -124,7 +125,6 @@
           <input
             type="text"
             class="credit-card-three-codes"
-            v-model.number="creditCard.threeCode"
             @click="creditCardStatus = false"
             :class="{
               'is-invalid': !meta.valid && meta.touched,
