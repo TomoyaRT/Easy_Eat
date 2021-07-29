@@ -321,7 +321,7 @@ export default {
 
       vm.$http.post(api, { data: coupon }).then((response) => {
         this.isLoading = false;
-        this.$httpMessageState(response, "已套用優惠券");
+        this.$httpMessageState(response, "套用優惠券");
         // 重新取得資料
         vm.$emit("update-shopping-cart-products");
       });
