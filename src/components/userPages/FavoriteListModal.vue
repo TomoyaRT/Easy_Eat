@@ -75,17 +75,26 @@
       </div>
     </div>
     <!-- Loading -->
-    <Loading :active="isLoading"></Loading>
+    <Loading
+      :active="isLoading"
+      :background-color="loadingObj.bgc"
+      :loader="loadingObj.style"
+      :color="loadingObj.color"
+      :opacity="loadingObj.opacity"
+      :height="loadingObj.height"
+      :width="loadingObj.width"
+    ></Loading>
   </div>
 </template>
 
 <script>
 import FavoriteDataAndShoppingCartData from '../../mixins/userPages/FavoriteDataAndShoppingCartData';
+import LoadingConfiguration from "../../mixins/LoadingConfiguration";
 
 export default {
   name: "FavoriteModal",
   inject: ["emitter"],
-  mixins: [FavoriteDataAndShoppingCartData],
+  mixins: [FavoriteDataAndShoppingCartData, LoadingConfiguration],
   data() {
     return {
       isLoading: false, // 全域Loading 開關
