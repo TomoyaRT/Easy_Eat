@@ -38,8 +38,13 @@
       </div>
     </div>
     <!-- 表單驗證 -->
-    <Form @submit="goNextStep" v-slot="{ isSubmitting }" v-if="paymentMethod === '信用卡付款'">
+    <Form
+      @submit="goNextStep"
+      v-slot="{ isSubmitting }"
+      v-if="paymentMethod === '信用卡付款'"
+    >
       <Field
+        v-model.number="creditCard.code"
         name="credit-card-number"
         type="number"
         rules="digits:16|required"
@@ -51,16 +56,12 @@
             >信用卡卡號</label
           >
           <input
-            id="credit-card-number"
-            name="credit-card-number"
-            type="text"
             class="credit-card-number-input"
             :class="{
               'is-invalid': !meta.valid && meta.touched,
               'is-valid': meta.valid,
             }"
             v-bind="field"
-            v-model.number="creditCard.code"
             @click="creditCardStatus = true"
             maxlength="16"
             placeholder="請輸入信用卡卡號"
@@ -182,11 +183,7 @@
         >
           回購物車
         </button>
-        <button
-          type="submit"
-          class="btn-go-checkout"
-          :disabled="isSubmitting"
-        >
+        <button type="submit" class="btn-go-checkout" :disabled="isSubmitting">
           下一步
         </button>
       </div>
@@ -195,7 +192,10 @@
     <!-- 貨到付款 -->
     <div class="cash-on-delivery-message" v-else>
       <h1>請前往下一步填寫相關表單</h1>
-      <img src="../../../public/images/cash-on-delivery.svg" alt="貨到付款圖片">
+      <img
+        src="../../../public/images/cash-on-delivery.svg"
+        alt="貨到付款圖片"
+      />
       <!-- 付款方式 按鈕區 -->
       <div class="form-btn-container">
         <button
@@ -205,11 +205,7 @@
         >
           回購物車
         </button>
-        <button
-          type="submit"
-          class="btn-go-checkout"
-          @click="skipVerification"
-        >
+        <button type="submit" class="btn-go-checkout" @click="skipVerification">
           下一步
         </button>
       </div>
@@ -260,9 +256,9 @@ export default {
     // 前往下一個步驟
     goNextStep() {
       // 關閉購物車訂單模板
-      this.emitter.emit('switch-order', false);
+      this.emitter.emit("switch-order", false);
       // 更新表單標題
-      this.$emit('update-form-title', '訂購人資料');
+      this.$emit("update-form-title", "訂購人資料");
       // 發送該參數給HomePage保存
       this.emitter.emit("payment-method", this.paymentMethod);
       // 跳轉到下一個元件
