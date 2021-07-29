@@ -8,8 +8,9 @@
 .toastMessages {
   z-index: 1500;
   position: fixed;
-  top: 1rem;
-  right: 1rem;
+  top: 3.5rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
 </style>
 
@@ -30,6 +31,7 @@ export default {
     this.emitter.on("push-message", (message) => {
       const { style = "success", title, content } = message;
       this.messages.push({ style, title, content });
+      console.log(message);
     });
   },
 };

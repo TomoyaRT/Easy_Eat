@@ -1,44 +1,63 @@
 <template>
-  <div class="toast" v-if="toastActive === true">
-    <div :class="{'toast-status-success': msg.style === 'success'}"></div>
-    <div class="toast-content">{{ msg.title }}</div>
-    <i class="bi bi-x-octagon" @click="toastActive = false"></i>
+  <div class="toast-container" v-if="toastActive === true">
+    <div
+      class="toast"
+      :class="{
+        'status-success': msg.style === 'success',
+        'status-danger': msg.style === 'danger',
+      }"
+    >
+      <div class="toast-title">{{ msg.title }}</div>
+      <i class="bi bi-x-octagon" @click="toastActive = false"></i>
+    </div>
+    <div class="toast-supplement" v-if="msg.style === 'danger'">
+      <div class="supplement-content">{{ msg.content }}</div>
+      <i class="bi bi-exclamation-circle"></i>
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
-.toast {
+.toast,
+.toast-supplement {
+  box-sizing: border-box;
   opacity: 1;
   width: 250px;
   height: 50px;
   display: flex;
   align-items: center;
-  border: 1px solid #cacaca;
+  justify-content: space-between;
   border-radius: 5px;
-  background-color: #fff;
-  padding: 0rem 0.5rem;
+  padding: 0 0.5rem 0 1rem;
   margin-bottom: 1rem;
-  box-sizing: border-box;
-  transition: opacity .5s;
+  transition: opacity 0.5s;
 
-  .toast-status-success {
-    width: 20px;
-    height: 20px;
-    border-radius: 30%;
-    background-color: rgb(34, 175, 22);
-    margin-right: 0.5rem;
-  }
-
-  .toast-content {
-    flex: 10;
-    font-size: 0.8rem;
+  .toast-title,
+  .supplement-content {
+    font-size: 1rem;
     font-weight: bold;
-    color: #464646;
+    letter-spacing: 1.5px;
+    color: #fff;
   }
 
-  .bi-x-octagon {
-    flex: 1;
+  .bi-x-octagon,
+  .bi-exclamation-circle {
+    font-size: 1.2rem;
+    color: #fff;
   }
+}
+
+.status-success {
+  background-color: #22af16;
+}
+
+.status-danger {
+  background-color: #af1644;
+}
+
+// API串接失敗的補充說明
+.toast-supplement {
+  background-color: #FFCC29;
 }
 </style>
 
@@ -54,7 +73,7 @@ export default {
     this.toastActive = true;
     setTimeout(() => {
       this.toastActive = false;
-    }, 5000);
+    }, 155000);
   },
 };
 </script>
