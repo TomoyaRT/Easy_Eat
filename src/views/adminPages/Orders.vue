@@ -65,7 +65,15 @@
       </div>
     </div>
     <!-- Loading -->
-    <Loading :active="isLoading"></Loading>
+    <Loading
+      :active="isLoading"
+      :background-color="loadingObj.bgc"
+      :loader="loadingObj.style"
+      :color="loadingObj.color"
+      :opacity="loadingObj.opacity"
+      :height="loadingObj.height"
+      :width="loadingObj.width"
+    ></Loading>
     <!-- 分頁模板 -->
     <Pagination :pagination="pagination" @change-page="getOrders" />
     <!-- 訂單模板 -->
@@ -87,9 +95,10 @@
 <script>
 import OrderModal from "../../components/adminPages/OrderModal.vue";
 import AdminPagesUniversal from "../../mixins/adminPages/AdminPagesUniversal";
+import LoadingConfiguration from "../../mixins/LoadingConfiguration";
 
 export default {
-  mixins: [AdminPagesUniversal],
+  mixins: [AdminPagesUniversal, LoadingConfiguration],
   // 區域註冊子元件
   components: {
     OrderModal,
@@ -107,8 +116,9 @@ export default {
   methods: {
     // 取得 API訂單列表資料
     getOrders(page = 1) {
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/orders?page=${page}`;
       this.isLoading = true; // 開啟Loading元件
+      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/orders?page=${page}`;
+      
       this.$http.get(api).then((res) => {
         this.isLoading = false; // 關閉Loading元件
         if (res.data.success) {
@@ -141,6 +151,7 @@ export default {
     },
     // 刪除所有訂單
     deleteAllOrder() {
+      this.isLoading = true; // 開啟Loading元件
       const vm = this;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/orders/all`;
 
@@ -158,6 +169,7 @@ export default {
         .then((result) => {
           if (result.isConfirmed) {
             vm.$http.delete(api).then((res) => {
+              this.isLoading = false; // 關閉Loading元件
               if (res.data.success) {
                 vm.getOrders();
                 vm.$swal.fire("刪除成功!", "你已刪除所有訂單資料", "success");

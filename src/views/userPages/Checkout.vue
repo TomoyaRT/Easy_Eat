@@ -52,6 +52,16 @@
         </button>
       </div>
     </div>
+    <!-- Loading -->
+    <Loading
+      :active="isLoading"
+      :background-color="loadingObj.bgc"
+      :loader="loadingObj.style"
+      :color="loadingObj.color"
+      :opacity="loadingObj.opacity"
+      :height="loadingObj.height"
+      :width="loadingObj.width"
+    ></Loading>
   </div>
 </template>
 
@@ -59,11 +69,12 @@
 import OrderData from '../../mixins/userPages/OrderData';
 import CheckoutFlowchart from "../../components/userPages/CheckoutFlowchart.vue";
 import ShoppingCartList from "../../components/userPages/ShoppingCartList.vue";
+import LoadingConfiguration from "../../mixins/LoadingConfiguration";
 
 export default {
   name: 'Checkout',
   inject: ["emitter"],
-  mixins: [OrderData],
+  mixins: [OrderData, LoadingConfiguration],
   props: {
     shoppingCartProducts: {
       type: Object,
@@ -92,11 +103,13 @@ export default {
   methods: {
     // 付款功能
     payOrder() {
+      this.isLoading = true;
       const vm = this;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/pay/${vm.orderId}`;
 
       vm.$http.post(api).then((response) => {
         if (response.data.success) {
+          this.isLoading = false;
           vm.$router.push(`/userpayment/${vm.orderId}`);
         }
       });

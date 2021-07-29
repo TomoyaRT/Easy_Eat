@@ -59,7 +59,15 @@
       </div>
     </div>
     <!-- Loading -->
-    <Loading :active="isLoading"></Loading>
+    <Loading
+      :active="isLoading"
+      :background-color="loadingObj.bgc"
+      :loader="loadingObj.style"
+      :color="loadingObj.color"
+      :opacity="loadingObj.opacity"
+      :height="loadingObj.height"
+      :width="loadingObj.width"
+    ></Loading>
     <!-- 分頁模板 -->
     <Pagination :pagination="pagination" @change-page="getProducts" />
     <!-- 商品模板 -->
@@ -83,9 +91,10 @@
 <script>
 import ProductModal from "../../components/adminPages/ProductModal.vue";
 import AdminPagesUniversal from "../../mixins/adminPages/AdminPagesUniversal";
+import LoadingConfiguration from "../../mixins/LoadingConfiguration";
 
 export default {
-  mixins: [AdminPagesUniversal],
+  mixins: [AdminPagesUniversal, LoadingConfiguration],
   // 區域註冊子元件
   components: {
     ProductModal,
@@ -110,9 +119,9 @@ export default {
   methods: {
     // 取得商品資料(按照分頁)
     getProducts(page) {
+      this.isLoading = true;
       this.nowPage = page; // 保存當前分頁頁數
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/products?page=${this.nowPage}`;
-      this.isLoading = true; // 開啟Loading元件
       this.$http.get(api).then((res) => {
         this.isLoading = false; // 關閉Loading元件
         if (res.data.success) {

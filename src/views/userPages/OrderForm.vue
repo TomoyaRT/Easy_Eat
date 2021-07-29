@@ -40,6 +40,16 @@
         />
       </div>
     </div>
+    <!-- Loading -->
+    <Loading
+      :active="isLoading"
+      :background-color="loadingObj.bgc"
+      :loader="loadingObj.style"
+      :color="loadingObj.color"
+      :opacity="loadingObj.opacity"
+      :height="loadingObj.height"
+      :width="loadingObj.width"
+    ></Loading>
   </div>
 </template>
 
@@ -50,10 +60,12 @@ import CheckoutFlowchart from "../../components/userPages/CheckoutFlowchart.vue"
 import PaymentMethod from "../../components/userPages/PaymentMethod.vue";
 import OrdererForm from "../../components/userPages/OrdererForm.vue";
 import RecipientForm from "../../components/userPages/RecipientForm.vue";
+import LoadingConfiguration from "../../mixins/LoadingConfiguration";
 
 export default {
   name: 'OrderForm',
   inject: ["emitter"],
+  mixins: [LoadingConfiguration],
   props: {
     shoppingCartProducts: {
       type: Object,
@@ -114,6 +126,7 @@ export default {
     },
     // 建立訂單
     createOrder(form) {
+      this.isLoading = true;
       const vm = this;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order`;
       // 將地址做組合
@@ -128,6 +141,7 @@ export default {
       // 發送API
       vm.$http.post(api, { data: form }).then((response) => {
         if (response.data.success) {
+          this.isLoading = false;
           // 跳轉到 確認付款的頁面
           vm.$router.push(`/usercheckout/${response.data.orderId}`);
         }

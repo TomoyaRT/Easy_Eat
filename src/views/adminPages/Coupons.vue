@@ -61,7 +61,15 @@
       </div>
     </div>
     <!-- Loading -->
-    <Loading :active="isLoading"></Loading>
+    <Loading
+      :active="isLoading"
+      :background-color="loadingObj.bgc"
+      :loader="loadingObj.style"
+      :color="loadingObj.color"
+      :opacity="loadingObj.opacity"
+      :height="loadingObj.height"
+      :width="loadingObj.width"
+    ></Loading>
     <!-- 分頁模板 -->
     <Pagination :pagination="pagination" @change-page="getCoupon" />
     <!-- 優惠券模板 -->
@@ -86,9 +94,10 @@
 <script>
 import CouponModal from "../../components/adminPages/CouponModal.vue";
 import AdminPagesUniversal from "../../mixins/adminPages/AdminPagesUniversal";
+import LoadingConfiguration from "../../mixins/LoadingConfiguration";
 
 export default {
-  mixins: [AdminPagesUniversal],
+  mixins: [AdminPagesUniversal, LoadingConfiguration],
   components: {
     CouponModal,
   },
@@ -111,8 +120,9 @@ export default {
   methods: {
     // 取得優惠券資料
     getCoupon(page = 1) {
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupons?page=${page}`;
       this.isLoading = true; // 開啟Loading元件
+      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupons?page=${page}`;
+      
       // 發送API
       this.$http.get(api).then((res) => {
         this.isLoading = false; // 關閉Loading元件

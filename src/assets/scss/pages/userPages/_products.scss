@@ -109,8 +109,6 @@
     }
 }
 
-//////////////////////////////////////////////////////////
-
 // 篩選器區域
 .products-filter {
     width: 100%;
@@ -119,6 +117,10 @@
     .products-filter-container,
     .products-sorting-container {
         display: flex;
+
+        @include tablet_1024 {
+            margin: 1rem auto;
+        }
     }
 
     .products-sorting-container {
@@ -133,6 +135,7 @@
         font-size: 18px;
         font-weight: bolder;
         height: 3.5rem;
+        width: 3.5rem;
         line-height: 2rem;
         letter-spacing: 3px;
         background-color: #f1ad53;
@@ -199,9 +202,6 @@
     .product-sort-item-active {
         background-color: #2ECA48;
     }
-    
-
-    ////////////////////////////////////////////////////////////
 
     // 搜尋列容器 手機板
     .searchbar-container {

@@ -187,6 +187,7 @@
       :background-color="loadingObj.bgc"
       :loader="loadingObj.style"
       :color="loadingObj.color"
+      :opacity="loadingObj.opacity"
       :height="loadingObj.height"
       :width="loadingObj.width"
     ></Loading>
@@ -196,11 +197,12 @@
 <script>
 import AddToCartAndUpdateFavoriteList from "../../mixins/userPages/AddToCartAndUpdateFavoriteList.js";
 import FavoriteDataAndShoppingCartData from "../../mixins/userPages/FavoriteDataAndShoppingCartData";
+import LoadingConfiguration from "../../mixins/LoadingConfiguration";
 
 export default {
   name: "Home",
   inject: ["emitter"],
-  mixins: [AddToCartAndUpdateFavoriteList, FavoriteDataAndShoppingCartData],
+  mixins: [AddToCartAndUpdateFavoriteList, FavoriteDataAndShoppingCartData, LoadingConfiguration],
   data() {
     return {
       current: 0, //當前圖片
@@ -214,15 +216,6 @@ export default {
         { id: 5, src: "images/05.jpg" },
       ],
       displayProducts: [], // 展示用的四個特價商品
-      isLoading: false, // Loading元件(全域)
-      // 自定義Loading樣式
-      loadingObj: {
-        bgc: "#9E9E9E",
-        style: "dots",
-        color: "#FF961F",
-        height: 128,
-        width: 128,
-      },
       timers: [], //計時器容器
     };
   },
@@ -266,23 +259,24 @@ export default {
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`;
 
       vm.$http.get(api).then((response) => {
-        this.isLoading = false;
         // 篩選出有特價的商品，並擷取前四個做為展示用商品。
         vm.displayProducts = response.data.products
           .filter((item) => {
             return item.origin_price !== item.price;
           })
           .slice(0, 4);
+
+        this.isLoading = false;
       });
     },
   },
   created() {
     // 自動輪播圖功能 (開啟)
     this.autoChangePage();
+    // 重新取得購物車資料
+    this.$emit("update-shopping-cart-products");
     // 取得API商品資料
     this.getProducts();
-    // 重新取得資料
-    this.$emit("update-shopping-cart-products");
   },
 };
 </script>
