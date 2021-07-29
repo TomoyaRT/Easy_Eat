@@ -3,19 +3,23 @@
     <!-- 單一商品容器-->
     <div class="product-container">
       <!-- 商品圖片 -->
-      <img :src="product.imageUrl" alt="產品圖片" />
+      <div class="product-img-container">
+        <img :src="product.imageUrl" alt="產品圖片" v-if="productStatus" />
+        <div class="overlay-img" v-else></div>
+      </div>
+
       <div class="product-detail-container">
         <!-- 商品標籤 -->
-        <div class="product-tag">{{ product.category }}</div>
+        <div class="product-tag">{{ productStatus ? product.category : '類別' }}</div>
         <!-- 商品標題 -->
-        <h1 class="product-title">{{ product.title }}</h1>
+        <h1 class="product-title">{{ productStatus ? product.title : '商品名稱' }}</h1>
         <!-- 商品原價與售價 -->
         <div class="product-price-container">
           <div class="product-promotional-price">
-            {{ priceCalculation }}
+            ${{ productStatus ? priceCalculation : 0 }}
           </div>
           <div class="product-origin-price">
-            {{ originPriceCalculation }}
+            {{ productStatus ? originPriceCalculation : '' }}
           </div>
         </div>
         <!-- 營養成分 -->
@@ -28,7 +32,7 @@
                 <span class="content">熱量 </span>
               </div>
               <div class="number-group">
-                <span class="number">{{ caloriesCalculation }}</span>
+                <span class="number">{{ productStatus ? caloriesCalculation : 0 }}</span>
                 <span class="unit"> 卡</span>
               </div>
             </li>
@@ -38,7 +42,7 @@
                 <span class="content">蛋白質 </span>
               </div>
               <div class="number-group">
-                <span class="number">{{ proteinCalculation }}</span>
+                <span class="number">{{ productStatus ? proteinCalculation : 0 }}</span>
                 <span class="unit"> 克</span>
               </div>
             </li>
@@ -48,7 +52,7 @@
                 <span class="content">油脂 </span>
               </div>
               <div class="number-group">
-                <span class="number">{{ fatCalculation }}</span>
+                <span class="number">{{ productStatus ? fatCalculation : 0 }}</span>
                 <span class="unit"> 克</span>
               </div>
             </li>
@@ -58,7 +62,7 @@
                 <span class="content">碳水化合物 </span>
               </div>
               <div class="number-group">
-                <span class="number">{{ carbohydratesCalculation }}</span>
+                <span class="number">{{ productStatus ? carbohydratesCalculation : 0 }}</span>
                 <span class="unit"> 克</span>
               </div>
             </li>
@@ -68,7 +72,7 @@
         <div class="product-information">
           <div class="product-information-title">商品資訊</div>
           <p class="product-information-content">
-            {{ product.content }}
+            {{ productStatus ? product.content : '商品的簡介...' }}
           </p>
         </div>
         <!-- 商品選購數量 -->
@@ -135,18 +139,27 @@
       </div>
     </div>
     <!-- Loading -->
-    <Loading :active="isLoading"></Loading>
+    <Loading
+      :active="isLoading"
+      :background-color="loadingObj.bgc"
+      :loader="loadingObj.style"
+      :color="loadingObj.color"
+      :opacity="loadingObj.opacity"
+      :height="loadingObj.height"
+      :width="loadingObj.width"
+    ></Loading>
   </div>
 </template>
 
 <script>
-import AddToCartAndUpdateFavoriteList from '../../mixins/userPages/AddToCartAndUpdateFavoriteList.js';
-import FavoriteDataAndShoppingCartData from '../../mixins/userPages/FavoriteDataAndShoppingCartData';
+import AddToCartAndUpdateFavoriteList from "../../mixins/userPages/AddToCartAndUpdateFavoriteList.js";
+import FavoriteDataAndShoppingCartData from "../../mixins/userPages/FavoriteDataAndShoppingCartData";
+import LoadingConfiguration from "../../mixins/LoadingConfiguration";
 
 export default {
   name: "Product",
   inject: ["emitter"],
-  mixins: [AddToCartAndUpdateFavoriteList, FavoriteDataAndShoppingCartData],
+  mixins: [AddToCartAndUpdateFavoriteList, FavoriteDataAndShoppingCartData, LoadingConfiguration],
   data() {
     return {
       productId: "", // 產品ID
@@ -156,6 +169,7 @@ export default {
       },
       qty: 1, // 選購產品數量 (預設值: 1)
       isLoading: false, // Loading元件(全域)
+      productStatus: false, // 商品圖片讀取狀態
     };
   },
   watch: {
@@ -209,6 +223,7 @@ export default {
       vm.$http.get(api).then((response) => {
         if (response.data.success) {
           vm.product = response.data.product;
+          vm.productStatus = true;
         } else {
           console.log("API串聯失敗");
         }

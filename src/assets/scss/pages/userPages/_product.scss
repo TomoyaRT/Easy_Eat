@@ -32,11 +32,10 @@
     }
 
     // 商品圖片
-    img {
+    .product-img-container {
+        grid-area: Img;
         width: 100%;
         height: 250px;
-        object-fit: cover;
-        grid-area: Img;
         margin-bottom: 2rem;
 
         @include tablet_768 {
@@ -47,6 +46,48 @@
         @include tablet_1024 {
             width: 95%;
             height: 720px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        // 讀取商品資料的Lazyloading
+        .overlay-img {
+            grid-area: Img;
+            width: 100%;
+            height: 250px;
+            margin-bottom: 2rem;
+            display: inline-block;
+            background: no-repeat
+                linear-gradient(
+                    45deg,
+                    #c4c4c4 0%,
+                    #c4c4c4 10%,
+                    #c4c4c4 20%,
+                    #c4c4c4 30%,
+                    #cfd3d6 40%,
+                    #dde2e6 50%,
+                    #cfd3d6 60%,
+                    #c4c4c4 70%,
+                    #c4c4c4 80%,
+                    #c4c4c4 90%,
+                    #c4c4c4 100%
+                )
+                0/600%;
+            animation: product-loading 1.2s ease-in-out infinite;
+
+            @include tablet_768 {
+                width: 95%;
+                height: 600px;
+            }
+
+            @include tablet_1024 {
+                width: 95%;
+                height: 720px;
+            }
         }
     }
 
@@ -269,13 +310,13 @@
             cursor: pointer;
 
             &:hover {
-                background-color: #B05B3B;
-                transition: all .3s;
+                background-color: #b05b3b;
+                transition: all 0.3s;
             }
 
             &:active {
-                transform: scale(.9);
-                transition: all .2s;
+                transform: scale(0.9);
+                transition: all 0.2s;
             }
         }
         .bi-plus-lg {
@@ -350,7 +391,7 @@
         &:hover {
             cursor: pointer;
             &:before {
-                transform: translateX(300px) skewX(-15deg) ;
+                transform: translateX(300px) skewX(-15deg);
                 opacity: 0.6;
                 transition: 0.7s;
             }
