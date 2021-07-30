@@ -69,14 +69,12 @@ export default {
     copyCoupon() {
       const vm = this;
       navigator.clipboard.writeText(vm.couponCode)
-        .then((res) => {
-          // 使用者回饋訊息
-          vm.$httpMessageState(res, "複製優惠券");
+        .then(() => {
           vm.$emit("copy-coupon-code");
-        })
-        .catch((err) => {
+        }
+        ,() => {
           // 使用者回饋訊息
-          vm.$httpMessageState(err, "複製優惠券");
+          vm.$httpMessageState("複製優惠券");
         });
     },
   },
