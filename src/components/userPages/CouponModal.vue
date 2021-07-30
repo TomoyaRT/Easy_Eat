@@ -74,7 +74,7 @@ export default {
         }
         ,() => {
           // 使用者回饋訊息
-          vm.$httpMessageState("複製優惠券");
+          vm.$httpMessageState('failed', "複製優惠券");
         });
     },
   },
