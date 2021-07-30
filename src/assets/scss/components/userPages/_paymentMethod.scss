@@ -294,8 +294,12 @@
         border-radius: 0.75rem;
         backdrop-filter: blur(10px);
         transform-style: preserve-3d;
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
         transition: 1s;
         backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
     }
 
     .card-front {
