@@ -74,7 +74,8 @@ export default {
           vm.$emit("copy-coupon-code");
         })
         .catch((err) => {
-          console.log(err);
+          // 使用者回饋訊息
+          vm.$httpMessageState(err, "複製優惠券");
         });
     },
   },
