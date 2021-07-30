@@ -69,7 +69,9 @@ export default {
     copyCoupon() {
       const vm = this;
       navigator.clipboard.writeText(vm.couponCode)
-        .then(() => {
+        .then((res) => {
+          // 使用者回饋訊息
+          vm.$httpMessageState(res, "複製優惠券");
           vm.$emit("copy-coupon-code");
         })
         .catch((err) => {
