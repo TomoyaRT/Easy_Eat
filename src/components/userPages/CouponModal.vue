@@ -68,15 +68,14 @@ export default {
     // 複製優惠券代碼到剪貼簿
     copyCoupon() {
       const vm = this;
-      const cb = navigator.clipboard;
-      cb.writeText(vm.couponCode)
+      navigator.clipboard.writeText(vm.couponCode)
         .then(() => {
           vm.$emit("copy-coupon-code");
         })
-        ,() => {
+        .catch((err) => {
           // 使用者回饋訊息
-          vm.$httpMessageState("複製優惠券");
-        };
+          vm.$httpMessageState(err, "複製優惠券");
+        });
     },
   },
 };
