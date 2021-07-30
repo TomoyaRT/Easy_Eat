@@ -17,27 +17,61 @@
         <div class="customer-checkout-container">
           <div class="customer-container">
             <div class="customer-title">姓名</div>
-            <div class="customer-content">{{ orderData.user.name }}</div>
+            <div class="customer-content">
+              {{
+                Object.keys(orderData).length !== 0
+                  ? orderData.user.name
+                  : "讀取中..."
+              }}
+            </div>
           </div>
           <div class="customer-container">
             <div class="customer-title">手機</div>
-            <div class="customer-content">{{ orderData.user.tel }}</div>
+            <div class="customer-content">
+              {{
+                Object.keys(orderData).length !== 0
+                  ? orderData.user.tel
+                  : "讀取中..."
+              }}
+            </div>
           </div>
           <div class="customer-container">
             <div class="customer-title">電子信箱</div>
-            <div class="customer-content">{{ orderData.user.email }}</div>
+            <div class="customer-content">
+              {{
+                Object.keys(orderData).length !== 0
+                  ? orderData.user.email
+                  : "讀取中..."
+              }}
+            </div>
           </div>
           <div class="customer-container">
             <div class="customer-title">地址</div>
-            <div class="customer-content">{{ orderData.user.address }}</div>
+            <div class="customer-content">
+              {{
+                Object.keys(orderData).length !== 0
+                  ? orderData.user.address
+                  : "讀取中..."
+              }}
+            </div>
           </div>
           <div class="customer-container">
             <div class="customer-title">備註訊息</div>
-            <div class="customer-content">{{ orderData.message }}</div>
+            <div class="customer-content">
+              {{
+                Object.keys(orderData).length !== 0
+                  ? orderData.message
+                  : "讀取中..."
+              }}
+            </div>
           </div>
           <div class="customer-container">
             <div class="customer-title">付款方式</div>
-            <div class="customer-content">{{ paymentMethod }}</div>
+            <div class="customer-content">
+              {{
+                Object.keys(orderData).length !== 0 ? paymentMethod : "讀取中..."
+              }}
+            </div>
           </div>
           <div class="customer-container">
             <div class="customer-title">付款狀態</div>
@@ -66,13 +100,13 @@
 </template>
 
 <script>
-import OrderData from '../../mixins/userPages/OrderData';
+import OrderData from "../../mixins/userPages/OrderData";
 import CheckoutFlowchart from "../../components/userPages/CheckoutFlowchart.vue";
 import ShoppingCartList from "../../components/userPages/ShoppingCartList.vue";
 import LoadingConfiguration from "../../mixins/LoadingConfiguration";
 
 export default {
-  name: 'Checkout',
+  name: "Checkout",
   inject: ["emitter"],
   mixins: [OrderData, LoadingConfiguration],
   props: {
@@ -86,8 +120,8 @@ export default {
     paymentMethod: {
       type: String,
       default() {
-        return '';
-      }
+        return "";
+      },
     },
   },
   components: {
@@ -97,7 +131,7 @@ export default {
   data() {
     return {
       flowchartStatus: "Checkout",
-      shoppingCartProductList: {carts:[]}, // 購物車資料
+      shoppingCartProductList: { carts: [] }, // 購物車資料
     };
   },
   methods: {
@@ -117,14 +151,14 @@ export default {
   },
   created() {
     // 更新資料
-    this.$emit('update-shopping-cart-products');
+    this.$emit("update-shopping-cart-products");
     // 將資料拷貝做渲染使用
     this.shoppingCartProductList = this.shoppingCartProducts;
   },
   mounted() {
     // 重新整理、關閉頁面時，瀏覽器預設的提醒訊息。
     window.onbeforeunload = () => {
-        return '';
+      return "";
     };
   },
   beforeUnmount() {
