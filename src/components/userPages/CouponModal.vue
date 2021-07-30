@@ -73,10 +73,10 @@ export default {
         .then(() => {
           vm.$emit("copy-coupon-code");
         })
-        .catch((err) => {
+        ,() => {
           // 使用者回饋訊息
-          vm.$httpMessageState(err, "複製優惠券");
-        });
+          vm.$httpMessageState("複製優惠券");
+        };
     },
   },
 };
