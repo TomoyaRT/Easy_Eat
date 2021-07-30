@@ -328,7 +328,7 @@
     .card-number,
     .card-valid,
     .card-holder {
-        color: #fff;
+        color: rgb(168, 22, 22);
         font-weight: bold;
         font-size: 0.8rem;
     }
@@ -443,9 +443,13 @@
     // hover 動畫
     .card-front-active {
         transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+        -moz-transform: rotateY(180deg);
     }
     .card-back-active {
         transform: rotateY(360deg);
+        -webkit-transform: rotateY(360deg);
+        -moz-transform: rotateY(360deg);
     }
 
     // 表單按鈕
