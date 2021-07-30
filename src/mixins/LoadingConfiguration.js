@@ -4,7 +4,7 @@ export default {
             isLoading: false, // Loading元件(全域)
             // 自定義Loading樣式
             loadingObj: {
-                bgc: "#FAF3F3",
+                bgc: "#FFFFFF",
                 style: "dots",
                 color: "#FF961F",
                 height: 128,
