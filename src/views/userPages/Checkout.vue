@@ -18,59 +18,37 @@
           <div class="customer-container">
             <div class="customer-title">姓名</div>
             <div class="customer-content">
-              {{
-                Object.keys(orderData).length !== 0
-                  ? orderData.user.name
-                  : "讀取中..."
-              }}
+              {{ orderData.user.name }}
             </div>
           </div>
           <div class="customer-container">
             <div class="customer-title">手機</div>
             <div class="customer-content">
-              {{
-                Object.keys(orderData).length !== 0
-                  ? orderData.user.tel
-                  : "讀取中..."
-              }}
+              {{ orderData.user.tel }}
             </div>
           </div>
           <div class="customer-container">
             <div class="customer-title">電子信箱</div>
             <div class="customer-content">
-              {{
-                Object.keys(orderData).length !== 0
-                  ? orderData.user.email
-                  : "讀取中..."
-              }}
+              {{ orderData.user.email }}
             </div>
           </div>
           <div class="customer-container">
             <div class="customer-title">地址</div>
             <div class="customer-content">
-              {{
-                Object.keys(orderData).length !== 0
-                  ? orderData.user.address
-                  : "讀取中..."
-              }}
+              {{ orderData.user.address }}
             </div>
           </div>
           <div class="customer-container">
             <div class="customer-title">備註訊息</div>
             <div class="customer-content">
-              {{
-                Object.keys(orderData).length !== 0
-                  ? orderData.message
-                  : "讀取中..."
-              }}
+              {{ orderData.message }}
             </div>
           </div>
           <div class="customer-container">
             <div class="customer-title">付款方式</div>
             <div class="customer-content">
-              {{
-                Object.keys(orderData).length !== 0 ? paymentMethod : "讀取中..."
-              }}
+              {{ paymentMethod }}
             </div>
           </div>
           <div class="customer-container">
