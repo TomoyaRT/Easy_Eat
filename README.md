@@ -37,11 +37,10 @@
 ### 使用技術
 - Vue.js
   - Vue Router 管理路由
-  - Vuex 管理 Web API
-  - axios 串接 API 
+  - axios 串接 API
   - vee-validate 驗證表格
 - CSS
-  - Bootstrap 設計 RWD
+  - CSS 手刻設計 RWD
   - Sass/SCSS
 
 ### 網站設計
@@ -71,18 +70,31 @@
 ```
     src
     ├── assets
-    │   ├── images                        # 所有圖片素材
-    │   ├── layout
-    │   │     ├── _b-sidebar.scss         # 後台側邊欄
-    │   │     ├── _f-sidebar.scss         # 前台側邊欄
-    │   │     └── _footer.scss
+    │   ├── json                 
+    │   │     └── areaList.json      # 全台縣市與區域資料
+    │   ├── scss
+    │   │     ├── base     
+    │   │     │     └── _reset.scss  # CSS reset
+    │   │     │
+    │   │     ├── components
+    │   │     │     ├── adminPages
+    │   │     │               ├── _checkoutFlowchart.scss     # 表單流程圖
+    │   │     │               ├── _couponModal.scss           # 優惠券模板
+    │   │     │               ├── _favoriteListModal.scss     # 我的最愛清單模板
+    │   │     │               ├── _footer.scss                # footer
+    │   │     │               ├── _goTopButton.scss           # 至頂按鈕
+    │   │     │               ├── _navbar.scss                # navbar
+    │   │     │               ├── _orderForm.scss             # 訂購人表單
+    │   │     │               ├── _paymentMethod.scss         # 付款資訊表單
+    │   │     │               ├── _recipientForm.scss         # 收件人表單
+    │   │     │               ├── _shoppingCartList.scss         # 購物車列表清單
+    │   │     │     └── userPages
+    │   │     │                  
+    │   │     ├── components         # 元件樣式
+    │   │     ├── helpers            # RWD響應式斷點的mixin檔
+    │   │     ├── pages              # 分頁樣式
+    │   │     └── all.scss           # scss的編譯進入點
     │   │
-    │   ├── module
-    │   │     ├── _alertMassage.scss       # 訊息提示
-    │   │     ├── _button.scss
-    │   │     ├── _form.scss
-    │   │     ├── _modal.scss              # 自定義 Bootstrap modal
-    │   │     └── _scrollBtn.scss          # 回頂端按鈕
     │   │
     │   ├── page
     │   │     ├── backstage                # 後台頁面SCSS
@@ -90,7 +102,6 @@
     │   │     ├── _forestage.scss          
     │   │     └── _backstage.scss
     │   │
-    │   ├── variable                      # 自定義 Bootstrap 變數
     │   └── all.scss
     │
     ├── components
