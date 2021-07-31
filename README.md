@@ -15,7 +15,7 @@
 
 <p align="center">
   <a  href="https://tomoyart.github.io/Easy_Eat/dist/#/">
-    <img src="https://img.shields.io/badge/Demo-Gentskin-green">
+    <img src="https://img.shields.io/badge/Demo-EasyEat-green">
   </a>
 </p>
 
