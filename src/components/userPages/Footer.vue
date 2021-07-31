@@ -7,7 +7,7 @@
           <img src="@/../public/images/Logo2.png" alt="網站的Logo" />
           <p class="brand-attitude">
             Easy
-            Eat成立於2021年，已經有約一個年頭的歷史，將產品做到最好，是我們一直以來的原則。
+            Eat成立於2021年，已經約有四個月的歷史，將產品做到最好，是我們一直以來的原則。
           </p>
         </div>
       </div>

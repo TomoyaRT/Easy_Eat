@@ -73,7 +73,7 @@ export default {
     this.toastActive = true;
     setTimeout(() => {
       this.toastActive = false;
-    }, 155000);
+    }, 2500);
   },
 };
 </script>
