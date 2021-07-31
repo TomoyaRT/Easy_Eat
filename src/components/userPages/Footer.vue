@@ -45,7 +45,7 @@
       </div>
     </div>
     <div class="copyright">
-      <p class="use-statement">僅用於個人學習使用，非商業用途。</p>
+      <p class="use-statement">僅用於個人作品使用，非商業用途。</p>
       <p class="copyright-statement">© 2021 EasyEat All Rights Reserved.</p>
     </div>
   </div>
