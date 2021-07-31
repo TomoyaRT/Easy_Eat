@@ -26,7 +26,7 @@
   <a href="#packages">使用套件</a>
 </p>
 
-<img src="https://imgur.com/a/gSUfHB4">
+<img src="https://i.imgur.com/dcyPmhE.jpg">
 <h4>
   <a href="https://tomoyart.github.io/Easy_Eat/dist/#/">Demo</a>
 </h4>
