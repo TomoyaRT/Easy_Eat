@@ -73,20 +73,20 @@
     src
     ├── assets
     │   ├── json                 
-    │   │     └── areaList.json      # 全台縣市與區域資料
+    │   │     └── areaList.json               # 全台縣市與區域資料
     │   │ 
     │   ├── scss
-    │         ├── base               # CSS Reset 與 複用樣式
+    │         ├── base                        # CSS Reset 與 複用樣式
     │         ├── components
-    │         │     ├── adminPages        # 後台元件scss
-    │         │     └── userPages         # 前台元件scss
+    │         │     ├── adminPages                # 後台元件scss
+    │         │     └── userPages                 # 前台元件scss
     │         │
-    │         ├── helpers            # RWD響應式斷點的mixin檔
+    │         ├── helpers                     # RWD響應式斷點的mixin檔
     │         ├── pages              
-    │         │     ├── adminPages        # 後台頁面scss
-    │         │     └── userPages         # 前台頁面scss
+    │         │     ├── adminPages                # 後台頁面scss
+    │         │     └── userPages                 # 前台頁面scss
     │         │
-    │         └── all.scss           # scss的編譯進入點
+    │         └── all.scss                    # scss的編譯進入點
     │   
     │   
     │
@@ -110,11 +110,11 @@
     │   └── index.js                      # 網站的路由控制
     │   
     └── views
-        ├── adminPages                     # 後台頁面
-        ├── userPages                      # 前台頁面
-        ├── AdminPage.vue                  # 後台版型
-        ├── HomePage.vue                   # 前台版型
-        └── LoginPage.vue                  # 登入頁面
+        ├── adminPages                    # 後台頁面
+        ├── userPages                     # 前台頁面
+        ├── AdminPage.vue                 # 後台版型
+        ├── HomePage.vue                  # 前台版型
+        └── LoginPage.vue                 # 登入頁面
  ```
     
 ## 使用套件
