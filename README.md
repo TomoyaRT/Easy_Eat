@@ -74,58 +74,47 @@
     ├── assets
     │   ├── json                 
     │   │     └── areaList.json      # 全台縣市與區域資料
+    │   │ 
     │   ├── scss
-    │   │     ├── base     
-    │   │     │     └── _reset.scss  # CSS reset
-    │   │     │
-    │   │     ├── components
-    │   │     │     ├── adminPages
-    │   │     │               ├── _checkoutFlowchart.scss     # 表單流程圖
-    │   │     │               ├── _couponModal.scss           # 優惠券模板
-    │   │     │               ├── _favoriteListModal.scss     # 我的最愛清單模板
-    │   │     │               ├── _footer.scss                # footer
-    │   │     │               ├── _goTopButton.scss           # 至頂按鈕
-    │   │     │               ├── _navbar.scss                # navbar
-    │   │     │               ├── _orderForm.scss             # 訂購人表單
-    │   │     │               ├── _paymentMethod.scss         # 付款資訊表單
-    │   │     │               ├── _recipientForm.scss         # 收件人表單
-    │   │     │               ├── _shoppingCartList.scss         # 購物車列表清單
-    │   │     │     └── userPages
-    │   │     │                  
-    │   │     ├── components         # 元件樣式
-    │   │     ├── helpers            # RWD響應式斷點的mixin檔
-    │   │     ├── pages              # 分頁樣式
-    │   │     └── all.scss           # scss的編譯進入點
-    │   │
-    │   │
-    │   ├── page
-    │   │     ├── backstage                # 後台頁面SCSS
-    │   │     ├── forestage                # 前台頁面SCSS
-    │   │     ├── _forestage.scss          
-    │   │     └── _backstage.scss
-    │   │
-    │   └── all.scss
+    │         ├── base               # CSS Reset 與 複用樣式
+    │         ├── components
+    │         │     ├── adminPages        # 後台元件scss
+    │         │     └── userPages         # 前台元件scss
+    │         │
+    │         ├── helpers            # RWD響應式斷點的mixin檔
+    │         ├── pages              
+    │         │     ├── adminPages        # 後台頁面scss
+    │         │     └── userPages         # 前台頁面scss
+    │         │
+    │         └── all.scss           # scss的編譯進入點
+    │   
+    │   
     │
     ├── components
-    │   ├── backstage                     # 後台主要組件
-    │   └── forestage                     # 前台主要組件
+    │   ├── adminPages                    # 後台元件
+    │   ├── userPages                     # 前台元件
+    │   ├── Toast.vue                     # 前後台的使用者回饋訊息
+    │   └── ToastMessages.vue             # 前後台的使用者回饋訊息
     │
-    ├── filters
-    │   ├── currency.js
-    │   └── date.js
+    ├── methods
+    │   ├── emitter.js                    # 導入並匯出emitter套件
+    │   ├── filters.js                    # 創建並匯出商品價格的千分號方法
+    │   └── pushMessageState.js           # 處理使用者回饋訊息的狀態
     │
-    ├── store                             # Vuex
-    │   ├── cart.js                       # 購物車組件
-    │   ├── index.js                      # 全域組件
-    │   ├── order.js                      # 訂單組件
-    │   ├── products.js                   # 商品組件
+    ├── mixins
+    │   ├── adminPages                    # 後台mixins
+    │   ├── userPages                     # 前台mixins
+    │   └── LoadingConfiguration.js       # Loading轉場的mixins
+    │
+    ├── router
+    │   └── index.js                      # 網站的路由控制
     │   
     └── views
-        ├── backstage                     # 後台主要頁面
-        ├── forestage                     # 前台主要頁面
-        ├── Dashboard.vue                 # 後台版型
-        ├── Index.vue                     # 前台版型
-        └── Login.vue                     # 登入頁面
+        ├── adminPages                     # 後台頁面
+        ├── userPages                      # 前台頁面
+        ├── AdminPage.vue                  # 後台版型
+        ├── HomePage.vue                   # 前台版型
+        └── LoginPage.vue                  # 登入頁面
  ```
     
 ## 使用套件
