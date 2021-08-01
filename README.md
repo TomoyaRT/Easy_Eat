@@ -49,21 +49,6 @@
 - 在購物車頁面，顯示使用者所選購商品所有的營養成分與金額總計，節省自行計算的時間
 - 在付款資訊的表單中，使用可翻轉的信用卡圖示，不僅可讓使用者再次確認輸入資料，也能增添一種設計感。
 
-
-## 操作流程
-
-* 註冊及登入選單中已自動設定預設帳號及密碼，只要手動選擇帳號即可完成註冊及登入流程
-
-![Member login imgur](https://i.imgur.com/dcyPmhE.jpg)
-
-* 從前台登入帳號後 透過左上方的齒輪圖案點擊可進入後台管理進行查看
-  - 後台帳號：  GentSkinTest01@gmail.com
-  - 後台密碼：  GentSkin
-
-![CMS login imgur](https://i.imgur.com/dcyPmhE.jpg)
-
-
-
 ## 架設環境
 
 - 使用 Github Pages 搭配後端 API 建置網站。
