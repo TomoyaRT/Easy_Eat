@@ -23,7 +23,7 @@
   <a href="#作品介紹">作品介紹</a> •
   <a href="#架設環境">架設環境</a> •
   <a href="#檔案結構">檔案結構</a> •
-  <a href="#packages">使用套件</a>
+  <a href="#使用套件">使用套件</a>
 </p>
 
 <img src="https://i.imgur.com/dcyPmhE.jpg">
