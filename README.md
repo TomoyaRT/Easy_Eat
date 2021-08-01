@@ -131,12 +131,13 @@
 ## 使用套件
 
 - [vue-router](https://github.com/vuejs/vue-router)
-- [Vuex](https://github.com/vuejs/vuex)
 - [vee-validate](https://github.com/logaretm/vee-validate)
 - [axios](https://github.com/axios/axios)
 - [vue-axios](https://github.com/imcvampire/vue-axios)
-- [vue-carousel](https://github.com/SSENSE/vue-carousel)
-- [vue-infinite-loading](https://github.com/PeachScript/vue-infinite-loading)
-- [animate.css](https://github.com/daneden/animate.css)
+- [bootstrap-icons](https://github.com/twbs/icons)
+- [mitt](https://github.com/developit/mitt)
+- [smoothscroll](https://github.com/iamdustan/smoothscroll)
+- [vue-sweetalert2](https://github.com/avil13/vue-sweetalert2)
+- [vue3-loading-overlay](https://github.com/moyoujun/vue3-loading-overlay)
 
 
