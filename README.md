@@ -78,8 +78,8 @@
     ├── components
     │   ├── adminPages                    # 後台元件
     │   ├── userPages                     # 前台元件
-    │   ├── Toast.vue                     # 前後台的使用者回饋訊息
-    │   └── ToastMessages.vue             # 前後台的使用者回饋訊息
+    │   ├── Toast.vue                     # 前後台的使用者回饋訊息模板
+    │   └── ToastMessages.vue             # 前後台的使用者回饋訊息容器
     │
     ├── methods
     │   ├── emitter.js                    # 導入並匯出emitter套件
