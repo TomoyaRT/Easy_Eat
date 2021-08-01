@@ -40,25 +40,27 @@
   - axios 串接 API
   - vee-validate 驗證表格
 - CSS
-  - CSS 手刻設計 RWD
+  - 手刻設計響應式 RWD
   - Sass/SCSS
 
 ### 網站設計
-- 網站使用深色背景，讓使用者更加聚焦內容本身
-- 使用左側邊欄設計更方便點擊連結，也讓右側內容視覺體驗增加
+- 商品卡片依據使用者需求顯示價格、熱量、蛋白質、脂肪、碳水化合物等營養成分，方便瀏覽與篩選。
+- 透過拼圖遊戲獲得商品優惠券，讓使用者可享受小遊戲帶來的娛樂，也能同時獲得需要的優惠券。
+- 在購物車頁面，顯示使用者所選購商品所有的營養成分與金額總計，節省自行計算的時間
+- 在付款資訊的表單中，使用可翻轉的信用卡圖示，不僅可讓使用者再次確認輸入資料，也能增添一種設計感。
 
 
 ## 操作流程
 
 * 註冊及登入選單中已自動設定預設帳號及密碼，只要手動選擇帳號即可完成註冊及登入流程
 
-![Member login imgur](https://i.imgur.com/icVkLzr.gif)
+![Member login imgur](https://i.imgur.com/dcyPmhE.jpg)
 
 * 從前台登入帳號後 透過左上方的齒輪圖案點擊可進入後台管理進行查看
   - 後台帳號：  GentSkinTest01@gmail.com
   - 後台密碼：  GentSkin
 
-![CMS login imgur](https://imgur.com/dFSrrhh.gif)
+![CMS login imgur](https://i.imgur.com/dcyPmhE.jpg)
 
 
 
