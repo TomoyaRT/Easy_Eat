@@ -11,7 +11,7 @@ import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
-// 自行撰寫
+// 自定義的模組
 import App from './App.vue'
 import router from './router'
 import { currency } from './methods/filters';
