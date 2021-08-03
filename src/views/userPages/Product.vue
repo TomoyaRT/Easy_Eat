@@ -225,7 +225,7 @@ export default {
           vm.product = response.data.product;
           vm.productStatus = true;
         } else {
-          console.log("API串聯失敗");
+          // console.log("API串聯失敗");
         }
       });
     },
