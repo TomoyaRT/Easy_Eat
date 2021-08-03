@@ -15,32 +15,30 @@
         {{ playMethod }}交換位置
         <i class="bi bi-arrow-left-right"></i>
       </div>
-      <div class="jigsaw-puzzle-container">
-        <div class="jigsaw-puzzle">
-          <div class="jigsaw-puzzle-piece" v-for="n in 9" :key="n">
-            <img
-              :src="
-                require(`@/../public/images/puzzle/${
-                  currentImgNameOrder[n - 1]
-                }.jpg`)
-              "
-              alt="拼圖的部分圖片"
-              :class="{
-                start: targetStartNum === n - 1,
-                enter: targetEnterNum === n - 1,
-              }"
-              draggable="true"
-              @mousedown="classChange($event, 'start')"
-              @mouseup="classChange($event, 'cancel')"
-              @dragstart="dragStart"
-              @dragover.prevent
-              @dragenter.prevent="dragEnter"
-              @dragend="dragEnd"
-              @drop="dropped"
-              @touchstart="touchStart"
-              :data-num="n - 1"
-            />
-          </div>
+      <div class="jigsaw-puzzle">
+        <div class="jigsaw-puzzle-piece" v-for="n in 9" :key="n">
+          <img
+            :src="
+              require(`@/../public/images/puzzle/${
+                currentImgNameOrder[n - 1]
+              }.jpg`)
+            "
+            alt="拼圖的部分圖片"
+            :class="{
+              start: targetStartNum === n - 1,
+              enter: targetEnterNum === n - 1,
+            }"
+            draggable="true"
+            @mousedown="classChange($event, 'start')"
+            @mouseup="classChange($event, 'cancel')"
+            @dragstart="dragStart"
+            @dragover.prevent
+            @dragenter.prevent="dragEnter"
+            @dragend="dragEnd"
+            @drop="dropped"
+            @touchstart="touchStart"
+            :data-num="n - 1"
+          />
         </div>
       </div>
       <CouponModal
@@ -185,7 +183,7 @@ export default {
   created() {
     this.getRandomOrder();
     if (window.ontouchstart === null) {
-      this.playMethod = '點擊';
+      this.playMethod = "點擊";
     }
   },
 };
