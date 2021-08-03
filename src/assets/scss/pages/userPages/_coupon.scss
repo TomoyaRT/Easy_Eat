@@ -81,15 +81,11 @@
             }
         }
 
-        .jigsaw-puzzle-container {
-            display: flex;
-            justify-content: center;
-        }
-
         .jigsaw-puzzle {
             position: absolute;
-            top: 70%;
-            transform: translateY(-65%);
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -80%);
             width: 288px;
             background-color: white;
             outline: 1px solid white;
