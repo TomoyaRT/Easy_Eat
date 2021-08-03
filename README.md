@@ -1,24 +1,117 @@
-# project
+<h1 align="center">
+  <a href="https://tomoyart.github.io/Easy_Eat/dist/#/">
+    <img src="https://icons-for-free.com/iconfiles/png/512/dinner+eat+eating+food+kitchen+restaurant+icon-1320086191755611454.png"
+         alt="Easy Eat"
+         width="200">
+  </a>
+  <br>
+  Easy Eat
+  <br>
+</h1>
 
-## Project setup
-```
-npm install
-```
+<h4 align="center">
+  電商網站設計：Vue.js 開發
+</h4>
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+<p align="center">
+  <a  href="https://tomoyart.github.io/Easy_Eat/dist/#/">
+    <img src="https://img.shields.io/badge/Demo-EasyEat-green">
+  </a>
+</p>
 
-### Compiles and minifies for production
-```
-npm run build
-```
+<p align="center">
+  <a href="#作品介紹">作品介紹</a> •
+  <a href="#架設環境">架設環境</a> •
+  <a href="#檔案結構">檔案結構</a> •
+  <a href="#使用套件">使用套件</a>
+</p>
 
-### Lints and fixes files
-```
-npm run lint
-```
+<img src="https://i.imgur.com/dcyPmhE.jpg">
+<h4>
+  <a href="https://tomoyart.github.io/Easy_Eat/dist/#/">Demo</a>
+</h4>
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## 作品介紹
+
+### 使用技術
+- Vue.js
+  - Vue Router 管理路由
+  - axios 串接 API
+  - vee-validate 驗證表格
+- CSS
+  - 手刻設計響應式 RWD
+  - Sass/SCSS
+
+### 網站設計
+- 商品卡片依據使用者需求顯示各種營養成分，方便瀏覽與篩選。
+- 透過拼圖遊戲，既可享受遊戲帶來的娛樂，也能同時獲得需要的優惠券。
+- 在購物車頁面，顯示使用者所選購商品所有的營養成分，節省自行計算的時間
+- 付款資訊的表單中，使用可翻轉的信用卡圖示，增添一種新穎感。
+
+## 架設環境
+
+- 使用 Github Pages 搭配後端 API 建置網站。
+
+## 檔案結構
+```
+    src
+    ├── assets
+    │   ├── json                 
+    │   │     └── areaList.json               # 全台縣市與區域資料
+    │   │ 
+    │   ├── scss
+    │         ├── base                        # CSS Reset 與 複用樣式
+    │         ├── components
+    │         │     ├── adminPages                # 後台元件scss
+    │         │     └── userPages                 # 前台元件scss
+    │         │
+    │         ├── helpers                     # RWD響應式斷點的mixin檔
+    │         ├── pages              
+    │         │     ├── adminPages                # 後台頁面scss
+    │         │     └── userPages                 # 前台頁面scss
+    │         │
+    │         └── all.scss                    # scss的編譯進入點
+    │   
+    │   
+    │
+    ├── components
+    │   ├── adminPages                    # 後台元件
+    │   ├── userPages                     # 前台元件
+    │   ├── Toast.vue                     # 前後台的使用者回饋訊息模板
+    │   └── ToastMessages.vue             # 前後台的使用者回饋訊息容器
+    │
+    ├── methods
+    │   ├── emitter.js                    # 導入並匯出emitter套件
+    │   ├── filters.js                    # 創建並匯出商品價格的千分號方法
+    │   └── pushMessageState.js           # 處理使用者回饋訊息的狀態
+    │
+    ├── mixins
+    │   ├── adminPages                    # 後台mixins
+    │   ├── userPages                     # 前台mixins
+    │   └── LoadingConfiguration.js       # Loading轉場的mixins
+    │
+    ├── router
+    │   └── index.js                      # 網站的路由控制
+    │   
+    └── views
+        ├── adminPages                    # 後台頁面
+        ├── userPages                     # 前台頁面
+        ├── AdminPage.vue                 # 後台版型
+        ├── HomePage.vue                  # 前台版型
+        └── LoginPage.vue                 # 登入頁面
+ ```
+    
+## 使用套件
+
+- [vue-router](https://github.com/vuejs/vue-router)
+- [vee-validate](https://github.com/logaretm/vee-validate)
+- [axios](https://github.com/axios/axios)
+- [vue-axios](https://github.com/imcvampire/vue-axios)
+- [bootstrap-icons](https://github.com/twbs/icons)
+- [mitt](https://github.com/developit/mitt)
+- [smoothscroll](https://github.com/iamdustan/smoothscroll)
+- [vue-sweetalert2](https://github.com/avil13/vue-sweetalert2)
+- [vue3-loading-overlay](https://github.com/moyoujun/vue3-loading-overlay)
+
+
