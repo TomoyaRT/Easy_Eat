@@ -37,9 +37,7 @@
               @dragenter.prevent="dragEnter"
               @dragend="dragEnd"
               @drop="dropped"
-              @touchstart="dragStart"
-              @touchmove="dragEnter"
-              @touchend="dragEnd"
+              @touchstart="touchStart"
               :data-num="n - 1"
             />
           </div>
@@ -147,26 +145,24 @@ export default {
       [data[num1], data[num2]] = [data[num2], data[num1]];
       vm.currentImgNameOrder = data;
     },
-
     // 支援手機的觸發事件
-    // touchStart(e) {
-    //   const vm = this;
-    //   const currentTargetNum = parseInt(e.target.dataset.num, 10);
-    //   const targetNum = vm.targetStartNum;
-    //   e.preventDefault();
-    //   if (currentTargetNum === targetNum) {
-    //     vm.classChange("none", "cancel");
-    //     return;
-    //   }
-    //   if (targetNum) {
-    //     vm.classChange("none", "cancel");
-    //     vm.changePuzzlePlace(currentTargetNum, targetNum);
-    //     vm.isPuzzleComplete();
-    //   } else {
-    //     vm.classChange(e, "start");
-    //   }
-    // },
-
+    touchStart(e) {
+      const vm = this;
+      const currentTargetNum = parseInt(e.target.dataset.num, 10);
+      const targetNum = vm.targetStartNum;
+      e.preventDefault();
+      if (currentTargetNum === targetNum) {
+        vm.classChange("none", "cancel");
+        return;
+      }
+      if (targetNum) {
+        vm.classChange("none", "cancel");
+        vm.changePuzzlePlace(currentTargetNum, targetNum);
+        vm.isPuzzleComplete();
+      } else {
+        vm.classChange(e, "start");
+      }
+    },
     // 完成拼圖
     isPuzzleComplete() {
       const vm = this;
