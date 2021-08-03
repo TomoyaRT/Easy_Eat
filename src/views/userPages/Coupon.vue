@@ -92,7 +92,7 @@ export default {
         this.currentImgNameOrder.push(str);
       });
     },
-    // 變更樣式、依據使用者行為
+    // 改變拼圖樣式
     classChange(e, status) {
       const vm = this;
       switch (status) {
@@ -110,13 +110,14 @@ export default {
           break;
       }
     },
-    // 拖移起
+    // 拖移起，拼圖懸空。
     dragStart(e) {
       const vm = this;
       vm.classChange(e, "start");
+      // 夾帶此拼圖方格的位置資料
       e.dataTransfer.setData("text/plain", e.target.dataset.num);
     },
-    // 拖移中，確定要放入的位置
+    // 拖移中，抵達可放入拼圖的目標位置
     dragEnter(e) {
       const vm = this;
       vm.classChange(e, "enter");
@@ -126,20 +127,25 @@ export default {
       const vm = this;
       vm.classChange("none", "cancel");
     },
+    // 拖移完成
     dropped(e) {
       const vm = this;
+      // 取得新拼圖方格的位置資料
       const dragNum = e.dataTransfer.getData("text/plain");
+      // 取得原拼圖方格的位置資料
       const targetNum = parseInt(e.target.dataset.num, 10);
       vm.changePuzzlePlace(dragNum, targetNum);
       vm.classChange("none", "cancel");
       vm.isPuzzleComplete();
     },
+    // 交換拼圖的位置
     changePuzzlePlace(num1, num2) {
       const vm = this;
       const data = vm.currentImgNameOrder;
       [data[num1], data[num2]] = [data[num2], data[num1]];
       vm.currentImgNameOrder = data;
     },
+    // 支援手機的觸發事件
     touchStart(e) {
       const vm = this;
       const currentTargetNum = parseInt(e.target.dataset.num, 10);
@@ -157,6 +163,7 @@ export default {
         vm.classChange(e, "start");
       }
     },
+    // 完成拼圖
     isPuzzleComplete() {
       const vm = this;
       if (
