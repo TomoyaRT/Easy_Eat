@@ -248,7 +248,7 @@ export default {
       var timeId = setInterval(() => {
         this.direction = "next";
         this.current === 4 ? (this.current = 0) : (this.current += 1);
-      }, 2000);
+      }, 3500);
       // 保存計時器id
       this.timers.push(timeId);
     },
