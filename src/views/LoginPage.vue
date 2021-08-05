@@ -155,7 +155,10 @@ export default {
       this.$http.post(api, this.user).then((res) => {
         // 如屬未登入狀態，即轉址到Login頁面。
         if (res.data.success) {
-          this.$router.push({name: 'AdminProducts'});
+          this.$router.push({name: 'AdminHome'});
+        } else {
+          this.$swal.fire("請重新登入");
+          this.$router.push({ name: 'Login' })
         }
       });
     },
@@ -170,7 +173,9 @@ export default {
           // 將Token Expired寫入瀏覽器的Cookie
           document.cookie = `ecToken=${token}; expires=${new Date(expired)};`;
           // 驗證通過，轉址到【後台】AdminProducts頁面
-          this.$router.push({name: 'AdminProducts'});
+          this.$router.push({name: 'AdminHome'});
+        } else {
+          this.$swal.fire("管理者帳號或密碼有誤");
         }
       });
     },
