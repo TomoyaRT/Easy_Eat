@@ -64,7 +64,7 @@
 
 - 使用 Github Pages 搭配後端 API 建置網站。
 
-## 檔案結構
+## 專案架構
 ```
     src
     ├── assets
