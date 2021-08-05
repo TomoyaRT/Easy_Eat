@@ -48,7 +48,7 @@
 * 本店商品頁面
 - 依據使用者需求顯示各種營養成分，方便瀏覽與篩選。
 
-![Products nutrition display imgur](https://i.imgur.com/z7Ovxht.gif)
+![Imgur](https://i.imgur.com/z7Ovxht.gifv)
 
 * 超值優惠頁面
 - 透過拼圖遊戲，既可享受遊戲帶來的娛樂，也能同時獲得價格折扣的優惠券。
