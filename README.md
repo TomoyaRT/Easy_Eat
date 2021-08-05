@@ -48,12 +48,12 @@
 * 本店商品頁面
 - 依據使用者需求顯示各種營養成分，方便瀏覽與篩選。
 
-![Products nutrition display imgur](https://i.imgur.com/z7Ovxht.gifv)
+![Products nutrition display imgur](https://i.imgur.com/z7Ovxht.gif)
 
 * 超值優惠頁面
 - 透過拼圖遊戲，既可享受遊戲帶來的娛樂，也能同時獲得價格折扣的優惠券。
 
-![Coupon jigsaw puzzle game imgur](https://i.imgur.com/4cdEvgy.gifv)
+![Coupon jigsaw puzzle game imgur](https://i.imgur.com/SZP74Dc.gif)
 
 * 付款資訊頁面
 - 用戶填寫表單時，透過可翻轉的信用卡圖示，不但可以再次確認填寫的信用卡資訊，還能增添一點新穎感。
