@@ -36,6 +36,7 @@
 
 ### 使用技術
 - Vue.js
+  - Vue3
   - Vue Router 管理路由
   - axios 串接 API
   - vee-validate 驗證表格
