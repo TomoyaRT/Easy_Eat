@@ -124,3 +124,5 @@
 - [smoothscroll](https://github.com/iamdustan/smoothscroll)
 - [vue-sweetalert2](https://github.com/avil13/vue-sweetalert2)
 - [vue3-loading-overlay](https://github.com/moyoujun/vue3-loading-overlay)
+- [chart.js](https://github.com/chartjs/Chart.js)
+- [vue3-chart-v2](https://github.com/vutran6853/vue3-chart-v2)
