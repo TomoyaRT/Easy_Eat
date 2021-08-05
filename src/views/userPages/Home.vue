@@ -227,7 +227,7 @@ export default {
         // 暫時關閉 輪播圖換頁事件 1s
         vm.changePageBtnStatus = false;
         // 清除所有計時器
-        this.timers.forEach((id) => {clearInterval(id)});
+        // this.timers.forEach((id) => {clearInterval(id)});
         // 開啟換頁事件
         setTimeout(function () {
           vm.changePageBtnStatus = true;
