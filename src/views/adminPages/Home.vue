@@ -80,14 +80,22 @@
         </div>
       </div>
       <div class="chart-group-container">
-
+        <ProductsRankingChart class="order-chart" />
+        <OrdersChart class="product-chart" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import ProductsRankingChart from "../../components/adminPages/ProductsRankingChart.vue";
+import OrdersChart from "../../components/adminPages/OrdersChart.vue";
+
 export default {
+  components: {
+    ProductsRankingChart,
+    OrdersChart,
+  },
   // 使用父元件的 emitter元件
   inject: ["emitter"],
   data() {
