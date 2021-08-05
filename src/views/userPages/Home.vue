@@ -168,7 +168,7 @@
       <img src="images/06.jpg" alt="橫幅卡片的圖片" />
       <div class="featured-banner-overlay-bottom">
         <div class="featured-banner-title">
-          專注健身有效率<br />生活飲食好均衡
+          飲食均衡顧得好<br />身體健康沒煩惱
         </div>
         <div class="featured-banner-content">
           疫情期間也享高品質服務<br />下單購買立刻出貨!
