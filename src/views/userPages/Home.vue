@@ -216,7 +216,6 @@ export default {
         { id: 5, src: "images/05.jpg" },
       ],
       displayProducts: [], // 展示用的四個特價商品
-      // timers: [], //計時器容器
     };
   },
   methods: {
@@ -226,13 +225,9 @@ export default {
         const vm = this;
         // 暫時關閉 輪播圖換頁事件 1s
         vm.changePageBtnStatus = false;
-        // 清除所有計時器
-        // this.timers.forEach((id) => {clearInterval(id)});
-        // 開啟換頁事件
+        // 開啟換頁功能
         setTimeout(function () {
           vm.changePageBtnStatus = true;
-          // 重啟計時器
-          // vm.autoChangePage();
         }, 1000);
         // 判斷使用下一頁樣式，還是上一頁的轉場樣式
         vm.direction = index > this.current ? "next" : "prev";
@@ -242,16 +237,6 @@ export default {
         return;
       }
     },
-    // 輪播圖換頁 (自動)
-    // autoChangePage() {
-    //   // 設定計時器
-    //   var timeId = setInterval(() => {
-    //     this.direction = "next";
-    //     this.current === 4 ? this.current = 0 : this.current += 1;
-    //   }, 3500);
-    //   // 保存計時器id
-    //   this.timers.push(timeId);
-    // },
     // 取得商品資料
     getProducts() {
       this.isLoading = true;
@@ -271,8 +256,6 @@ export default {
     },
   },
   created() {
-    // 自動輪播圖功能 (開啟)
-    // this.autoChangePage();
     // 重新取得購物車資料
     this.$emit("update-shopping-cart-products");
     // 取得API商品資料
