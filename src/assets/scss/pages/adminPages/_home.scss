@@ -1,0 +1,231 @@
+.admin-page-home {
+    width: 100%;
+    height: 80%;
+    margin-top: 1rem;
+
+    @include mobile_414 {
+        height: 82%;
+    }
+    @include tablet_768 {
+        height: 85%;
+    }
+    @include tablet_1024 {
+        height: 93%;
+    }
+    @include desktop_1280 {
+        height: 90%;
+    }
+
+    .home-container {
+        width: 90%;
+        margin: 0 auto;
+
+        @include tablet_1024 {
+            width: 95%;
+        }
+    }
+
+    // 卡片群組
+    .information-card-group-container {
+        display: flex;
+        flex-direction: column;
+
+        @include tablet_768 {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .card {
+            margin-bottom: 1rem;
+            color: #fff;
+            background-color: #4fb9ff;
+
+            @include tablet_768 {
+                margin-bottom: 0rem;
+                width: 24%;
+            }
+
+            @include desktop_1280 {
+                width: 23%;
+            }
+        }
+
+        .card-main-container {
+            box-sizing: border-box;
+            margin: 0.75rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            @include tablet_768 {
+                margin: 0.75rem;
+            }
+
+            @include desktop_1280 {
+                margin: 0.75rem 1.25rem;
+            }
+
+            .card-icon {
+                font-size: 5rem;
+
+                @include tablet_768 {
+                    font-size: 2.5rem;
+                }
+
+                @include tablet_1024 {
+                    font-size: 3.5rem;
+                }
+
+                @include desktop_1280 {
+                    font-size: 4rem;
+                }
+            }
+
+            .number {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+                text-align: end;
+
+                @include tablet_768 {
+                    font-size: 1.3rem;
+                }
+
+                @include tablet_1024 {
+                    font-size: 1.5rem;
+                }
+
+                @include desktop_1280 {
+                    font-size: 1.8rem;
+                }
+            }
+
+            .title {
+                text-align: end;
+                font-weight: bold;
+                font-size: 1.2rem;
+                letter-spacing: 1px;
+
+                @include tablet_768 {
+                    font-size: 1rem;
+                }
+
+                @include desktop_1280 {
+                    font-size: 1.1rem;
+                }
+            }
+        }
+
+        .view-more-container {
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #409cda;
+            padding: 0.5rem 1.25rem;
+
+            @include tablet_768 {
+                padding: 0.5rem 0.75rem;
+            }
+
+            @include desktop_1280 {
+                padding: 0.65rem 1.25rem;
+            }
+
+            .title {
+                font-size: 1.1rem;
+                font-weight: bold;
+                letter-spacing: 1px;
+
+                @include tablet_768 {
+                    font-size: 1rem;
+                }
+
+                @include desktop_1280 {
+                    font-size: 1.2rem;
+                }
+            }
+
+            .bi {
+                font-size: 1.2rem;
+
+                @include desktop_1280 {
+                    font-size: 1.35rem;
+                }
+            }
+        }
+
+        .card:nth-child(2) {
+            background-color: #37f898;
+
+            .view-more-container {
+                background-color: #2fda84;
+            }
+        }
+
+        .card:nth-child(3) {
+            background-color: #ff8888;
+            .view-more-container {
+                background-color: #d67272;
+            }
+        }
+
+        .card:nth-child(4) {
+            background-color: #ffe925;
+            .view-more-container {
+                background-color: #dac71e;
+            }
+        }
+    }
+
+    // chart
+    .chart-group-container {
+        margin: 2rem 0;
+        display: flex;
+        flex-direction: column;
+
+        @include tablet_768 {
+            align-items: center;
+        }
+
+        @include tablet_1024 {
+            margin: 5rem 0 2rem 0;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-around;
+        }
+
+        .order-chart {
+            width: 100%;
+            margin-bottom: 2.5rem;
+
+            @include tablet_768 {
+                width: 60%;
+            }
+
+            @include tablet_1024 {
+                width: 50%;
+            }
+
+            @include desktop_1280 {
+                width: 40%;
+            }
+        }
+
+        .product-chart {
+            width: 100%;
+
+            @include tablet_768 {
+                width: 60%;
+            }
+
+            @include tablet_1024 {
+                width: 50%;
+            }
+
+            @include desktop_1280 {
+                width: 40%;
+            }
+        }
+    }
+}
