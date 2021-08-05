@@ -14,6 +14,15 @@
     <!-- Admin 分頁容器 -->
     <div class="admin-page-group">
       <router-link
+        to="/adminHome"
+        class="admin-page-title"
+        :class="{ 'page-active': currentPage === 'AdminHome' }"
+        @click="changeCurrentPage('AdminHome')"
+      >
+        <i class="bi bi-bar-chart-line-fill"></i>
+        資訊儀表板
+      </router-link>
+      <router-link
         to="/adminproducts"
         class="admin-page-title"
         :class="{ 'page-active': currentPage === 'AdminProducts' }"
