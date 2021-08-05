@@ -135,8 +135,8 @@ export default {
   data() {
     return {
       user: {
-        username: '',
-        password: '',
+        username: "",
+        password: "",
       },
     };
   },
@@ -153,12 +153,15 @@ export default {
       // 發送API，驗證是否維持登入狀態。
       const api = `${process.env.VUE_APP_API}/api/user/check`;
       this.$http.post(api, this.user).then((res) => {
-        // 如屬未登入狀態，即轉址到Login頁面。
         if (res.data.success) {
-          this.$router.push({name: 'AdminHome'});
+          this.$router.push({ name: "AdminHome" });
         } else {
-          this.$swal.fire("請重新登入");
-          this.$router.push({ name: 'Login' })
+          this.$swal.fire({
+            icon: "warning",
+            title: "未登入狀態",
+            text: "請輸入帳號與密碼登入後台管理頁面",
+          });
+          this.$router.push({ name: "Login" });
         }
       });
     },
@@ -173,15 +176,19 @@ export default {
           // 將Token Expired寫入瀏覽器的Cookie
           document.cookie = `ecToken=${token}; expires=${new Date(expired)};`;
           // 驗證通過，轉址到【後台】AdminProducts頁面
-          this.$router.push({name: 'AdminHome'});
+          this.$router.push({ name: "AdminHome" });
         } else {
-          this.$swal.fire("管理者帳號或密碼有誤");
+          this.$swal.fire({
+            icon: "error",
+            title: "登入失敗",
+            text: "管理者帳號或密碼有誤",
+          });
         }
       });
     },
   },
   created() {
     this.loginVerification(); // 先驗證，如通過則直接進入
-  }
+  },
 };
 </script>
