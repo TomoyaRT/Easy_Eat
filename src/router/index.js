@@ -59,6 +59,11 @@ const routes = [
     component: () => import('../views/AdminPage.vue'),
     children: [
       {
+        path: '/adminHome',
+        name: 'AdminHome',
+        component: () => import('../views/adminPages/Home.vue'),
+      },
+      {
         path: '/adminproducts',
         name: 'AdminProducts',
         component: () => import('../views/adminPages/Products.vue'),
