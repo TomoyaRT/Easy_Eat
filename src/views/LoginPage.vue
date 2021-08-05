@@ -154,6 +154,13 @@ export default {
       const api = `${process.env.VUE_APP_API}/api/user/check`;
       this.$http.post(api, this.user).then((res) => {
         if (res.data.success) {
+          this.$swal.fire({
+            position: "center",
+            icon: "success",
+            title: "登入成功",
+            showConfirmButton: false,
+            timer: 1000,
+          });
           this.$router.push({ name: "AdminHome" });
         } else {
           this.$swal.fire({
@@ -175,6 +182,14 @@ export default {
           const { token, expired } = res.data;
           // 將Token Expired寫入瀏覽器的Cookie
           document.cookie = `ecToken=${token}; expires=${new Date(expired)};`;
+          // 登入成功的回饋訊息
+          this.$swal.fire({
+            position: "center",
+            icon: "success",
+            title: "登入成功",
+            showConfirmButton: false,
+            timer: 1000,
+          });
           // 驗證通過，轉址到【後台】AdminProducts頁面
           this.$router.push({ name: "AdminHome" });
         } else {
