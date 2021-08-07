@@ -212,21 +212,23 @@ export default {
     getTotalIncome() {
       this.isLoading = true;
       if (this.ordersData.ordersNum > 0) {
-        this.totalIncome = Number(this.ordersData.ordersArray
-          // 篩選出 已付款訂單
-          .filter((order) => {
-            return order.is_paid;
-          })
-          // 將訂單的總付款金額，重組成一個新的陣列
-          .map((order) => {
-            return order.total;
-          })
-          // 將陣列中的值，全部相加起來。
-          .reduce((a, b) => {
-            return a + b;
-          })
-          // 將總金額做四捨五入
-          .toFixed(0));
+        this.totalIncome = Number(
+          this.ordersData.ordersArray
+            // 篩選出 已付款訂單
+            .filter((order) => {
+              return order.is_paid;
+            })
+            // 將訂單的總付款金額，重組成一個新的陣列
+            .map((order) => {
+              return order.total;
+            })
+            // 將陣列中的值，全部相加起來。
+            .reduce((a, b) => {
+              return a + b;
+            })
+            // 將總金額做四捨五入
+            .toFixed(0)
+        );
       } else {
         this.totalIncome = 0;
       }
