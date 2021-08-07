@@ -45,6 +45,10 @@
     font-size: 1.2rem;
     color: #fff;
   }
+
+  .bi-x-octagon {
+    cursor: pointer;
+  }
 }
 
 .status-success {
