@@ -32,6 +32,9 @@
         @change-navbar-page-title="changeNavbarPageTitle"
         @change-navbar-btn-title="changeNavbarBtnTitle"
         @change-current-page="changeCurrentPage"
+        @update-products-number="getProducts"
+        @update-orders-number="getOrders"
+        @update-coupons-number="getCoupons"
       ></router-view>
     </div>
     <!-- Loading -->
