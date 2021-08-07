@@ -144,6 +144,7 @@ export default {
         this.isLoading = false; // 關閉Loading元件
         if (res.data.success) {
           this.getOrders();
+          this.$emit('update-orders-number');
           this.deletModalStatus = false;
           this.$httpMessageState(res, "該訂單已被刪除");
         }
@@ -172,6 +173,7 @@ export default {
               this.isLoading = false; // 關閉Loading元件
               if (res.data.success) {
                 vm.getOrders();
+                this.$emit('update-orders-number');
                 vm.$swal.fire("刪除成功!", "你已刪除所有訂單資料", "success");
               }
             });

@@ -197,6 +197,7 @@ export default {
         this.couponModalStatus = false;
         this.deletModalStatus = false;
         this.getCoupon();
+        this.$emit('update-coupons-number');
         switch (this.couponStatus) {
           case "新增優惠券":
             this.$httpMessageState(res, "新增優惠券");

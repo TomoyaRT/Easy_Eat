@@ -169,7 +169,8 @@ export default {
         this.deletModalStatus = false; // 關閉刪除模板
         this.isLoading = false; // 關閉Loading元件
         this.getProducts(this.nowPage); // 取得商品資料、帶入當前頁數、渲染畫面。
-        // 測試回饋訊息
+        this.$emit('update-products-number');
+        // 使用者回饋訊息
         switch (this.productStatus) {
           case "新增商品":
             this.$httpMessageState(res, "新增商品");
