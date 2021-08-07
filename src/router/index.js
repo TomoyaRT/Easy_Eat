@@ -54,12 +54,12 @@ const routes = [
     component: () => import('../views/LoginPage.vue'),
   },
   {
-    path: '/adminHome',
+    path: '/adminhome',
     name: '',
     component: () => import('../views/AdminPage.vue'),
     children: [
       {
-        path: '/adminHome',
+        path: '/adminhome',
         name: 'AdminHome',
         component: () => import('../views/adminPages/Home.vue'),
       },
