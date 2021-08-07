@@ -83,6 +83,7 @@ export default {
         pageNum: 0, // 當前API分頁的訂單數
         ordersArray: [], // 訂單總陣列
         ordersNum: 0, // 訂單總數
+        totalPages: 0, // 總頁數
       },
 
       couponsData: {
@@ -90,6 +91,7 @@ export default {
         pageNum: 0, // 當前API分頁的訂單數
         couponsArray: [], // 訂單總陣列
         couponsNum: 0, // 訂單總數
+        totalPages: 0, // 總頁數
       },
 
       totalIncome: 0, // 目前的總獲利
@@ -145,6 +147,8 @@ export default {
 
       this.$http.get(api).then((res) => {
         if (res.data.success) {
+          // 保存總頁數
+          this.ordersData.totalPages = res.data.pagination.total_pages;
           // 組合並儲存訂單總陣列
           this.ordersData.ordersArray = this.ordersData.ordersArray.concat(
             res.data.orders
@@ -164,7 +168,10 @@ export default {
     },
     // 訂單API判斷函式
     ordersAPIManager() {
-      if (this.ordersData.pageNum === 10) {
+      if (
+        this.ordersData.pageNum === 10 &&
+        this.ordersData.page !== this.ordersData.totalPages
+      ) {
         this.ordersData.page += 1;
         this.getOrders();
       } else {
@@ -182,6 +189,8 @@ export default {
 
       this.$http.get(api).then((res) => {
         if (res.data.success) {
+          // 保存總頁數
+          this.couponsData.totalPages = res.data.pagination.total_pages;
           // 組合並儲存訂單總陣列
           this.couponsData.couponsArray = this.couponsData.couponsArray.concat(
             res.data.coupons
@@ -199,7 +208,10 @@ export default {
     },
     // 優惠券API判斷函式
     couponsAPIManager() {
-      if (this.couponsData.pageNum === 10) {
+      if (
+        this.couponsData.pageNum === 10 &&
+        this.couponsData.page !== this.couponsData.totalPages
+      ) {
         this.couponsData.page += 1;
         this.getCoupons();
       } else {
