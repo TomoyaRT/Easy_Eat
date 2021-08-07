@@ -33,46 +33,6 @@
   </div>
 </template>
 
-<style scoped lang="scss">
-.admin-page-container {
-  @media screen and (min-width: 1024px) {
-    display: flex;
-    flex-direction: row;
-  }
-
-  // Sidebar 遮罩板
-  .admin-page-sidebar-overlay {
-    opacity: 0;
-    position: fixed;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: #00000099;
-    transition: all 0.5s;
-  }
-
-  // Main (管理頁面-通用樣式)
-  .admin-page-main {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  // 開始 Sidebar樣式
-  .sidebar-active {
-    transform: translateX(0%);
-  }
-
-  // 開啟 Sidebar 遮罩板
-  .sidebar-overlay-active {
-    opacity: 1;
-    z-index: 10;
-  }
-}
-</style>
-
 <script>
 import emitter from "@/methods/emitter"; // 引入mitt套件(類似Vue2 Event Bus功能)
 import ToastMessages from "../components/ToastMessages.vue"; // 引入提示訊息元件
@@ -85,7 +45,7 @@ export default {
     Sidebar,
     Navbar,
   },
-  // 讓所有Admin的子元件都能使用到 emitter
+  // 讓所有AdminPage的子元件都能使用到 emitter
   provide() {
     return {
       emitter,
@@ -94,9 +54,9 @@ export default {
   data() {
     return {
       sidebarStatus: false, // Sidebar元件的樣式開關
-      navbarPageTitle: "首頁",
-      navbarOrderBtnTitle: "首頁",
-      currentPage: 'AdminHome',
+      navbarPageTitle: "", // Navbar 頁面標題
+      navbarOrderBtnTitle: "", // Navbar 按鈕文字
+      currentPage: 'AdminHome', // 當前頁面
     };
   },
   methods: {
@@ -137,3 +97,43 @@ export default {
   },
 };
 </script>
+
+<style scoped lang="scss">
+.admin-page-container {
+  @media screen and (min-width: 1024px) {
+    display: flex;
+    flex-direction: row;
+  }
+
+  // Sidebar 遮罩板
+  .admin-page-sidebar-overlay {
+    opacity: 0;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #00000099;
+    transition: all 0.5s;
+  }
+
+  // Main (管理頁面-通用樣式)
+  .admin-page-main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  // 開始 Sidebar樣式
+  .sidebar-active {
+    transform: translateX(0%);
+  }
+
+  // 開啟 Sidebar 遮罩板
+  .sidebar-overlay-active {
+    opacity: 1;
+    z-index: 10;
+  }
+}
+</style>
