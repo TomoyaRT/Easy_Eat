@@ -209,7 +209,7 @@ export default {
     getTotalIncome() {
       this.isLoading = true;
       if (this.ordersData.ordersNum > 0) {
-        this.totalIncome = this.ordersData.ordersArray
+        this.totalIncome = Number(this.ordersData.ordersArray
           // 篩選出 已付款訂單
           .filter((order) => {
             return order.is_paid;
@@ -223,7 +223,7 @@ export default {
             return a + b;
           })
           // 將總金額做四捨五入
-          .toFixed(0);
+          .toFixed(0));
       } else {
         this.totalIncome = 0;
       }

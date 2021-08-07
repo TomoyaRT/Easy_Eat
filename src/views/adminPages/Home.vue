@@ -124,9 +124,6 @@ export default {
   },
   // 使用父元件的 emitter元件
   inject: ["emitter"],
-  data() {
-    return {};
-  },
   methods: {
     // 返回前台首頁
     goUserHomePage() {
