@@ -43,8 +43,10 @@
       </div>
       <CouponModal
         :coupon-modal-status="couponModalStatus"
+        :coupon-data="currentCoupon"
         @close-coupon-modal="couponModalStatus = false"
         @random-puzzle="getRandomOrder"
+        @random-coupon="randomCoupon"
         @copy-coupon-code="copyCoupon"
       />
     </div>
@@ -68,11 +70,35 @@ export default {
       targetStartNum: false, // 拖移起、點擊起
       targetEnterNum: false, // 拖移後、點擊後
       playMethod: "拖移", // 玩法說明
-      coupon: "", // 優惠券代碼
+      couponData: [
+        {
+          name: "七折優惠券",
+          code: "R49des98",
+          discount: "七折",
+        },
+        {
+          name: "半價優惠券",
+          code: "Y93ts439",
+          discount: "五折",
+        },
+        {
+          name: "超幸運三折優惠券",
+          code: "E58rz94",
+          discount: "三折",
+        },
+      ],
+      currentCoupon: {}, // 隨機選出的當前優惠券
     };
   },
   methods: {
-    // 將拼圖隨機擺放
+    // 優惠券隨機選出
+    randomCoupon() {
+      // 在商品長度範圍內，隨機出一個索引值
+      let couponIndex = Math.floor(Math.random() * this.couponData.length);
+      // 將隨機的優惠券，儲存至當前的優惠券物件
+      this.currentCoupon = this.couponData[couponIndex];
+    },
+    // 拼圖方格隨機擺放
     getRandomOrder() {
       this.currentImgNameOrder = [];
       const numArray = [0, 1, 2, 3, 4, 5, 6, 7, 8];
@@ -177,11 +203,16 @@ export default {
       this.$swal.fire("複製成功!", "您已獲得優惠券代碼", "success");
       this.couponModalStatus = false;
       this.getRandomOrder();
+      this.randomCoupon();
     },
   },
   // 生命週期
   created() {
+    // 隨機擺放拼圖方格
     this.getRandomOrder();
+    // 隨機選出優惠券
+    this.randomCoupon();
+    // 如果為行動裝置，改變玩法說明。
     if (window.ontouchstart === null) {
       this.playMethod = "點擊";
     }
