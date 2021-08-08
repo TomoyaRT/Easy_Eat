@@ -147,6 +147,9 @@ export default {
 
       this.$http.get(api).then((res) => {
         if (res.data.success) {
+          // 初始化總數，避免不必要的疊加。
+          this.ordersData.ordersNum = 0;
+          this.ordersData.ordersArray = [];
           // 保存總頁數
           this.ordersData.totalPages = res.data.pagination.total_pages;
           // 組合並儲存訂單總陣列
@@ -189,6 +192,9 @@ export default {
 
       this.$http.get(api).then((res) => {
         if (res.data.success) {
+          // 初始化總數，避免不必要的疊加。
+          this.couponsData.couponsNum = 0;
+          this.couponsData.couponsArray = [];
           // 保存總頁數
           this.couponsData.totalPages = res.data.pagination.total_pages;
           // 組合並儲存訂單總陣列
