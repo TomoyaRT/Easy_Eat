@@ -177,6 +177,8 @@ export default {
                 vm.$swal.fire("刪除成功!", "你已刪除所有訂單資料", "success");
               }
             });
+          } else {
+            this.isLoading = false; // 關閉Loading元件
           }
         });
     },
