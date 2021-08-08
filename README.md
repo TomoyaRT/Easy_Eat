@@ -64,7 +64,7 @@
 #### 後台 - 資訊儀表板頁面
 - 透過四張資訊卡片，讓管理員一進入後台就能迅速掌握網站的主要資訊，並且這些資訊會動態隨時更新。
 
-![Credit Card imgur](https://imgur.com/nuUYPlx)
+![Credit Card imgur](https://i.imgur.com/nuUYPlx.jpg)
 
 ## 架設環境
 
