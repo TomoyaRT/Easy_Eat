@@ -80,14 +80,22 @@
         </div>
       </div>
       <div class="chart-group-container">
-        圖表放置區
+        <ProductsRankingChart class="order-chart" />
+        <OrdersChart class="product-chart" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import ProductsRankingChart from "../../components/adminPages/ProductsRankingChart.vue";
+import OrdersChart from "../../components/adminPages/OrdersChart.vue";
+
 export default {
+  components: {
+    ProductsRankingChart,
+    OrdersChart,
+  },
   props: {
     productsLength: {
       type: Number,
