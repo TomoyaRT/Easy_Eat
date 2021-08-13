@@ -232,10 +232,10 @@ export default {
   },
   created() {
     this.productId = this.$route.params.id;
+    // 重新取得購物車資料
+    this.$emit("update-shopping-cart-products");
     // 取得API商品資料
     this.getProduct();
-    // 重新取得資料
-    this.$emit("update-shopping-cart-products");
   },
 };
 </script>

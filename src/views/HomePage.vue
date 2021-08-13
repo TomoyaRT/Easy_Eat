@@ -104,8 +104,7 @@ export default {
     emitter.on("payment-method", (payment) => { this.paymentMethod = payment; });
     // 取得 localStorage我的最愛資料
     this.getFavoriteProducts();
-    // 取得 API購物車資料
-    this.getShoppingCartProducts();
+    // 取得 當前頁面名稱
     this.currentPageName = this.$route.name;
   },
 };

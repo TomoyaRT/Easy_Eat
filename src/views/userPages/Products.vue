@@ -629,10 +629,10 @@ export default {
     },
   },
   created() {
+    // 重新取得購物車資料
+    this.$emit("update-shopping-cart-products");
     // 取得API商品資料
     this.getProducts();
-    // 重新取得資料
-    this.$emit("update-shopping-cart-products");
   },
 };
 </script>

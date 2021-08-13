@@ -234,18 +234,6 @@ export default {
     },
   },
   methods: {
-    // 取得 API購物車資料
-    getShoppingCartProducts() {
-      this.isLoading = true;
-      const vm = this;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
-
-      vm.$http.get(api).then((response) => {
-        // 存入Data變數
-        vm.shoppingCartProductList = response.data.data;
-        this.isLoading = false;
-      });
-    },
     // 結帳去
     goCheckOut() {
       if (this.shoppingCartProductList.carts.length === 0) {
@@ -328,8 +316,8 @@ export default {
     },
   },
   created() {
-    // 取得購物車API資料
-    this.getShoppingCartProducts();
+    // 重新取得購物車資料
+    this.$emit("update-shopping-cart-products");
   },
 };
 </script>
