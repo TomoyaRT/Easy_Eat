@@ -160,27 +160,5 @@ export default {
       menuStatus: false,
     };
   },
-  methods: {
-    // 取得localStorage的資料
-    updateLocalStorageData() {
-      this.localstorageFavoriteProductList = this.localstorageFavoriteProducts;
-      this.localstorageShoppingCartProductList =
-        this.localstorageShoppingCartProducts;
-    },
-    // 取得購物車資料
-    getShoppindCartData() {
-      const vm = this;
-      const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
-
-      vm.$http.get(api).then((response) => {
-        vm.$emit("shopping-cart-data", response.data.data);
-      });
-    },
-  },
-  created() {
-    // 取得localStorage的資料
-    this.updateLocalStorageData();
-    this.getShoppindCartData();
-  },
 };
 </script>
