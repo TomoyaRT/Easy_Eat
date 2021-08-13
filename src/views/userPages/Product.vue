@@ -155,11 +155,12 @@
 import AddToCartAndUpdateFavoriteList from "../../mixins/userPages/AddToCartAndUpdateFavoriteList.js";
 import FavoriteDataAndShoppingCartData from "../../mixins/userPages/FavoriteDataAndShoppingCartData";
 import LoadingConfiguration from "../../mixins/LoadingConfiguration";
+import GetShoppingCartData from "../../mixins/userPages/GetShoppingCartData";
 
 export default {
   name: "Product",
   inject: ["emitter"],
-  mixins: [AddToCartAndUpdateFavoriteList, FavoriteDataAndShoppingCartData, LoadingConfiguration],
+  mixins: [AddToCartAndUpdateFavoriteList, FavoriteDataAndShoppingCartData, LoadingConfiguration, GetShoppingCartData],
   data() {
     return {
       productId: "", // 產品ID
@@ -232,8 +233,6 @@ export default {
   },
   created() {
     this.productId = this.$route.params.id;
-    // 重新取得購物車資料
-    this.$emit("update-shopping-cart-products");
     // 取得API商品資料
     this.getProduct();
   },

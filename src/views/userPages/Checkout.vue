@@ -82,11 +82,12 @@ import OrderData from "../../mixins/userPages/OrderData";
 import CheckoutFlowchart from "../../components/userPages/CheckoutFlowchart.vue";
 import ShoppingCartList from "../../components/userPages/ShoppingCartList.vue";
 import LoadingConfiguration from "../../mixins/LoadingConfiguration";
+import GetShoppingCartData from "../../mixins/userPages/GetShoppingCartData";
 
 export default {
   name: "Checkout",
   inject: ["emitter"],
-  mixins: [OrderData, LoadingConfiguration],
+  mixins: [OrderData, LoadingConfiguration, GetShoppingCartData],
   props: {
     shoppingCartProducts: {
       type: Object,
@@ -128,8 +129,6 @@ export default {
     },
   },
   created() {
-    // 更新資料
-    this.$emit("update-shopping-cart-products");
     // 將資料拷貝做渲染使用
     this.shoppingCartProductList = this.shoppingCartProducts;
   },

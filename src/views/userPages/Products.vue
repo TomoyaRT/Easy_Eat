@@ -360,11 +360,12 @@ import smoothscroll from "smoothscroll-polyfill";
 import AddToCartAndUpdateFavoriteList from "../../mixins/userPages/AddToCartAndUpdateFavoriteList.js";
 import FavoriteDataAndShoppingCartData from "../../mixins/userPages/FavoriteDataAndShoppingCartData";
 import LoadingConfiguration from "../../mixins/LoadingConfiguration";
+import GetShoppingCartData from "../../mixins/userPages/GetShoppingCartData";
 
 export default {
   name: "Products",
   inject: ["emitter"],
-  mixins: [AddToCartAndUpdateFavoriteList, FavoriteDataAndShoppingCartData, LoadingConfiguration],
+  mixins: [AddToCartAndUpdateFavoriteList, FavoriteDataAndShoppingCartData, LoadingConfiguration, GetShoppingCartData],
   data() {
     return {
       products: [], // 全部商品資料
@@ -629,8 +630,6 @@ export default {
     },
   },
   created() {
-    // 重新取得購物車資料
-    this.$emit("update-shopping-cart-products");
     // 取得API商品資料
     this.getProducts();
   },

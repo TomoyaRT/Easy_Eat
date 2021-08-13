@@ -71,9 +71,10 @@
 <script>
 import OrderData from "../../mixins/userPages/OrderData";
 import CheckoutFlowchart from "../../components/userPages/CheckoutFlowchart.vue";
+import GetShoppingCartData from "../../mixins/userPages/GetShoppingCartData";
 
 export default {
-  mixins: [OrderData],
+  mixins: [OrderData, GetShoppingCartData],
   components: {
     CheckoutFlowchart,
   },

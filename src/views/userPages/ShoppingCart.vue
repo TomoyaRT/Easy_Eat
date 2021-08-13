@@ -168,11 +168,12 @@
 <script>
 import FavoriteDataAndShoppingCartData from "../../mixins/userPages/FavoriteDataAndShoppingCartData";
 import LoadingConfiguration from "../../mixins/LoadingConfiguration";
+import GetShoppingCartData from "../../mixins/userPages/GetShoppingCartData";
 
 export default {
   name: "ShoppingCart",
   inject: ["emitter"],
-  mixins: [FavoriteDataAndShoppingCartData, LoadingConfiguration],
+  mixins: [FavoriteDataAndShoppingCartData, LoadingConfiguration, GetShoppingCartData],
   data() {
     return {
       couponCode: "", // 使用者輸入的優惠券代碼
@@ -314,10 +315,6 @@ export default {
         vm.$emit("update-shopping-cart-products");
       });
     },
-  },
-  created() {
-    // 重新取得購物車資料
-    this.$emit("update-shopping-cart-products");
   },
 };
 </script>

@@ -61,11 +61,12 @@ import PaymentMethod from "../../components/userPages/PaymentMethod.vue";
 import OrdererForm from "../../components/userPages/OrdererForm.vue";
 import RecipientForm from "../../components/userPages/RecipientForm.vue";
 import LoadingConfiguration from "../../mixins/LoadingConfiguration";
+import GetShoppingCartData from "../../mixins/userPages/GetShoppingCartData";
 
 export default {
   name: 'OrderForm',
   inject: ["emitter"],
-  mixins: [LoadingConfiguration],
+  mixins: [LoadingConfiguration, GetShoppingCartData],
   props: {
     shoppingCartProducts: {
       type: Object,
@@ -147,10 +148,6 @@ export default {
         }
       });
     },
-  },
-  created() {
-    // 重新取得資料
-    this.$emit('update-shopping-cart-products');
   },
   mounted() {
     // 重新整理、關閉頁面時，瀏覽器預設的提醒訊息。
