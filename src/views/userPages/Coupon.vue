@@ -120,17 +120,16 @@ export default {
     },
     // 改變拼圖樣式
     classChange(e, status) {
-      const vm = this;
       switch (status) {
         case "start":
-          vm.targetStartNum = parseInt(e.target.dataset.num, 10);
+          this.targetStartNum = parseInt(e.target.dataset.num, 10);
           break;
         case "enter":
-          vm.targetEnterNum = parseInt(e.target.dataset.num, 10);
+          this.targetEnterNum = parseInt(e.target.dataset.num, 10);
           break;
         case "cancel":
-          vm.targetStartNum = false;
-          vm.targetEnterNum = false;
+          this.targetStartNum = false;
+          this.targetEnterNum = false;
           break;
         default:
           break;
@@ -138,55 +137,49 @@ export default {
     },
     // 拖移起，拼圖懸空。
     dragStart(e) {
-      const vm = this;
-      vm.classChange(e, "start");
+      this.classChange(e, "start");
       // 夾帶此拼圖方格的位置資料
       e.dataTransfer.setData("text/plain", e.target.dataset.num);
     },
     // 拖移中，抵達可放入拼圖的目標位置
     dragEnter(e) {
-      const vm = this;
-      vm.classChange(e, "enter");
+      this.classChange(e, "enter");
     },
     // 拖移後，放入該位置
     dragEnd() {
-      const vm = this;
-      vm.classChange("none", "cancel");
+      this.classChange("none", "cancel");
     },
     // 拖移完成
     dropped(e) {
-      const vm = this;
       // 取得新拼圖方格的位置資料
       const dragNum = e.dataTransfer.getData("text/plain");
       // 取得原拼圖方格的位置資料
       const targetNum = parseInt(e.target.dataset.num, 10);
-      vm.changePuzzlePlace(dragNum, targetNum);
-      vm.classChange("none", "cancel");
-      vm.isPuzzleComplete();
+      this.changePuzzlePlace(dragNum, targetNum);
+      this.classChange("none", "cancel");
+      this.isPuzzleComplete();
     },
     // 交換拼圖的位置
     changePuzzlePlace(num1, num2) {
-      const vm = this;
-      const data = vm.currentImgNameOrder;
+      const data = this.currentImgNameOrder;
       [data[num1], data[num2]] = [data[num2], data[num1]];
-      vm.currentImgNameOrder = data;
+      this.currentImgNameOrder = data;
     },
     // 支援手機的觸發事件
     touchStart(e) {
-      const vm = this;
       const currentTargetNum = parseInt(e.target.dataset.num, 10);
-      const targetNum = vm.targetStartNum;
+      const targetNum = this.targetStartNum;
       e.preventDefault();
       if (currentTargetNum === targetNum) {
-        vm.classChange("none", "cancel");
+        this.classChange("none", "cancel");
         return;
       }
       if (targetNum) {
-        vm.classChange("none", "cancel");
-        vm.changePuzzlePlace(currentTargetNum, targetNum);
-        vm.isPuzzleComplete();
+        this.classChange("none", "cancel");
+        this.changePuzzlePlace(currentTargetNum, targetNum);
+        this.isPuzzleComplete();
       } else {
-        vm.classChange(e, "start");
+        this.classChange(e, "start");
       }
     },
     // 完成拼圖
@@ -196,7 +189,7 @@ export default {
         vm.correctImgNameOrder.toString() === vm.currentImgNameOrder.toString()
       ) {
         setTimeout(() => {
-          this.couponModalStatus = true;
+          vm.couponModalStatus = true;
         }, 300);
       }
     },

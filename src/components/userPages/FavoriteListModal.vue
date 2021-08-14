@@ -110,13 +110,14 @@ export default {
           })
           .includes(id)
       ) {
-        this.isLoading = true; // 開啟Loading元件
         const vm = this;
         const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
         const cart = {
           product_id: id,
           qty,
         };
+        vm.isLoading = true; // 開啟Loading元件
+
 
         vm.$http.post(api, { data: cart }).then((response) => {
           vm.isLoading = false; // 關閉Loading元件
@@ -126,7 +127,7 @@ export default {
           vm.$emit("update-shopping-cart-products");
         });
       } else {
-        this.$swal.fire("此商品以加入購物車");
+        vm.$swal.fire("此商品以加入購物車");
       }
     },
     // localStorage我的最愛資料

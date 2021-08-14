@@ -189,7 +189,7 @@
       :opacity="loadingObj.opacity"
       :height="loadingObj.height"
       :width="loadingObj.width"
-     />
+    />
   </div>
 </template>
 
@@ -202,7 +202,12 @@ import GetShoppingCartData from "@/mixins/userPages/GetShoppingCartData";
 export default {
   name: "Home",
   inject: ["emitter"],
-  mixins: [AddToCartAndUpdateFavoriteList, FavoriteDataAndShoppingCartData, LoadingConfiguration, GetShoppingCartData],
+  mixins: [
+    AddToCartAndUpdateFavoriteList,
+    FavoriteDataAndShoppingCartData,
+    LoadingConfiguration,
+    GetShoppingCartData,
+  ],
   data() {
     return {
       current: 0, //當前圖片
@@ -221,23 +226,23 @@ export default {
   methods: {
     // 輪播圖換頁 (手動)
     changePage(index) {
-        const vm = this;
-        // 暫時關閉 輪播圖換頁事件 1s
-        vm.changePageBtnStatus = false;
-        // 開啟換頁功能
-        setTimeout(function () {
-          vm.changePageBtnStatus = true;
-        }, 1000);
-        // 判斷使用下一頁樣式，還是上一頁的轉場樣式
-        vm.direction = index > this.current ? "next" : "prev";
-        // 限制換頁的頁數
-        vm.current = (index + this.images.length) % this.images.length;
+      const vm = this;
+      // 暫時關閉 輪播圖換頁事件 1s
+      vm.changePageBtnStatus = false;
+      // 開啟換頁功能
+      setTimeout(function () {
+        vm.changePageBtnStatus = true;
+      }, 1000);
+      // 判斷使用下一頁樣式，還是上一頁的轉場樣式
+      vm.direction = index > vm.current ? "next" : "prev";
+      // 限制換頁的頁數
+      vm.current = (index + vm.images.length) % vm.images.length;
     },
     // 取得商品資料
     getProducts() {
-      this.isLoading = true;
       const vm = this;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`;
+      vm.isLoading = true;
 
       vm.$http.get(api).then((response) => {
         // 篩選出有特價的商品，並擷取前四個做為展示用商品。
@@ -247,7 +252,7 @@ export default {
           })
           .slice(0, 4);
 
-        this.isLoading = false;
+        vm.isLoading = false;
       });
     },
   },

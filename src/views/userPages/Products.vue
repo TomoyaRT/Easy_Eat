@@ -440,7 +440,7 @@ export default {
       vm.$http.get(api).then((res) => {
         vm.products = res.data.products;
         // 從API提取出類別資料，並重組陣列。
-        const categories = this.products.map((item) => item.category);
+        const categories = vm.products.map((item) => item.category);
         // 提取出不重複的類別
         vm.categoryTag = categories.filter(
           (item, index, array) => array.indexOf(item) === index
@@ -521,17 +521,18 @@ export default {
     },
     // 商品搜尋
     productsSearch(keyword) {
-      this.searchPriceStatus = false; // 關閉價格區間搜尋狀態
-      this.searchPriceMinNum = ""; // 清空價格區間最小值
-      this.searchPriceMaxNum = ""; // 清空價格空間最大值
       const vm = this;
+      vm.searchPriceStatus = false; // 關閉價格區間搜尋狀態
+      vm.searchPriceMinNum = ""; // 清空價格區間最小值
+      vm.searchPriceMaxNum = ""; // 清空價格空間最大值
+
       vm.productsSearchStatus = true; // 開啟 關鍵字搜尋狀態
       // 搜尋關鍵字
       vm.categoryProducts = vm.products.filter((item) =>
         item.title.toLowerCase().includes(keyword.toLowerCase())
       );
       // 渲染畫面，判斷有無分頁。
-      this.getPageProducts();
+      vm.getPageProducts();
     },
     // 產品排序 (預設為低到高)
     productsSorter(sortingName) {

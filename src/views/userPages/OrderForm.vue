@@ -126,13 +126,14 @@ export default {
     },
     // 建立訂單
     createOrder(form) {
-      this.isLoading = true;
       const vm = this;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order`;
+      vm.isLoading = true;
+
       // 將地址做組合
-      const county = this.areaList[form.recipientCountySelectIndex].county;
+      const county = vm.areaList[form.recipientCountySelectIndex].county;
       const region =
-        this.areaList[form.recipientCountySelectIndex].region[
+        vm.areaList[form.recipientCountySelectIndex].region[
           form.recipientRegionSelectIndex
         ].split(" ");
       // 將地址重新整合到 user.address
@@ -141,7 +142,7 @@ export default {
       // 發送API
       vm.$http.post(api, { data: form }).then((response) => {
         if (response.data.success) {
-          this.isLoading = false;
+          vm.isLoading = false;
           // 跳轉到 確認付款的頁面
           vm.$router.push(`/usercheckout/${response.data.orderId}`);
         }

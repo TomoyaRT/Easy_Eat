@@ -244,11 +244,11 @@ export default {
     },
     // 更改購物車數量
     changeCartQty(id, qty) {
-      this.isLoading = true;
       const vm = this;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`;
-      qty = Number(qty); // 強制轉型
       const item = { product_id: id, qty };
+      qty = Number(qty); // 強制轉型
+      vm.isLoading = true;
 
       vm.$http.put(api, { data: item }).then((response) => {
         vm.isLoading = false;
@@ -259,13 +259,13 @@ export default {
     },
     // 刪除購物車 單一商品
     deletCart(id) {
-      this.isLoading = true;
       const vm = this;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`;
+      vm.isLoading = true;
 
       vm.$http.delete(api).then((response) => {
-        this.isLoading = false;
-        this.$httpMessageState(response, "刪除商品");
+        vm.isLoading = false;
+        vm.$httpMessageState(response, "刪除商品");
         // 重新取得資料
         vm.$emit("update-shopping-cart-products");
       });
@@ -300,16 +300,16 @@ export default {
     },
     // 套用優惠券
     useCoupon() {
-      this.isLoading = true;
       const vm = this;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/coupon`;
       const coupon = {
         code: vm.couponCode,
       };
+      vm.isLoading = true;
 
       vm.$http.post(api, { data: coupon }).then((response) => {
-        this.isLoading = false;
-        this.$httpMessageState(response, "套用優惠券");
+        vm.isLoading = false;
+        vm.$httpMessageState(response, "套用優惠券");
         // 重新取得資料
         vm.$emit("update-shopping-cart-products");
       });

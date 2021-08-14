@@ -72,7 +72,7 @@
       :opacity="loadingObj.opacity"
       :height="loadingObj.height"
       :width="loadingObj.width"
-     />
+    />
   </div>
 </template>
 
@@ -115,13 +115,13 @@ export default {
   methods: {
     // 付款功能
     payOrder() {
-      this.isLoading = true;
       const vm = this;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/pay/${vm.orderId}`;
+      vm.isLoading = true;
 
       vm.$http.post(api).then((response) => {
         if (response.data.success) {
-          this.isLoading = false;
+          vm.isLoading = false;
           vm.$router.push(`/userpayment/${vm.orderId}`);
         }
       });

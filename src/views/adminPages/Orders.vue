@@ -72,7 +72,7 @@
       :opacity="loadingObj.opacity"
       :height="loadingObj.height"
       :width="loadingObj.width"
-     />
+    />
     <!-- 分頁模板 -->
     <Pagination :pagination="pagination" @change-page="getOrders" />
     <!-- 訂單模板 -->
@@ -143,7 +143,7 @@ export default {
         this.isLoading = false; // 關閉Loading元件
         if (res.data.success) {
           this.getOrders();
-          this.$emit('update-orders-number');
+          this.$emit("update-orders-number");
           this.deletModalStatus = false;
           this.$httpMessageState(res, "該訂單已被刪除");
         }
@@ -151,9 +151,9 @@ export default {
     },
     // 刪除所有訂單
     deleteAllOrder() {
-      this.isLoading = true; // 開啟Loading元件
       const vm = this;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/orders/all`;
+      vm.isLoading = true; // 開啟Loading元件
 
       vm.$swal
         .fire({
@@ -169,15 +169,15 @@ export default {
         .then((result) => {
           if (result.isConfirmed) {
             vm.$http.delete(api).then((res) => {
-              this.isLoading = false; // 關閉Loading元件
+              vm.isLoading = false; // 關閉Loading元件
               if (res.data.success) {
                 vm.getOrders();
-                this.$emit('update-orders-number');
+                vm.$emit("update-orders-number");
                 vm.$swal.fire("刪除成功!", "你已刪除所有訂單資料", "success");
               }
             });
           } else {
-            this.isLoading = false; // 關閉Loading元件
+            vm.isLoading = false; // 關閉Loading元件
           }
         });
     },
