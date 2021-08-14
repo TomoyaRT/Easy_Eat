@@ -31,6 +31,15 @@
       class="user-page-gotop-button"
       :class="{ active: goTopStatus }"
     />
+    <Loading
+      :active="isLoading"
+      :background-color="loadingObj.bgc"
+      :loader="loadingObj.style"
+      :color="loadingObj.color"
+      :opacity="loadingObj.opacity"
+      :height="loadingObj.height"
+      :width="loadingObj.width"
+    />
   </div>
 </template>
 
@@ -41,6 +50,7 @@ import Footer from "@/components/userPages/Footer.vue";
 import ToastMessages from "@/components/ToastMessages.vue";
 import FavoriteListModal from "@/components/userPages/FavoriteListModal.vue";
 import GoTopButton from "@/components/userPages/GoTopButton.vue";
+import LoadingConfiguration from "@/mixins/LoadingConfiguration";
 
 export default {
   components: {
@@ -50,6 +60,7 @@ export default {
     FavoriteListModal,
     GoTopButton,
   },
+  mixins: [LoadingConfiguration],
   data() {
     return {
       paymentMethod: "", // 付款方式
@@ -80,10 +91,12 @@ export default {
     getShoppingCartProducts() {
       const vm = this;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`;
+      vm.isLoading = true;
 
       vm.$http.get(api).then((response) => {
         // 存入Data變數
         vm.shoppingCartProducts = response.data.data;
+        vm.isLoading = false;
       });
     },
     // 顯示至頂按鈕
