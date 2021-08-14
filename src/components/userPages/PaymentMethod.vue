@@ -191,8 +191,8 @@
             </div>
             <div class="terms">
               <p>
-                This card is property of Gude Maru Bank. Misuse is
-                criminal offence. If found, please return to Gude Maru Bank.
+                This card is property of Gude Maru Bank. Misuse is criminal
+                offence. If found, please return to Gude Maru Bank.
               </p>
               <p>Use of this card is subject to the credit card agreement.</p>
             </div>

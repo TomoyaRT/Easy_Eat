@@ -45,7 +45,7 @@
       :opacity="loadingObj.opacity"
       :height="loadingObj.height"
       :width="loadingObj.width"
-     />
+    />
   </div>
 </template>
 

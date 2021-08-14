@@ -71,8 +71,8 @@ export default {
   methods: {
     // 更換分頁功能
     changeCurrentPage(status) {
-      this.$emit('close-sidebar');
-      this.$emit('change-current-page', status);
+      this.$emit("close-sidebar");
+      this.$emit("change-current-page", status);
     },
     // 登出功能
     logout() {

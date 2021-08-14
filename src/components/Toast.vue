@@ -78,6 +78,6 @@ export default {
 
 // API串接失敗的補充說明
 .toast-supplement {
-  background-color: #FFCC29;
+  background-color: #ffcc29;
 }
 </style>

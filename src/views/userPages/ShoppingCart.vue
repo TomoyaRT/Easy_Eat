@@ -13,7 +13,10 @@
           v-for="item in shoppingCartProductList.carts"
           :key="item.id"
         >
-        <router-link :to="`/userproduct/${item.product.id}`" class="item-link">
+          <router-link
+            :to="`/userproduct/${item.product.id}`"
+            class="item-link"
+          >
             <img :src="item.product.imageUrl" alt="商品圖片" />
           </router-link>
           <div class="product-content">
@@ -160,7 +163,7 @@
       :opacity="loadingObj.opacity"
       :height="loadingObj.height"
       :width="loadingObj.width"
-     />
+    />
   </div>
 </template>
 
@@ -172,7 +175,11 @@ import GetShoppingCartData from "@/mixins/userPages/GetShoppingCartData";
 export default {
   name: "ShoppingCart",
   inject: ["emitter"],
-  mixins: [FavoriteDataAndShoppingCartData, LoadingConfiguration, GetShoppingCartData],
+  mixins: [
+    FavoriteDataAndShoppingCartData,
+    LoadingConfiguration,
+    GetShoppingCartData,
+  ],
   data() {
     return {
       couponCode: "", // 使用者輸入的優惠券代碼

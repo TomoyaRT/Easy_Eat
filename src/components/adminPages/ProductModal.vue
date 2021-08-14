@@ -40,7 +40,9 @@
               ref="fileInput"
               @change="uploadFile"
             />
-            <label for="file" class="image-upload-input">{{ tempProduct.image || '未選擇圖片檔案' }}</label>
+            <label for="file" class="image-upload-input">{{
+              tempProduct.image || "未選擇圖片檔案"
+            }}</label>
             <label for="file" class="image-upload-btn">瀏覽</label>
           </div>
           <div class="product-image-url" v-if="imageSwitch === 'url'">
@@ -200,7 +202,7 @@ export default {
   data() {
     return {
       imageSwitch: "upload", // 切換上傳圖片 & 輸入圖片連結
-      tempProduct: {nutrientContent:{}}, // 接收父元件的資料
+      tempProduct: { nutrientContent: {} }, // 接收父元件的資料
     };
   },
   props: {

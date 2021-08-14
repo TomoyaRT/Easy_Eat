@@ -10,16 +10,20 @@
 
       <div class="product-detail-container">
         <!-- 商品標籤 -->
-        <div class="product-tag">{{ productStatus ? product.category : '類別' }}</div>
+        <div class="product-tag">
+          {{ productStatus ? product.category : "類別" }}
+        </div>
         <!-- 商品標題 -->
-        <h1 class="product-title">{{ productStatus ? product.title : '商品名稱' }}</h1>
+        <h1 class="product-title">
+          {{ productStatus ? product.title : "商品名稱" }}
+        </h1>
         <!-- 商品原價與售價 -->
         <div class="product-price-container">
           <div class="product-promotional-price">
             ${{ productStatus ? priceCalculation : 0 }}
           </div>
           <div class="product-origin-price">
-            {{ productStatus ? originPriceCalculation : '' }}
+            {{ productStatus ? originPriceCalculation : "" }}
           </div>
         </div>
         <!-- 營養成分 -->
@@ -32,7 +36,9 @@
                 <span class="content">熱量 </span>
               </div>
               <div class="number-group">
-                <span class="number">{{ productStatus ? caloriesCalculation : 0 }}</span>
+                <span class="number">{{
+                  productStatus ? caloriesCalculation : 0
+                }}</span>
                 <span class="unit"> 卡</span>
               </div>
             </li>
@@ -42,7 +48,9 @@
                 <span class="content">蛋白質 </span>
               </div>
               <div class="number-group">
-                <span class="number">{{ productStatus ? proteinCalculation : 0 }}</span>
+                <span class="number">{{
+                  productStatus ? proteinCalculation : 0
+                }}</span>
                 <span class="unit"> 克</span>
               </div>
             </li>
@@ -52,7 +60,9 @@
                 <span class="content">油脂 </span>
               </div>
               <div class="number-group">
-                <span class="number">{{ productStatus ? fatCalculation : 0 }}</span>
+                <span class="number">{{
+                  productStatus ? fatCalculation : 0
+                }}</span>
                 <span class="unit"> 克</span>
               </div>
             </li>
@@ -62,7 +72,9 @@
                 <span class="content">碳水化合物 </span>
               </div>
               <div class="number-group">
-                <span class="number">{{ productStatus ? carbohydratesCalculation : 0 }}</span>
+                <span class="number">{{
+                  productStatus ? carbohydratesCalculation : 0
+                }}</span>
                 <span class="unit"> 克</span>
               </div>
             </li>
@@ -72,7 +84,7 @@
         <div class="product-information">
           <div class="product-information-title">商品資訊</div>
           <p class="product-information-content">
-            {{ productStatus ? product.content : '商品的簡介...' }}
+            {{ productStatus ? product.content : "商品的簡介..." }}
           </p>
         </div>
         <!-- 商品選購數量 -->
@@ -146,7 +158,7 @@
       :opacity="loadingObj.opacity"
       :height="loadingObj.height"
       :width="loadingObj.width"
-     />
+    />
   </div>
 </template>
 
@@ -159,7 +171,12 @@ import GetShoppingCartData from "@/mixins/userPages/GetShoppingCartData";
 export default {
   name: "Product",
   inject: ["emitter"],
-  mixins: [AddToCartAndUpdateFavoriteList, FavoriteDataAndShoppingCartData, LoadingConfiguration, GetShoppingCartData],
+  mixins: [
+    AddToCartAndUpdateFavoriteList,
+    FavoriteDataAndShoppingCartData,
+    LoadingConfiguration,
+    GetShoppingCartData,
+  ],
   data() {
     return {
       productId: "", // 產品ID

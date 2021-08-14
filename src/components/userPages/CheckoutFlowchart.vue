@@ -6,13 +6,22 @@
       <!-- 流程圓點外框 -->
       <div class="checkout-flowchart-status-frame">
         <!-- 流程圓點 -->
-        <div class="checkout-flowchart-status" :class="{'active': flowchartStatus === 'OrderForm'}"></div>
+        <div
+          class="checkout-flowchart-status"
+          :class="{ active: flowchartStatus === 'OrderForm' }"
+        ></div>
       </div>
       <div class="checkout-flowchart-status-frame">
-        <div class="checkout-flowchart-status" :class="{'active': flowchartStatus === 'Checkout'}"></div>
+        <div
+          class="checkout-flowchart-status"
+          :class="{ active: flowchartStatus === 'Checkout' }"
+        ></div>
       </div>
       <div class="checkout-flowchart-status-frame">
-        <div class="checkout-flowchart-status" :class="{'active': flowchartStatus === 'Payment'}"></div>
+        <div
+          class="checkout-flowchart-status"
+          :class="{ active: flowchartStatus === 'Payment' }"
+        ></div>
       </div>
     </div>
     <!-- 流程線 -->

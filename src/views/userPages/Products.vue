@@ -350,7 +350,7 @@
       :opacity="loadingObj.opacity"
       :height="loadingObj.height"
       :width="loadingObj.width"
-     />
+    />
   </div>
 </template>
 
@@ -364,7 +364,12 @@ import GetShoppingCartData from "@/mixins/userPages/GetShoppingCartData";
 export default {
   name: "Products",
   inject: ["emitter"],
-  mixins: [AddToCartAndUpdateFavoriteList, FavoriteDataAndShoppingCartData, LoadingConfiguration, GetShoppingCartData],
+  mixins: [
+    AddToCartAndUpdateFavoriteList,
+    FavoriteDataAndShoppingCartData,
+    LoadingConfiguration,
+    GetShoppingCartData,
+  ],
   data() {
     return {
       products: [], // 全部商品資料

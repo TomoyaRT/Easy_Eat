@@ -68,7 +68,7 @@
       :opacity="loadingObj.opacity"
       :height="loadingObj.height"
       :width="loadingObj.width"
-     />
+    />
     <!-- 分頁模板 -->
     <Pagination :pagination="pagination" @change-page="getCoupon" />
     <!-- 優惠券模板 -->
@@ -196,7 +196,7 @@ export default {
         this.couponModalStatus = false;
         this.deletModalStatus = false;
         this.getCoupon();
-        this.$emit('update-coupons-number');
+        this.$emit("update-coupons-number");
         switch (this.couponStatus) {
           case "新增優惠券":
             this.$httpMessageState(res, "新增優惠券");

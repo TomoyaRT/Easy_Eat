@@ -48,7 +48,7 @@
       :opacity="loadingObj.opacity"
       :height="loadingObj.height"
       :width="loadingObj.width"
-     />
+    />
   </div>
 </template>
 
@@ -63,7 +63,7 @@ import LoadingConfiguration from "@/mixins/LoadingConfiguration";
 import GetShoppingCartData from "@/mixins/userPages/GetShoppingCartData";
 
 export default {
-  name: 'OrderForm',
+  name: "OrderForm",
   inject: ["emitter"],
   mixins: [LoadingConfiguration, GetShoppingCartData],
   props: {
@@ -98,14 +98,14 @@ export default {
       ordererFormData: {},
       flowchartStatus: "OrderForm", // 表單流程圖樣式
       btnStatus: "paymentForm", // 訂單資料的三大按鈕
-      shoppingCartProductList: {carts:[]}, // 購物車資料
-      formTitle: '付款方式',
+      shoppingCartProductList: { carts: [] }, // 購物車資料
+      formTitle: "付款方式",
     };
   },
   watch: {
     shoppingCartProducts() {
       this.shoppingCartProductList = this.shoppingCartProducts;
-    }
+    },
   },
   methods: {
     // 更新表單標題
@@ -152,7 +152,7 @@ export default {
   mounted() {
     // 重新整理、關閉頁面時，瀏覽器預設的提醒訊息。
     window.onbeforeunload = () => {
-        return '';
+      return "";
     };
   },
   beforeUnmount() {

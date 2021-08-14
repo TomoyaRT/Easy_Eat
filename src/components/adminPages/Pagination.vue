@@ -47,7 +47,7 @@ export default {
   methods: {
     changePage(page) {
       // 變更頁數
-      this.$emit('change-page', page);
+      this.$emit("change-page", page);
       // 滾動至頂
     },
   },

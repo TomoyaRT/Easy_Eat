@@ -18,7 +18,9 @@
             <div class="product-name">
               <p>{{ product.title }}</p>
             </div>
-            <div class="product-price">${{ $filters.currency(product.price) }}</div>
+            <div class="product-price">
+              ${{ $filters.currency(product.price) }}
+            </div>
           </div>
           <div class="product-btn-group">
             <i
@@ -82,12 +84,12 @@
       :opacity="loadingObj.opacity"
       :height="loadingObj.height"
       :width="loadingObj.width"
-     />
+    />
   </div>
 </template>
 
 <script>
-import FavoriteDataAndShoppingCartData from '@/mixins/userPages/FavoriteDataAndShoppingCartData';
+import FavoriteDataAndShoppingCartData from "@/mixins/userPages/FavoriteDataAndShoppingCartData";
 import LoadingConfiguration from "@/mixins/LoadingConfiguration";
 
 export default {
@@ -117,7 +119,6 @@ export default {
           qty,
         };
         vm.isLoading = true; // 開啟Loading元件
-
 
         vm.$http.post(api, { data: cart }).then((response) => {
           vm.isLoading = false; // 關閉Loading元件
@@ -157,7 +158,7 @@ export default {
     },
     // 關閉 我的最愛模板
     closeFavoriteProductsModal() {
-      this.$emit('change-current-page-style', 'UserProducts');
+      this.$emit("change-current-page-style", "UserProducts");
       // 關閉模板樣式
       this.$emit("close-favorite-list-modal");
     },

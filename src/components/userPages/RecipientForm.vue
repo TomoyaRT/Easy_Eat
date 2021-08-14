@@ -173,11 +173,7 @@
       ></textarea>
     </div>
     <div class="form-btn-container">
-      <button
-        type="button"
-        class="btn-go-back"
-        @click="goPrevStep"
-      >
+      <button type="button" class="btn-go-back" @click="goPrevStep">
         上一步
       </button>
       <button type="submit" class="btn-go-checkout" :disabled="isSubmitting">
@@ -258,16 +254,16 @@ export default {
     // 上一步
     goPrevStep() {
       // 關閉購物車訂單模板
-      this.emitter.emit('switch-order', false);
+      this.emitter.emit("switch-order", false);
       // 更新表單標題
-      this.$emit('update-form-title', '訂購人資料');
+      this.$emit("update-form-title", "訂購人資料");
       // 跳轉到上一個元件
-      this.$emit('change-form-step', 'ordererForm');
+      this.$emit("change-form-step", "ordererForm");
     },
     // 創建訂單
     createOrder() {
       // 最後一次更新購物車資料
-      this.$emit('update-shopping-cart-products');
+      this.$emit("update-shopping-cart-products");
       // 建立訂單(會銷毀購物車資料)
       this.$emit("create-order", this.recipientForm);
     },
@@ -278,7 +274,7 @@ export default {
     },
   },
   created() {
-    this.emitter.emit('switch-order', false);
+    this.emitter.emit("switch-order", false);
   },
 };
 </script>

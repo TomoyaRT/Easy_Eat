@@ -27,7 +27,10 @@
       @change-current-page-style="changeCurrentPageStyle"
     ></router-view>
     <Footer />
-    <GoTopButton class="user-page-gotop-button" :class="{'active': goTopStatus}" />
+    <GoTopButton
+      class="user-page-gotop-button"
+      :class="{ active: goTopStatus }"
+    />
   </div>
 </template>
 
@@ -37,7 +40,7 @@ import Navbar from "@/components/userPages/Navbar.vue";
 import Footer from "@/components/userPages/Footer.vue";
 import ToastMessages from "@/components/ToastMessages.vue";
 import FavoriteListModal from "@/components/userPages/FavoriteListModal.vue";
-import GoTopButton from '@/components/userPages/GoTopButton.vue';
+import GoTopButton from "@/components/userPages/GoTopButton.vue";
 
 export default {
   components: {
@@ -54,7 +57,7 @@ export default {
       shoppingCartProducts: {}, // API購物車資料
       favoriteProducts: [], // localStorage我的最愛資料
       goTopStatus: false,
-      currentPageName: 'Home',
+      currentPageName: "Home",
     };
   },
   // 讓所有HomePage的子元件都能使用到 emitter
@@ -67,7 +70,9 @@ export default {
     // 取得 localStorage我的最愛資料
     getFavoriteProducts() {
       // 存入Data變數
-      this.favoriteProducts = JSON.parse(localStorage.getItem("addedFavoriteProducts"));
+      this.favoriteProducts = JSON.parse(
+        localStorage.getItem("addedFavoriteProducts")
+      );
       // 如無資料，將null轉型成[]
       if (this.favoriteProducts === null) this.favoriteProducts = [];
     },
@@ -95,13 +100,15 @@ export default {
     // 改變當前頁面樣式
     changeCurrentPageStyle(name) {
       this.currentPageName = name;
-    }
+    },
   },
   created() {
     // 監聽 至頂按鈕的顯示
     this.activeGoTop();
     // 接收 付款方式的字串
-    emitter.on("payment-method", (payment) => { this.paymentMethod = payment; });
+    emitter.on("payment-method", (payment) => {
+      this.paymentMethod = payment;
+    });
     // 取得 localStorage我的最愛資料
     this.getFavoriteProducts();
     // 取得 當前頁面名稱

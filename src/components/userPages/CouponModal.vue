@@ -55,7 +55,7 @@ export default {
     // 當 couponData 資料有更動，隨時更新。
     couponData() {
       this.currentCoupon = this.couponData;
-    }
+    },
   },
   methods: {
     // 複製優惠券代碼到剪貼簿
