@@ -14,7 +14,7 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 // 自定義的模組
 import App from './App.vue'
 import router from './router'
-import { currency } from './methods/filters';
+import currency from './methods/filters';
 import $httpMessageState from './methods/pushMessageState';
 
 // 啟用vee-validate設定
@@ -35,7 +35,7 @@ const app = createApp(App);
 app.component('Form', Form);
 app.component('Field', Field);
 app.component('ErrorMessage', ErrorMessage);
-app.config.globalProperties.$filters = { currency, };
+app.config.globalProperties.$filters = { currency };
 app.config.globalProperties.$httpMessageState = $httpMessageState;
 app.component('Loading', Loading);
 app.use(VueSweetalert2);
