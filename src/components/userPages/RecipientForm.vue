@@ -38,7 +38,7 @@
       />
       <i class="bi bi-check-circle-fill" v-if="meta.valid"></i>
       <i class="bi bi-x-circle-fill" v-if="!meta.valid && meta.touched"></i>
-      <error-message name="姓名" class="invalid-feedback"></error-message>
+      <ErrorMessage name="姓名" class="invalid-feedback"></ErrorMessage>
     </Field>
     <div class="user-address-container">
       <div class="user-address">地址</div>
@@ -113,7 +113,7 @@
         />
         <i class="bi bi-check-circle-fill" v-if="meta.valid"></i>
         <i class="bi bi-x-circle-fill" v-if="!meta.valid && meta.touched"></i>
-        <error-message name="地址" class="invalid-feedback"></error-message>
+        <ErrorMessage name="地址" class="invalid-feedback"></ErrorMessage>
       </Field>
     </div>
     <Field
@@ -138,7 +138,7 @@
         />
         <i class="bi bi-check-circle-fill" v-if="meta.valid"></i>
         <i class="bi bi-x-circle-fill" v-if="!meta.valid && meta.touched"></i>
-        <error-message name="手機" class="invalid-feedback"></error-message>
+        <ErrorMessage name="手機" class="invalid-feedback"></ErrorMessage>
       </div>
     </Field>
     <Field
@@ -162,7 +162,7 @@
         />
         <i class="bi bi-check-circle-fill" v-if="meta.valid"></i>
         <i class="bi bi-x-circle-fill" v-if="!meta.valid && meta.touched"></i>
-        <error-message name="電子信箱" class="invalid-feedback"></error-message>
+        <ErrorMessage name="電子信箱" class="invalid-feedback"></ErrorMessage>
       </div>
     </Field>
     <div class="user-remark-container">

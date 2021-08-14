@@ -45,10 +45,10 @@
                 ></i>
               </div>
 
-              <error-message
+              <ErrorMessage
                 name="email"
                 class="invalid-feedback"
-              ></error-message>
+              ></ErrorMessage>
             </Field>
             <Field
               class="user-password-container"
@@ -79,10 +79,10 @@
                 ></i>
               </div>
 
-              <error-message
+              <ErrorMessage
                 name="password"
                 class="invalid-feedback"
-              ></error-message>
+              ></ErrorMessage>
             </Field>
             <button
               type="submit"
