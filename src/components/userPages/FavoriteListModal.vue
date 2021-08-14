@@ -127,7 +127,7 @@ export default {
           vm.$emit("update-shopping-cart-products");
         });
       } else {
-        vm.$swal.fire("此商品以加入購物車");
+        this.$swal.fire("此商品以加入購物車");
       }
     },
     // localStorage我的最愛資料
