@@ -98,38 +98,6 @@
   </div>
 </template>
 
-<style lang="scss">
-// 動態背景
-.login-container {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  background-image: url("../../public/images/login-bg.svg");
-  background-position: center;
-  background-repeat: repeat;
-  background-origin: border-box;
-  animation: slide 30s linear alternate infinite,
-    changeColor 7s linear alternate infinite;
-
-  @keyframes changeColor {
-    from {
-      background-color: #e8eaff;
-    }
-    to {
-      background-color: #fcf6dd;
-    }
-  }
-  @keyframes slide {
-    from {
-      background-position: 0 0;
-    }
-    to {
-      background-position: 100% -100%;
-    }
-  }
-}
-</style>
-
 <script>
 export default {
   data() {
@@ -207,3 +175,35 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+// 動態背景
+.login-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  background-image: url("../../public/images/login-bg.svg");
+  background-position: center;
+  background-repeat: repeat;
+  background-origin: border-box;
+  animation: slide 30s linear alternate infinite,
+    changeColor 7s linear alternate infinite;
+
+  @keyframes changeColor {
+    from {
+      background-color: #e8eaff;
+    }
+    to {
+      background-color: #fcf6dd;
+    }
+  }
+  @keyframes slide {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 100% -100%;
+    }
+  }
+}
+</style>

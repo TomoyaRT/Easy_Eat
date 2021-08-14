@@ -17,6 +17,23 @@
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      toastActive: false,
+    };
+  },
+  props: ["msg"],
+  created() {
+    this.toastActive = true;
+    setTimeout(() => {
+      this.toastActive = false;
+    }, 2500);
+  },
+};
+</script>
+
 <style scoped lang="scss">
 .toast,
 .toast-supplement {
@@ -64,20 +81,3 @@
   background-color: #FFCC29;
 }
 </style>
-
-<script>
-export default {
-  data() {
-    return {
-      toastActive: false,
-    };
-  },
-  props: ["msg"],
-  created() {
-    this.toastActive = true;
-    setTimeout(() => {
-      this.toastActive = false;
-    }, 2500);
-  },
-};
-</script>

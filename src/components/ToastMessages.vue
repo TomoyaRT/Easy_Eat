@@ -4,17 +4,6 @@
   </div>
 </template>
 
-<style scoped lang="scss">
-.toastMessages {
-  z-index: 1500;
-  position: fixed;
-  top: 3.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-}
-</style>
-
-
 <script>
 import Toast from "@/components/Toast.vue";
 
@@ -35,3 +24,13 @@ export default {
   },
 };
 </script>
+
+<style scoped lang="scss">
+.toastMessages {
+  z-index: 1500;
+  position: fixed;
+  top: 3.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+</style>
