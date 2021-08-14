@@ -40,11 +40,12 @@
           </div>
         </div>
       </div>
-      <!-- 手機版的漢堡選單 -->
+      <!-- 手機版的漢堡遮罩 -->
       <div
         class="circle-overlay-background"
         :class="{ 'overlay-background-active': menuStatus }"
       ></div>
+      <!-- 手機版的漢堡選單 -->
       <div
         class="navbar-menu-container"
         :class="{ 'menu-container-active': menuStatus }"
