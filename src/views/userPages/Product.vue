@@ -185,7 +185,6 @@ export default {
         nutrientContent: {}, // 單一產品營養成分
       },
       qty: 1, // 選購產品數量 (預設值: 1)
-      isLoading: false, // Loading元件(全域)
       productStatus: false, // 商品圖片讀取狀態
     };
   },

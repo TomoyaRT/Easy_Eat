@@ -393,7 +393,6 @@ export default {
       searchPriceMaxNum: "", // 價格區間的最大值
       searchPriceStatus: false, // 價格區間搜尋狀態
       productsSearchStatus: false, // 搜尋狀態
-      isLoading: false, // Loading元件(全域)
     };
   },
   computed: {
