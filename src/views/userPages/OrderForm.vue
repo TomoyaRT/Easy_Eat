@@ -55,13 +55,13 @@
 
 <script>
 import areaList from "@/assets/json/areaList";
-import ShoppingCartList from "../../components/userPages/ShoppingCartList.vue";
-import CheckoutFlowchart from "../../components/userPages/CheckoutFlowchart.vue";
-import PaymentMethod from "../../components/userPages/PaymentMethod.vue";
-import OrdererForm from "../../components/userPages/OrdererForm.vue";
-import RecipientForm from "../../components/userPages/RecipientForm.vue";
-import LoadingConfiguration from "../../mixins/LoadingConfiguration";
-import GetShoppingCartData from "../../mixins/userPages/GetShoppingCartData";
+import ShoppingCartList from "@/components/userPages/ShoppingCartList.vue";
+import CheckoutFlowchart from "@/components/userPages/CheckoutFlowchart.vue";
+import PaymentMethod from "@/components/userPages/PaymentMethod.vue";
+import OrdererForm from "@/components/userPages/OrdererForm.vue";
+import RecipientForm from "@/components/userPages/RecipientForm.vue";
+import LoadingConfiguration from "@/mixins/LoadingConfiguration";
+import GetShoppingCartData from "@/mixins/userPages/GetShoppingCartData";
 
 export default {
   name: 'OrderForm',

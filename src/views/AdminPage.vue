@@ -52,10 +52,10 @@
 
 <script>
 import emitter from "@/methods/emitter"; // 引入mitt套件(類似Vue2 Event Bus功能)
-import ToastMessages from "../components/ToastMessages.vue"; // 引入提示訊息元件
-import Sidebar from "../components/adminPages/Sidebar.vue";
-import Navbar from "../components/adminPages/Navbar.vue";
-import LoadingConfiguration from "../mixins/LoadingConfiguration";
+import ToastMessages from "@/components/ToastMessages.vue"; // 引入提示訊息元件
+import Sidebar from "@/components/adminPages/Sidebar.vue";
+import Navbar from "@/components/adminPages/Navbar.vue";
+import LoadingConfiguration from "@/mixins/LoadingConfiguration";
 
 export default {
   mixins: [LoadingConfiguration],

@@ -88,8 +88,8 @@
 </template>
 
 <script>
-import ProductsRankingChart from "../../components/adminPages/ProductsRankingChart.vue";
-import OrdersChart from "../../components/adminPages/OrdersChart.vue";
+import ProductsRankingChart from "@/components/adminPages/ProductsRankingChart.vue";
+import OrdersChart from "@/components/adminPages/OrdersChart.vue";
 
 export default {
   components: {

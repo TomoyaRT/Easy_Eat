@@ -54,8 +54,8 @@
 </template>
 
 <script>
-import CouponModal from "../../components/userPages/CouponModal.vue";
-import GetShoppingCartData from "../../mixins/userPages/GetShoppingCartData";
+import CouponModal from "@/components/userPages/CouponModal.vue";
+import GetShoppingCartData from "@/mixins/userPages/GetShoppingCartData";
 
 export default {
   components: {

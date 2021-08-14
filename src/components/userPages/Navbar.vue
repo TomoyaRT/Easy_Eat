@@ -143,7 +143,7 @@
 </template>
 
 <script>
-import FavoriteDataAndShoppingCartData from "../../mixins/userPages/FavoriteDataAndShoppingCartData";
+import FavoriteDataAndShoppingCartData from "@/mixins/userPages/FavoriteDataAndShoppingCartData";
 
 export default {
   mixins: [FavoriteDataAndShoppingCartData],

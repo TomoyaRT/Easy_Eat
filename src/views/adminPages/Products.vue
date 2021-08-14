@@ -89,9 +89,9 @@
 </template>
 
 <script>
-import ProductModal from "../../components/adminPages/ProductModal.vue";
-import AdminPagesUniversal from "../../mixins/adminPages/AdminPagesUniversal";
-import LoadingConfiguration from "../../mixins/LoadingConfiguration";
+import ProductModal from "@/components/adminPages/ProductModal.vue";
+import AdminPagesUniversal from "@/mixins/adminPages/AdminPagesUniversal";
+import LoadingConfiguration from "@/mixins/LoadingConfiguration";
 
 export default {
   mixins: [AdminPagesUniversal, LoadingConfiguration],

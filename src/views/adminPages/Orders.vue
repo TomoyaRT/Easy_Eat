@@ -93,9 +93,9 @@
 </template>
 
 <script>
-import OrderModal from "../../components/adminPages/OrderModal.vue";
-import AdminPagesUniversal from "../../mixins/adminPages/AdminPagesUniversal";
-import LoadingConfiguration from "../../mixins/LoadingConfiguration";
+import OrderModal from "@/components/adminPages/OrderModal.vue";
+import AdminPagesUniversal from "@/mixins/adminPages/AdminPagesUniversal";
+import LoadingConfiguration from "@/mixins/LoadingConfiguration";
 
 export default {
   mixins: [AdminPagesUniversal, LoadingConfiguration],

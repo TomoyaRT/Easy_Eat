@@ -88,8 +88,8 @@
 </template>
 
 <script>
-import FavoriteDataAndShoppingCartData from '../../mixins/userPages/FavoriteDataAndShoppingCartData';
-import LoadingConfiguration from "../../mixins/LoadingConfiguration";
+import FavoriteDataAndShoppingCartData from '@/mixins/userPages/FavoriteDataAndShoppingCartData';
+import LoadingConfiguration from "@/mixins/LoadingConfiguration";
 
 export default {
   name: "FavoriteModal",

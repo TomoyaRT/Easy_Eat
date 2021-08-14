@@ -78,11 +78,11 @@
 </template>
 
 <script>
-import OrderData from "../../mixins/userPages/OrderData";
-import CheckoutFlowchart from "../../components/userPages/CheckoutFlowchart.vue";
-import ShoppingCartList from "../../components/userPages/ShoppingCartList.vue";
-import LoadingConfiguration from "../../mixins/LoadingConfiguration";
-import GetShoppingCartData from "../../mixins/userPages/GetShoppingCartData";
+import OrderData from "@/mixins/userPages/OrderData";
+import CheckoutFlowchart from "@/components/userPages/CheckoutFlowchart.vue";
+import ShoppingCartList from "@/components/userPages/ShoppingCartList.vue";
+import LoadingConfiguration from "@/mixins/LoadingConfiguration";
+import GetShoppingCartData from "@/mixins/userPages/GetShoppingCartData";
 
 export default {
   name: "Checkout",

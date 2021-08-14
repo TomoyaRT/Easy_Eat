@@ -357,10 +357,10 @@
 
 <script>
 import smoothscroll from "smoothscroll-polyfill";
-import AddToCartAndUpdateFavoriteList from "../../mixins/userPages/AddToCartAndUpdateFavoriteList.js";
-import FavoriteDataAndShoppingCartData from "../../mixins/userPages/FavoriteDataAndShoppingCartData";
-import LoadingConfiguration from "../../mixins/LoadingConfiguration";
-import GetShoppingCartData from "../../mixins/userPages/GetShoppingCartData";
+import AddToCartAndUpdateFavoriteList from "@/mixins/userPages/AddToCartAndUpdateFavoriteList.js";
+import FavoriteDataAndShoppingCartData from "@/mixins/userPages/FavoriteDataAndShoppingCartData";
+import LoadingConfiguration from "@/mixins/LoadingConfiguration";
+import GetShoppingCartData from "@/mixins/userPages/GetShoppingCartData";
 
 export default {
   name: "Products",

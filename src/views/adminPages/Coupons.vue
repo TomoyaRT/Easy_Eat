@@ -92,9 +92,9 @@
 </template>
 
 <script>
-import CouponModal from "../../components/adminPages/CouponModal.vue";
-import AdminPagesUniversal from "../../mixins/adminPages/AdminPagesUniversal";
-import LoadingConfiguration from "../../mixins/LoadingConfiguration";
+import CouponModal from "@/components/adminPages/CouponModal.vue";
+import AdminPagesUniversal from "@/mixins/adminPages/AdminPagesUniversal";
+import LoadingConfiguration from "@/mixins/LoadingConfiguration";
 
 export default {
   mixins: [AdminPagesUniversal, LoadingConfiguration],

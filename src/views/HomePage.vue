@@ -32,12 +32,12 @@
 </template>
 
 <script>
-import emitter from "../methods/emitter"; // 引入mitt套件(類似Vue2 Event Bus功能)
-import Navbar from "../components/userPages/Navbar.vue";
-import Footer from "../components/userPages/Footer.vue";
-import ToastMessages from "../components/ToastMessages.vue";
-import FavoriteListModal from "../components/userPages/FavoriteListModal.vue";
-import GoTopButton from '../components/userPages/GoTopButton.vue';
+import emitter from "@/methods/emitter"; // 引入mitt套件(類似Vue2 Event Bus功能)
+import Navbar from "@/components/userPages/Navbar.vue";
+import Footer from "@/components/userPages/Footer.vue";
+import ToastMessages from "@/components/ToastMessages.vue";
+import FavoriteListModal from "@/components/userPages/FavoriteListModal.vue";
+import GoTopButton from '@/components/userPages/GoTopButton.vue';
 
 export default {
   components: {

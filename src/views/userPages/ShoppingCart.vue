@@ -166,9 +166,9 @@
 </template>
 
 <script>
-import FavoriteDataAndShoppingCartData from "../../mixins/userPages/FavoriteDataAndShoppingCartData";
-import LoadingConfiguration from "../../mixins/LoadingConfiguration";
-import GetShoppingCartData from "../../mixins/userPages/GetShoppingCartData";
+import FavoriteDataAndShoppingCartData from "@/mixins/userPages/FavoriteDataAndShoppingCartData";
+import LoadingConfiguration from "@/mixins/LoadingConfiguration";
+import GetShoppingCartData from "@/mixins/userPages/GetShoppingCartData";
 
 export default {
   name: "ShoppingCart",
