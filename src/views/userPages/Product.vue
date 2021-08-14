@@ -241,8 +241,6 @@ export default {
         if (response.data.success) {
           vm.product = response.data.product;
           vm.productStatus = true;
-        } else {
-          console.warn("API串聯失敗");
         }
       });
     },
