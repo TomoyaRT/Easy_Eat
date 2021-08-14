@@ -181,7 +181,6 @@
         >
       </div>
     </div>
-    <!-- Loading -->
     <Loading
       :active="isLoading"
       :background-color="loadingObj.bgc"
@@ -190,7 +189,7 @@
       :opacity="loadingObj.opacity"
       :height="loadingObj.height"
       :width="loadingObj.width"
-    ></Loading>
+     />
   </div>
 </template>
 

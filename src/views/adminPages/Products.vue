@@ -58,7 +58,6 @@
         ></i>
       </div>
     </div>
-    <!-- Loading -->
     <Loading
       :active="isLoading"
       :background-color="loadingObj.bgc"
@@ -67,7 +66,7 @@
       :opacity="loadingObj.opacity"
       :height="loadingObj.height"
       :width="loadingObj.width"
-    ></Loading>
+     />
     <!-- 分頁模板 -->
     <Pagination :pagination="pagination" @change-page="getProducts" />
     <!-- 商品模板 -->
