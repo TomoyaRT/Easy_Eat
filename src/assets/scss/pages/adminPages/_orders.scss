@@ -155,7 +155,7 @@
 
             // 購買商品
             .bought-products {
-                
+
                 @include desktop_1280 {
                     display: flex;
                     margin-bottom: 0.25rem;
@@ -197,7 +197,7 @@
                 text-align: center;
             }
         }
-        
+
         // 已付款
         .payment-paid-status {
             color: #03b421;
@@ -220,7 +220,7 @@
             @include desktop_1280 {
                 width: 5%;
             }
-            
+
             .bi-eye-fill,
             .bi-trash {
                 font-size: 1.3rem;

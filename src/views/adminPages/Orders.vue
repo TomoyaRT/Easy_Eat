@@ -118,7 +118,7 @@ export default {
     getOrders(page = 1) {
       this.isLoading = true; // 開啟Loading元件
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/orders?page=${page}`;
-      
+
       this.$http.get(api).then((res) => {
         this.isLoading = false; // 關閉Loading元件
         if (res.data.success) {

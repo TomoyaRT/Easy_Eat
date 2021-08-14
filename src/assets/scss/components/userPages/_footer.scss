@@ -1,7 +1,7 @@
 .user-page-footer {
     width: 100%;
     margin-top: 1.5rem;
-    
+
     @include tablet_768 {
         margin-top: 2rem;
     }
@@ -175,7 +175,7 @@
             }
         }
     }
-    
+
     .copyright {
         width: 90%;
         margin: 1rem auto;

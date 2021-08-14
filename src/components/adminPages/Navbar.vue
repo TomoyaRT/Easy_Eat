@@ -39,7 +39,7 @@
     </div>
   </div>
 </template>
- 
+
 <script>
 export default {
   // 使用父元件的 emitter元件

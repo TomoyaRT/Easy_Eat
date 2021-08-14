@@ -122,7 +122,7 @@ export default {
     getCoupon(page = 1) {
       this.isLoading = true; // 開啟Loading元件
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/coupons?page=${page}`;
-      
+
       // 發送API
       this.$http.get(api).then((res) => {
         this.isLoading = false; // 關閉Loading元件
