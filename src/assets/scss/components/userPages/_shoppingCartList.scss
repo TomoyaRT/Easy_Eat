@@ -1,85 +1,85 @@
 .user-page-shopping-cart-list {
-    width: 100%;
-    overflow-y: scroll;
-    background-color: #ffffff;
-    color: #6b6b6b;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-sizing: border-box;
-    height: 0px;
-    transition: height .5s;
+  width: 100%;
+  overflow-y: scroll;
+  background-color: #ffffff;
+  color: #6b6b6b;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 0px;
+  transition: height 0.5s;
 
-    // scrollbar 寬度
-    &::-webkit-scrollbar {
-        width: .5rem;
+  // scrollbar 寬度
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  // scrollbar 顏色
+  &::-webkit-scrollbar-thumb {
+    background-color: #8d8d8d;
+  }
+
+  // 商品列表
+  .shopping-cart-group {
+    padding: 0.5rem;
+    // 單一商品
+    .shopping-cart-item {
+      display: flex;
+      line-height: 3rem;
+      font-size: 1rem;
+      border-bottom: 1px;
+      border-style: solid;
+      border-color: #e2e2e2;
+
+      // 商品名
+      .product-name {
+        width: 55%;
+      }
+
+      // 商品數
+      .product-qty {
+        width: 15%;
+      }
+
+      // 商品價格
+      .product-price {
+        width: 30%;
+        text-align: end;
+      }
+    }
+  }
+  // 結算區域
+  .products-total-price-container {
+    padding: 0.5rem;
+    margin-top: 1.5rem;
+
+    // 優惠券折抵/總金額
+    .coupon-discount-container,
+    .product-total-container {
+      display: flex;
+      font-size: 1rem;
+
+      .coupon-title,
+      .product-title {
+        width: 70%;
+        margin-right: 10%;
+        text-align: end;
+      }
+
+      .coupon-discount-price,
+      .product-total-price {
+        width: 20%;
+        text-align: end;
+      }
     }
 
-    // scrollbar 顏色
-    &::-webkit-scrollbar-thumb {
-        background-color: #8d8d8d;
+    .coupon-discount-container {
+      margin-bottom: 1rem;
     }
-
-    // 商品列表
-    .shopping-cart-group {
-        padding: .5rem;
-        // 單一商品
-        .shopping-cart-item {
-            display: flex;
-            line-height: 3rem;
-            font-size: 1rem;
-            border-bottom: 1px;
-            border-style: solid;
-            border-color: #e2e2e2;
-
-            // 商品名
-            .product-name {
-                width: 55%;
-            }
-
-            // 商品數
-            .product-qty {
-                width: 15%;
-            }
-
-            // 商品價格
-            .product-price {
-                width: 30%;
-                text-align: end;
-            }
-        }
-    }
-    // 結算區域
-    .products-total-price-container {
-        padding: .5rem;
-        margin-top: 1.5rem;
-
-        // 優惠券折抵/總金額
-        .coupon-discount-container,
-        .product-total-container {
-            display: flex;
-            font-size: 1rem;
-
-            .coupon-title,
-            .product-title {
-                width: 70%;
-                margin-right: 10%;
-                text-align: end;
-            }
-
-            .coupon-discount-price,
-            .product-total-price {
-                width: 20%;
-                text-align: end;
-            }
-        }
-
-        .coupon-discount-container {
-            margin-bottom: 1rem;
-        }
-    }
+  }
 }
 
 .order-active {
-    height: 200px;
+  height: 200px;
 }

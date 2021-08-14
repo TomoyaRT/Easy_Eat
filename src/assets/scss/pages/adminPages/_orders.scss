@@ -1,239 +1,238 @@
 .admin-page-orders {
-    width: 100%;
-    height: 80%;
-    margin-top: 1rem;
+  width: 100%;
+  height: 80%;
+  margin-top: 1rem;
 
-    // 頁面
-    .orders-container {
-        width: 90%;
-        margin: 0 auto;
+  // 頁面
+  .orders-container {
+    width: 90%;
+    margin: 0 auto;
 
-        @include tablet_1024 {
-            width: 95%;
-        }
+    @include tablet_1024 {
+      width: 95%;
+    }
+  }
+
+  // 標題
+  .orders-title-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #c0c0c0;
+    color: #494949;
+    font-weight: bold;
+
+    // 購買時間
+    .purchase-time {
+      width: 35%;
+
+      @include tablet_768 {
+        width: 25%;
+      }
+
+      @include desktop_1280 {
+        width: 15%;
+      }
     }
 
-    // 標題
-    .orders-title-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding-bottom: 0.75rem;
-        margin-bottom: 1.5rem;
-        border-bottom: 1px solid #c0c0c0;
-        color: #494949;
-        font-weight: bold;
+    // 顧客信箱
+    .customer-email {
+      display: none;
 
-        // 購買時間
-        .purchase-time {
-            width: 35%;
+      @include tablet_768 {
+        display: block;
+        width: 30%;
+      }
 
-            @include tablet_768 {
-                width: 25%;
-            }
-
-            @include desktop_1280 {
-                width: 15%;
-            }
-        }
-
-        // 顧客信箱
-        .customer-email {
-            display: none;
-
-            @include tablet_768 {
-                display: block;
-                width: 30%;
-            }
-
-            @include desktop_1280 {
-                width: 25%;
-            }
-        }
-
-        // 購買款項
-        .bought-products {
-            display: none;
-
-            @include desktop_1280 {
-                display: block;
-                width: 30%;
-            }
-        }
-
-        // 應付金額
-        .amounts-payable {
-            width: 35%;
-
-            @include tablet_768 {
-                width: 15%;
-            }
-
-            @include desktop_1280 {
-                width: 15%;
-            }
-
-            @include desktop_1536 {
-                text-align: center;
-            }
-        }
-
-        // 付款狀態
-        .payment-status {
-            width: 20%;
-
-            @include tablet_768 {
-                width: 15%;
-                text-align: end;
-            }
-
-            @include desktop_1280 {
-                width: 10%;
-                text-align: center;
-            }
-        }
-
-        // 切換按鈕
-        .order-edit-btn-group {
-            font-size: 1.5rem;
-            color: #ad7205;
-            width: 15%;
-            text-align: end;
-
-            @include desktop_1280 {
-                width: 5%;
-            }
-
-            .bi {
-                cursor: pointer;
-            }
-        }
+      @include desktop_1280 {
+        width: 25%;
+      }
     }
 
-    // 內容
-    .orders-content-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin-bottom: 2rem;
+    // 購買款項
+    .bought-products {
+      display: none;
 
-        // 購買時間
-        .purchase-time {
-            width: 35%;
-
-            @include tablet_768 {
-                width: 25%;
-            }
-
-            @include desktop_1280 {
-                width: 15%;
-            }
-        }
-
-        // 顧客信箱
-        .customer-email {
-            display: none;
-
-            @include tablet_768 {
-                display: block;
-                width: 30%;
-            }
-
-            @include desktop_1280 {
-                width: 25%;
-            }
-        }
-
-        // 購買款項
-        .bought-products-container {
-            display: none;
-
-            @include desktop_1280 {
-                display: block;
-                width: 30%;
-            }
-
-            // 購買商品
-            .bought-products {
-
-                @include desktop_1280 {
-                    display: flex;
-                    margin-bottom: 0.25rem;
-                }
-            }
-        }
-
-        // 應付金額
-        .amounts-payable {
-            width: 35%;
-
-            @include tablet_768 {
-                width: 15%;
-            }
-
-            @include desktop_1280 {
-                width: 15%;
-            }
-
-            @include desktop_1536 {
-                text-align: center;
-            }
-        }
-
-        // 付款狀態
-        .payment-paid-status,
-        .payment-unpaid-status {
-            width: 20%;
-            font-weight: bold;
-
-            @include tablet_768 {
-                display: block;
-                text-align: end;
-                width: 15%;
-            }
-
-            @include desktop_1280 {
-                width: 10%;
-                text-align: center;
-            }
-        }
-
-        // 已付款
-        .payment-paid-status {
-            color: #03b421;
-        }
-
-        // 未付款
-        .payment-unpaid-status {
-            color: #c00000;
-        }
-
-        // 編輯
-        .order-edit-btn-group {
-            width: 15%;
-            text-align: end;
-
-            @include tablet_768 {
-                display: block;
-            }
-
-            @include desktop_1280 {
-                width: 5%;
-            }
-
-            .bi-eye-fill,
-            .bi-trash {
-                font-size: 1.3rem;
-                color: #515151;
-                outline: 1px solid #313131;
-                padding: 0.5rem;
-                cursor: pointer;
-            }
-
-            .bi-trash {
-                color: #a71313;
-                outline: 1px solid #a71313;
-            }
-        }
+      @include desktop_1280 {
+        display: block;
+        width: 30%;
+      }
     }
+
+    // 應付金額
+    .amounts-payable {
+      width: 35%;
+
+      @include tablet_768 {
+        width: 15%;
+      }
+
+      @include desktop_1280 {
+        width: 15%;
+      }
+
+      @include desktop_1536 {
+        text-align: center;
+      }
+    }
+
+    // 付款狀態
+    .payment-status {
+      width: 20%;
+
+      @include tablet_768 {
+        width: 15%;
+        text-align: end;
+      }
+
+      @include desktop_1280 {
+        width: 10%;
+        text-align: center;
+      }
+    }
+
+    // 切換按鈕
+    .order-edit-btn-group {
+      font-size: 1.5rem;
+      color: #ad7205;
+      width: 15%;
+      text-align: end;
+
+      @include desktop_1280 {
+        width: 5%;
+      }
+
+      .bi {
+        cursor: pointer;
+      }
+    }
+  }
+
+  // 內容
+  .orders-content-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    // 購買時間
+    .purchase-time {
+      width: 35%;
+
+      @include tablet_768 {
+        width: 25%;
+      }
+
+      @include desktop_1280 {
+        width: 15%;
+      }
+    }
+
+    // 顧客信箱
+    .customer-email {
+      display: none;
+
+      @include tablet_768 {
+        display: block;
+        width: 30%;
+      }
+
+      @include desktop_1280 {
+        width: 25%;
+      }
+    }
+
+    // 購買款項
+    .bought-products-container {
+      display: none;
+
+      @include desktop_1280 {
+        display: block;
+        width: 30%;
+      }
+
+      // 購買商品
+      .bought-products {
+        @include desktop_1280 {
+          display: flex;
+          margin-bottom: 0.25rem;
+        }
+      }
+    }
+
+    // 應付金額
+    .amounts-payable {
+      width: 35%;
+
+      @include tablet_768 {
+        width: 15%;
+      }
+
+      @include desktop_1280 {
+        width: 15%;
+      }
+
+      @include desktop_1536 {
+        text-align: center;
+      }
+    }
+
+    // 付款狀態
+    .payment-paid-status,
+    .payment-unpaid-status {
+      width: 20%;
+      font-weight: bold;
+
+      @include tablet_768 {
+        display: block;
+        text-align: end;
+        width: 15%;
+      }
+
+      @include desktop_1280 {
+        width: 10%;
+        text-align: center;
+      }
+    }
+
+    // 已付款
+    .payment-paid-status {
+      color: #03b421;
+    }
+
+    // 未付款
+    .payment-unpaid-status {
+      color: #c00000;
+    }
+
+    // 編輯
+    .order-edit-btn-group {
+      width: 15%;
+      text-align: end;
+
+      @include tablet_768 {
+        display: block;
+      }
+
+      @include desktop_1280 {
+        width: 5%;
+      }
+
+      .bi-eye-fill,
+      .bi-trash {
+        font-size: 1.3rem;
+        color: #515151;
+        outline: 1px solid #313131;
+        padding: 0.5rem;
+        cursor: pointer;
+      }
+
+      .bi-trash {
+        color: #a71313;
+        outline: 1px solid #a71313;
+      }
+    }
+  }
 }

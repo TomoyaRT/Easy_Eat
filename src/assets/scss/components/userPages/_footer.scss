@@ -1,213 +1,213 @@
 .user-page-footer {
-    width: 100%;
-    margin-top: 1.5rem;
+  width: 100%;
+  margin-top: 1.5rem;
+
+  @include tablet_768 {
+    margin-top: 2rem;
+  }
+
+  // Footer容器
+  .footer-container {
+    box-sizing: border-box;
+    width: 90%;
+    margin: 0 auto;
+    padding: 2.5rem 1rem;
+    background-color: #616161;
 
     @include tablet_768 {
-        margin-top: 2rem;
+      display: flex;
+      justify-content: space-between;
     }
 
-    // Footer容器
-    .footer-container {
-        box-sizing: border-box;
-        width: 90%;
-        margin: 0 auto;
-        padding: 2.5rem 1rem;
-        background-color: #616161;
-
-        @include tablet_768 {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        @include desktop_1280 {
-            width: 85%;
-        }
-        @include desktop_1536 {
-            width: 70%;
-        }
-        @include desktop_1920 {
-            width: 60%;
-        }
-
-        // 平板、電腦版 (左半)
-        .footer-left-side {
-            @include tablet_768 {
-                flex: 4;
-            }
-        }
-        // 平板、電腦版 (右半)
-        .footer-right-side {
-            @include tablet_768 {
-                flex: 7;
-                display: flex;
-                flex-direction: row;
-            }
-        }
-
-        // 品牌精神
-        .brand-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            @include tablet_768 {
-                align-items: flex-start;
-            }
-
-            // Logo
-            img {
-                width: 100px;
-                height: 50px;
-                margin-bottom: 1.5rem;
-            }
-
-            // 品牌敘述
-            .brand-attitude {
-                line-height: 1.5rem;
-                letter-spacing: 0.5px;
-                text-align: center;
-                color: #fff;
-                font-weight: bold;
-
-                @include tablet_768 {
-                    text-align: start;
-                }
-            }
-        }
-
-        // 聯絡 關注我們
-        .contact-container,
-        .attention-container {
-            margin-top: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            @include tablet_768 {
-                align-items: flex-end;
-                margin-top: 0rem;
-            }
-        }
-
-        .contact-container {
-            @include tablet_768 {
-                flex: 5;
-            }
-            @include tablet_1024 {
-                margin-right: -2rem;
-            }
-            @include desktop_1280 {
-                margin-right: -5rem;
-            }
-        }
-        .attention-container {
-            @include tablet_768 {
-                flex: 2;
-            }
-        }
-
-        // 聯絡 關注區域的開頭
-        .contact-title,
-        .attention-title {
-            font-size: 1.3rem;
-            line-height: 1.2rem;
-            letter-spacing: 1px;
-            color: #fff;
-            font-weight: bold;
-        }
-
-        // 聯絡的郵件與電話
-        .contact-email,
-        .contact-phone {
-            color: #ffffff;
-            margin-top: 1.5rem;
-            font-size: 1.2rem;
-
-            i {
-                color: #616161;
-                font-size: 1.5rem;
-                padding: 0.2rem;
-                border-radius: 5px;
-                background-color: #ffffff;
-                margin-left: 1rem;
-            }
-        }
-
-        // 關注的icon群組
-        .attention-icon-group {
-            margin-top: 0.5rem;
-            display: flex;
-            justify-content: space-around;
-
-            @include tablet_768 {
-                flex-direction: row;
-                flex-wrap: wrap;
-                width: 80%;
-            }
-
-            @include tablet_1024 {
-                width: 55%;
-            }
-
-            @include desktop_1280 {
-                width: 45%;
-            }
-
-            a {
-                cursor: pointer;
-                color: #616161;
-                font-size: 1.5rem;
-                padding: 0.2rem;
-                border-radius: 5px;
-                background-color: #ffffff;
-                margin: 1rem;
-
-                @include tablet_768 {
-                    margin: .6rem .4rem;
-                }
-            }
-
-            i:nth-child(2),
-            i:nth-child(4) {
-                @include tablet_768 {
-                    margin-right: 0rem;
-                }
-            }
-        }
+    @include desktop_1280 {
+      width: 85%;
+    }
+    @include desktop_1536 {
+      width: 70%;
+    }
+    @include desktop_1920 {
+      width: 60%;
     }
 
-    .copyright {
-        width: 90%;
-        margin: 1rem auto;
+    // 平板、電腦版 (左半)
+    .footer-left-side {
+      @include tablet_768 {
+        flex: 4;
+      }
+    }
+    // 平板、電腦版 (右半)
+    .footer-right-side {
+      @include tablet_768 {
+        flex: 7;
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+      }
+    }
+
+    // 品牌精神
+    .brand-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      @include tablet_768 {
+        align-items: flex-start;
+      }
+
+      // Logo
+      img {
+        width: 100px;
+        height: 50px;
+        margin-bottom: 1.5rem;
+      }
+
+      // 品牌敘述
+      .brand-attitude {
+        line-height: 1.5rem;
+        letter-spacing: 0.5px;
+        text-align: center;
+        color: #fff;
+        font-weight: bold;
 
         @include tablet_768 {
-            flex-direction: row;
-            justify-content: center;
+          text-align: start;
         }
-        @include desktop_1280 {
-            width: 85%;
-        }
-        @include desktop_1536 {
-            width: 70%;
-        }
-        @include desktop_1920 {
-            width: 60%;
-        }
-
-        .use-statement {
-            margin-right: 1rem;
-            color: #616161;
-            font-weight: bold;
-        }
-
-        .copyright-statement {
-            color: #616161;
-            line-height: 2rem;
-            font-size: 1.1rem;
-            font-weight: bolder;
-        }
+      }
     }
+
+    // 聯絡 關注我們
+    .contact-container,
+    .attention-container {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      @include tablet_768 {
+        align-items: flex-end;
+        margin-top: 0rem;
+      }
+    }
+
+    .contact-container {
+      @include tablet_768 {
+        flex: 5;
+      }
+      @include tablet_1024 {
+        margin-right: -2rem;
+      }
+      @include desktop_1280 {
+        margin-right: -5rem;
+      }
+    }
+    .attention-container {
+      @include tablet_768 {
+        flex: 2;
+      }
+    }
+
+    // 聯絡 關注區域的開頭
+    .contact-title,
+    .attention-title {
+      font-size: 1.3rem;
+      line-height: 1.2rem;
+      letter-spacing: 1px;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    // 聯絡的郵件與電話
+    .contact-email,
+    .contact-phone {
+      color: #ffffff;
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+
+      i {
+        color: #616161;
+        font-size: 1.5rem;
+        padding: 0.2rem;
+        border-radius: 5px;
+        background-color: #ffffff;
+        margin-left: 1rem;
+      }
+    }
+
+    // 關注的icon群組
+    .attention-icon-group {
+      margin-top: 0.5rem;
+      display: flex;
+      justify-content: space-around;
+
+      @include tablet_768 {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 80%;
+      }
+
+      @include tablet_1024 {
+        width: 55%;
+      }
+
+      @include desktop_1280 {
+        width: 45%;
+      }
+
+      a {
+        cursor: pointer;
+        color: #616161;
+        font-size: 1.5rem;
+        padding: 0.2rem;
+        border-radius: 5px;
+        background-color: #ffffff;
+        margin: 1rem;
+
+        @include tablet_768 {
+          margin: 0.6rem 0.4rem;
+        }
+      }
+
+      i:nth-child(2),
+      i:nth-child(4) {
+        @include tablet_768 {
+          margin-right: 0rem;
+        }
+      }
+    }
+  }
+
+  .copyright {
+    width: 90%;
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include tablet_768 {
+      flex-direction: row;
+      justify-content: center;
+    }
+    @include desktop_1280 {
+      width: 85%;
+    }
+    @include desktop_1536 {
+      width: 70%;
+    }
+    @include desktop_1920 {
+      width: 60%;
+    }
+
+    .use-statement {
+      margin-right: 1rem;
+      color: #616161;
+      font-weight: bold;
+    }
+
+    .copyright-statement {
+      color: #616161;
+      line-height: 2rem;
+      font-size: 1.1rem;
+      font-weight: bolder;
+    }
+  }
 }

@@ -1,185 +1,185 @@
 // 訂購人 表單容器
 .orderer-information-container {
+  width: 100%;
+  height: 0px;
+  overflow: hidden;
+  transition: height 0.3s;
+
+  // 姓名 容器
+  .user-name-container {
+    margin-top: 0.5rem;
+  }
+
+  // 姓名/地址/手機/電子信箱容器 通用樣式
+  .user-name-container,
+  .user-address-container,
+  .user-phone-container,
+  .user-email-container {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+
+  // 備註容器
+  .user-remark-container {
+    margin-bottom: 2.5rem;
+  }
+
+  // 標題 (通用樣式)
+  .user-name,
+  .user-address,
+  .user-phone,
+  .user-email,
+  .user-remark {
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.5;
+    color: #535252;
+  }
+
+  // 下拉式選單 (容器)
+  .user-address-wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  // select 框 (通用樣式)
+  .user-address-county-select,
+  .user-address-region-select {
+    width: 48%;
+    border: none;
+    padding: 0.7rem 1rem 0.7rem 0.8rem;
+    font-size: 1rem;
+    font-weight: bold;
+    outline: none;
+    margin: 0.2rem 0;
+    background-color: #ffffff;
+  }
+
+  // 輸入框 (通用樣式)
+  .user-name-input,
+  .user-address-input,
+  .user-phone-input,
+  .user-email-input {
+    box-sizing: border-box;
     width: 100%;
-    height: 0px;
-    overflow: hidden;
-    transition: height 0.3s;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    color: #616161;
+    padding: 0.5rem 1rem;
+    margin: 0.3rem 0;
+  }
 
-    // 姓名 容器
-    .user-name-container {
-        margin-top: .5rem;
-    }
+  // 姓名 地址 手機 電子信箱 (輸入框 文字通用樣式)
+  .user-name-input::placeholder,
+  .user-address-input::placeholder,
+  .user-phone-input::placeholder,
+  .user-email-input::placeholder {
+    color: #bebebe;
+    font-weight: bold;
+  }
 
-    // 姓名/地址/手機/電子信箱容器 通用樣式
-    .user-name-container,
-    .user-address-container,
-    .user-phone-container,
-    .user-email-container {
-        position: relative;
-        margin-bottom: 1.5rem;
-    }
+  // 驗證錯誤
+  .is-invalid {
+    border: 1px solid #ff3f3f;
+  }
 
-    // 備註容器
-    .user-remark-container {
-        margin-bottom: 2.5rem;
-    }
+  // 驗證通過
+  .is-valid {
+    border: 1px solid #2eaa18;
+  }
 
-    // 標題 (通用樣式)
-    .user-name,
-    .user-address,
-    .user-phone,
-    .user-email,
-    .user-remark {
-        font-size: 1rem;
-        font-weight: bold;
-        line-height: 1.5;
-        color: #535252;
-    }
+  // 驗證回饋的icon
+  .bi-check-circle-fill,
+  .bi-x-circle-fill {
+    position: absolute;
+    right: 0.5rem;
+    top: 2.7rem;
+    font-size: 1.1rem;
+  }
 
-    // 下拉式選單 (容器)
-    .user-address-wrap {
-        display: flex;
-        justify-content: space-between;
-    }
+  // 驗證通過 icon
+  .bi-check-circle-fill {
+    color: #59c047;
+  }
 
-    // select 框 (通用樣式)
-    .user-address-county-select,
-    .user-address-region-select {
-        width: 48%;
-        border: none;
-        padding: 0.7rem 1rem 0.7rem 0.8rem;
-        font-size: 1rem;
-        font-weight: bold;
-        outline: none;
-        margin: 0.2rem 0;
-        background-color: #ffffff;
-    }
+  // 驗證失敗 icon
+  .bi-x-circle-fill {
+    color: #ff3f3f;
+  }
 
-    // 輸入框 (通用樣式)
-    .user-name-input,
-    .user-address-input,
-    .user-phone-input,
-    .user-email-input {
-        box-sizing: border-box;
-        width: 100%;
-        border: none;
-        outline: none;
-        font-size: 1rem;
-        line-height: 1.5rem;
-        color: #616161;
-        padding: 0.5rem 1rem;
-        margin: 0.3rem 0;
-    }
+  // 錯誤回饋訊息
+  .invalid-feedback {
+    display: block;
+    position: absolute;
+    font-size: 0.875em;
+    font-weight: 800;
+    color: #dc3545;
+    margin-bottom: 1rem;
+  }
 
-    // 姓名 地址 手機 電子信箱 (輸入框 文字通用樣式)
-    .user-name-input::placeholder,
-    .user-address-input::placeholder,
-    .user-phone-input::placeholder,
-    .user-email-input::placeholder {
-        color: #bebebe;
-        font-weight: bold;
-    }
-
-    // 驗證錯誤
-    .is-invalid {
-        border: 1px solid #ff3f3f;
-    }
-
-    // 驗證通過
-    .is-valid {
-        border: 1px solid #2eaa18;
-    }
-
+  // 地址的icon調整
+  .user-address-input-container {
+    position: relative;
     // 驗證回饋的icon
     .bi-check-circle-fill,
     .bi-x-circle-fill {
-        position: absolute;
-        right: 0.5rem;
-        top: 2.7rem;
-        font-size: 1.1rem;
+      top: 1rem;
     }
+  }
 
-    // 驗證通過 icon
-    .bi-check-circle-fill {
-        color: #59c047;
+  // 備註
+  .user-remark-textarea {
+    resize: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 5rem;
+    font-size: 1rem;
+    color: #616161;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    box-sizing: border-box;
+  }
+
+  // 表單按鈕
+  .form-btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  // 按鈕 通用樣式
+  .btn-go-back,
+  .btn-go-checkout {
+    cursor: pointer;
+    padding: 0.7rem 2.2rem;
+    border: none;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bolder;
+    font-size: 1rem;
+    background-color: #909090;
+    line-height: 1.5rem;
+    letter-spacing: 1px;
+
+    @include mobile_414 {
+      padding: 0.9rem 2.8rem;
+      letter-spacing: 1.5px;
     }
+  }
 
-    // 驗證失敗 icon
-    .bi-x-circle-fill {
-        color: #ff3f3f;
-    }
-
-    // 錯誤回饋訊息
-    .invalid-feedback {
-        display: block;
-        position: absolute;
-        font-size: 0.875em;
-        font-weight: 800;
-        color: #dc3545;
-        margin-bottom: 1rem;
-    }
-
-    // 地址的icon調整
-    .user-address-input-container {
-        position: relative;
-        // 驗證回饋的icon
-        .bi-check-circle-fill,
-        .bi-x-circle-fill {
-            top: 1rem;
-        }
-    }
-
-    // 備註
-    .user-remark-textarea {
-        resize: none;
-        border: none;
-        outline: none;
-        width: 100%;
-        height: 5rem;
-        font-size: 1rem;
-        color: #616161;
-        font-weight: bold;
-        padding: 0.5rem 1rem;
-        box-sizing: border-box;
-    }
-
-    // 表單按鈕
-    .form-btn-container {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    // 按鈕 通用樣式
-    .btn-go-back,
-    .btn-go-checkout {
-        cursor: pointer;
-        padding: 0.7rem 2.2rem;
-        border: none;
-        text-decoration: none;
-        color: #fff;
-        font-weight: bolder;
-        font-size: 1rem;
-        background-color: #909090;
-        line-height: 1.5rem;
-        letter-spacing: 1px;
-
-        @include mobile_414 {
-            padding: 0.9rem 2.8rem;
-            letter-spacing: 1.5px;
-        }
-    }
-
-    // 前往結帳 按鈕
-    .btn-go-checkout {
-        background-color: #a67e64;
-    }
+  // 前往結帳 按鈕
+  .btn-go-checkout {
+    background-color: #a67e64;
+  }
 }
 // 訂購人 表單容器 (開啟狀態)
 .orderer-information-active {
-    height: 650px;
+  height: 650px;
 
-    @include mobile_414 {
-        height: 660px;
-    }
+  @include mobile_414 {
+    height: 660px;
+  }
 }
