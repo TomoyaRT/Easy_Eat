@@ -188,7 +188,7 @@
         >
           <!-- 商品圖片 -->
           <router-link :to="`/userproduct/${item.id}`" class="item-link">
-            <img :src="item.imageUrl" alt="" />
+            <img :src="item.imageUrl" alt="商品圖片" />
           </router-link>
           <!-- 商品名稱 -->
           <div class="product-item-title">

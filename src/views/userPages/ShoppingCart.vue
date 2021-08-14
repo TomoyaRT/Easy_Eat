@@ -14,7 +14,7 @@
           :key="item.id"
         >
         <router-link :to="`/userproduct/${item.product.id}`" class="item-link">
-            <img :src="item.product.imageUrl" alt="" />
+            <img :src="item.product.imageUrl" alt="商品圖片" />
           </router-link>
           <div class="product-content">
             <h1 class="product-title">
