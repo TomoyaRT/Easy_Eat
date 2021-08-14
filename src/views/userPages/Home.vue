@@ -17,13 +17,13 @@
       </transition-group>
       <div
         class="carousel-btn carousel-btn-prev"
-        @click="changePage(current - 1, changePageBtnStatus)"
+        @click="changePage(current - 1)"
       >
         &#10094;
       </div>
       <div
         class="carousel-btn carousel-btn-next"
-        @click="changePage(current + 1, changePageBtnStatus)"
+        @click="changePage(current + 1)"
       >
         &#10095;
       </div>
@@ -31,27 +31,27 @@
         <li
           class="carousel-page-item"
           :class="{ 'carousel-page-item-active': current === 0 }"
-          @click="changePage(0, changePageBtnStatus)"
+          @click="changePage(0)"
         ></li>
         <li
           class="carousel-page-item"
           :class="{ 'carousel-page-item-active': current === 1 }"
-          @click="changePage(1, changePageBtnStatus)"
+          @click="changePage(1)"
         ></li>
         <li
           class="carousel-page-item"
           :class="{ 'carousel-page-item-active': current === 2 }"
-          @click="changePage(2, changePageBtnStatus)"
+          @click="changePage(2)"
         ></li>
         <li
           class="carousel-page-item"
           :class="{ 'carousel-page-item-active': current === 3 }"
-          @click="changePage(3, changePageBtnStatus)"
+          @click="changePage(3)"
         ></li>
         <li
           class="carousel-page-item"
           :class="{ 'carousel-page-item-active': current === 4 }"
-          @click="changePage(4, changePageBtnStatus)"
+          @click="changePage(4)"
         ></li>
       </ul>
     </div>
@@ -221,8 +221,7 @@ export default {
   },
   methods: {
     // 輪播圖換頁 (手動)
-    changePage(index, status) {
-      if (status) {
+    changePage(index) {
         const vm = this;
         // 暫時關閉 輪播圖換頁事件 1s
         vm.changePageBtnStatus = false;
@@ -234,9 +233,6 @@ export default {
         vm.direction = index > this.current ? "next" : "prev";
         // 限制換頁的頁數
         vm.current = (index + this.images.length) % this.images.length;
-      } else {
-        return;
-      }
     },
     // 取得商品資料
     getProducts() {
