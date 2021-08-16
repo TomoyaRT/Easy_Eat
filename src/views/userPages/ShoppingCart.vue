@@ -253,8 +253,8 @@ export default {
     changeCartQty(id, qty) {
       const vm = this;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`;
-      const item = { product_id: id, qty };
       qty = parseInt(qty); // 強制轉型
+      const item = { product_id: id, qty };
       vm.isLoading = true;
 
       vm.$http.put(api, { data: item }).then((response) => {
