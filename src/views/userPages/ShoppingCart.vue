@@ -254,7 +254,7 @@ export default {
       const vm = this;
       const api = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`;
       const item = { product_id: id, qty };
-      qty = Number(qty); // 強制轉型
+      qty = parseInt(qty); // 強制轉型
       vm.isLoading = true;
 
       vm.$http.put(api, { data: item }).then((response) => {
